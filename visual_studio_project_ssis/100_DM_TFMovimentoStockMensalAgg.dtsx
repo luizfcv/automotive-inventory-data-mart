@@ -1,0 +1,1090 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/6/2026 10:02:07 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LUIZ"
+  DTS:CreatorName="LUIZ\luiz"
+  DTS:DTSID="{87F31669-CF9C-40A0-A115-D48083AA6C4D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="2070"
+  DTS:ObjectName="100_DM_TFMovimentoStockMensalAgg"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{CE30708D-14A1-4A4A-86A8-6F151517EB99}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Carregar dw FTMovimentoStockMensalAgg"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0233E392-A23F-4346-9207-A39C69B143E0}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carregar dw FTMovimentoStockMensalAgg"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Aggregate"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Inputs[Aggregate Input 1].Columns[SK_AnoMes]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="SK_AnoMes"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Criar coluna SKAnoMes.Outputs[Derived Column Output].Columns[SK_AnoMes]" />
+                    <inputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Inputs[Aggregate Input 1].Columns[SK_Entidade_Concessionario]"
+                      cachedDataType="i4"
+                      cachedName="SK_Entidade_Concessionario"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].Columns[SK_Entidade_Concessionario]" />
+                    <inputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Inputs[Aggregate Input 1].Columns[SK_Produto]"
+                      cachedDataType="i4"
+                      cachedName="SK_Produto"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].Columns[SK_Produto]" />
+                    <inputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Inputs[Aggregate Input 1].Columns[TipoMovimento]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="TipoMovimento"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento.Outputs[Lookup Match Output].Columns[TipoMovimento]" />
+                    <inputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Inputs[Aggregate Input 1].Columns[QuantidadeMovimentada]"
+                      cachedDataType="i4"
+                      cachedName="QuantidadeMovimentada"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].Columns[QuantidadeMovimentada]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Outputs[Aggregate Output 1].Columns[SK_AnoMes]"
+                      dataType="wstr"
+                      length="6"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Outputs[Aggregate Output 1].Columns[SK_AnoMes]"
+                      name="SK_AnoMes">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Carregar dw FTMovimentoStockMensalAgg\Criar coluna SKAnoMes.Outputs[Derived Column Output].Columns[SK_AnoMes]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Outputs[Aggregate Output 1].Columns[SK_Entidade_Concessionario]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Outputs[Aggregate Output 1].Columns[SK_Entidade_Concessionario]"
+                      name="SK_Entidade_Concessionario">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].Columns[SK_Entidade_Concessionario]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Outputs[Aggregate Output 1].Columns[SK_Produto]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Outputs[Aggregate Output 1].Columns[SK_Produto]"
+                      name="SK_Produto">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].Columns[SK_Produto]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Outputs[Aggregate Output 1].Columns[TipoMovimento]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Outputs[Aggregate Output 1].Columns[TipoMovimento]"
+                      name="TipoMovimento">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento.Outputs[Lookup Match Output].Columns[TipoMovimento]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Outputs[Aggregate Output 1].Columns[QuantidadeMovimentada]"
+                      dataType="i8"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Outputs[Aggregate Output 1].Columns[QuantidadeMovimentada]"
+                      name="QuantidadeMovimentada">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].Columns[QuantidadeMovimentada]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Carregar FT Agregada"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dw].[FactMovimentoStockMensalAgg]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Connections[OleDbConnection]"
+                  connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Inputs[OLE DB Destination Input].Columns[SK_Produto]"
+                      cachedDataType="i4"
+                      cachedName="SK_Produto"
+                      externalMetadataColumnId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Inputs[OLE DB Destination Input].ExternalColumns[SK_Produto]"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Outputs[Aggregate Output 1].Columns[SK_Produto]" />
+                    <inputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Inputs[OLE DB Destination Input].Columns[SK_AnoMes]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="SK_AnoMes"
+                      externalMetadataColumnId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Inputs[OLE DB Destination Input].ExternalColumns[SK_Tempo_Mes]"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Outputs[Aggregate Output 1].Columns[SK_AnoMes]" />
+                    <inputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Inputs[OLE DB Destination Input].Columns[TipoMovimento]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="TipoMovimento"
+                      externalMetadataColumnId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Inputs[OLE DB Destination Input].ExternalColumns[Tipo_Movimento]"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Outputs[Aggregate Output 1].Columns[TipoMovimento]" />
+                    <inputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Inputs[OLE DB Destination Input].Columns[QuantidadeMovimentada]"
+                      cachedDataType="i8"
+                      cachedName="QuantidadeMovimentada"
+                      externalMetadataColumnId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Inputs[OLE DB Destination Input].ExternalColumns[Total_Quantidade]"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Outputs[Aggregate Output 1].Columns[QuantidadeMovimentada]" />
+                    <inputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Inputs[OLE DB Destination Input].Columns[SK_Entidade_Concessionario]"
+                      cachedDataType="i4"
+                      cachedName="SK_Entidade_Concessionario"
+                      externalMetadataColumnId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Inputs[OLE DB Destination Input].ExternalColumns[SK_Entidade_Concessionario]"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Outputs[Aggregate Output 1].Columns[SK_Entidade_Concessionario]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Inputs[OLE DB Destination Input].ExternalColumns[SK_Tempo_Mes]"
+                      dataType="i4"
+                      name="SK_Tempo_Mes" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Inputs[OLE DB Destination Input].ExternalColumns[SK_Produto]"
+                      dataType="i4"
+                      name="SK_Produto" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Inputs[OLE DB Destination Input].ExternalColumns[Tipo_Movimento]"
+                      dataType="wstr"
+                      length="255"
+                      name="Tipo_Movimento" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Inputs[OLE DB Destination Input].ExternalColumns[Total_Quantidade]"
+                      dataType="i4"
+                      name="Total_Quantidade" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Inputs[OLE DB Destination Input].ExternalColumns[SK_Entidade_Concessionario]"
+                      dataType="i4"
+                      name="SK_Entidade_Concessionario" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar dw FTMovimentoStockMensalAgg\Criar coluna SKAnoMes"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Criar coluna SKAnoMes"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carregar dw FTMovimentoStockMensalAgg\Criar coluna SKAnoMes.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Criar coluna SKAnoMes.Inputs[Derived Column Input].Columns[SK_Data]"
+                      cachedDataType="i4"
+                      cachedName="SK_Data"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].Columns[SK_Data]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar dw FTMovimentoStockMensalAgg\Criar coluna SKAnoMes.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Carregar dw FTMovimentoStockMensalAgg\Criar coluna SKAnoMes.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Criar coluna SKAnoMes.Outputs[Derived Column Output].Columns[SK_AnoMes]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="6"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Criar coluna SKAnoMes.Outputs[Derived Column Output].Columns[SK_AnoMes]"
+                      name="SK_AnoMes"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LEFT]((DT_WSTR,8)#{Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].Columns[SK_Data]},6)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEFT((DT_WSTR,8)SK_Data,6)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar dw FTMovimentoStockMensalAgg\Criar coluna SKAnoMes.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Carregar dw FTMovimentoStockMensalAgg\Criar coluna SKAnoMes.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Criar coluna SKAnoMes.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Criar coluna SKAnoMes.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Criar coluna SKAnoMes.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Criar coluna SKAnoMes.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup TipoMovimento"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dw].[DimTipoMovimento]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dw].[DimTipoMovimento]) [refTable]
+where [refTable].[sk_TipoMovimento] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="sk_TipoMovimento" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Tipo" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TipoSaida" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].Columns[SK_TipoMovimento]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento.Connections[OleDbConnection]"
+                  connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento.Inputs[Lookup Input].Columns[SK_TipoMovimento]"
+                      cachedDataType="i4"
+                      cachedName="SK_TipoMovimento"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].Columns[SK_TipoMovimento]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">sk_TipoMovimento</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento.Outputs[Lookup Match Output].Columns[TipoMovimento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento.Outputs[Lookup Match Output].Columns[TipoMovimento]"
+                      name="TipoMovimento"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Tipo</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Obter FT Elementar"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dw].[FactMovimentoStock]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Connections[OleDbConnection]"
+                  connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].Columns[SK_Data]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].ExternalColumns[SK_Data]"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].Columns[SK_Data]"
+                      name="SK_Data"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].Columns[SK_Produto]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].ExternalColumns[SK_Produto]"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].Columns[SK_Produto]"
+                      name="SK_Produto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].Columns[SK_Entidade_Concessionario]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].ExternalColumns[SK_Entidade_Concessionario]"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].Columns[SK_Entidade_Concessionario]"
+                      name="SK_Entidade_Concessionario"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].Columns[SK_TipoMovimento]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].ExternalColumns[SK_TipoMovimento]"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].Columns[SK_TipoMovimento]"
+                      name="SK_TipoMovimento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].Columns[QuantidadeMovimentada]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].ExternalColumns[QuantidadeMovimentada]"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].Columns[QuantidadeMovimentada]"
+                      name="QuantidadeMovimentada"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].ExternalColumns[SK_Data]"
+                      dataType="i4"
+                      name="SK_Data" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].ExternalColumns[SK_Hora]"
+                      dataType="i4"
+                      name="SK_Hora" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].ExternalColumns[SK_Produto]"
+                      dataType="i4"
+                      name="SK_Produto" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].ExternalColumns[SK_Entidade_Concessionario]"
+                      dataType="i4"
+                      name="SK_Entidade_Concessionario" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].ExternalColumns[SK_Entidade_Fornecedor]"
+                      dataType="i4"
+                      name="SK_Entidade_Fornecedor" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].ExternalColumns[SK_Trabalhador]"
+                      dataType="i4"
+                      name="SK_Trabalhador" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].ExternalColumns[SK_TipoMovimento]"
+                      dataType="i4"
+                      name="SK_TipoMovimento" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].ExternalColumns[QuantidadeMovimentada]"
+                      dataType="i4"
+                      name="QuantidadeMovimentada" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].ExternalColumns[MontanteTotal]"
+                      dataType="numeric"
+                      name="MontanteTotal"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output].ExternalColumns[DD_NrDocumento]"
+                      dataType="wstr"
+                      length="255"
+                      name="DD_NrDocumento" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Error Output].Columns[SK_Data]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Error Output].Columns[SK_Data]"
+                      name="SK_Data" />
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Error Output].Columns[SK_Produto]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Error Output].Columns[SK_Produto]"
+                      name="SK_Produto" />
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Error Output].Columns[SK_Entidade_Concessionario]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Error Output].Columns[SK_Entidade_Concessionario]"
+                      name="SK_Entidade_Concessionario" />
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Error Output].Columns[SK_TipoMovimento]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Error Output].Columns[SK_TipoMovimento]"
+                      name="SK_TipoMovimento" />
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Error Output].Columns[QuantidadeMovimentada]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Error Output].Columns[QuantidadeMovimentada]"
+                      name="QuantidadeMovimentada" />
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carregar dw FTMovimentoStockMensalAgg.Paths[Aggregate Output 1]"
+              endId="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada.Inputs[OLE DB Destination Input]"
+              name="Aggregate Output 1"
+              startId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Carregar dw FTMovimentoStockMensalAgg.Paths[Derived Column Output]"
+              endId="Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\Carregar dw FTMovimentoStockMensalAgg\Criar coluna SKAnoMes.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Carregar dw FTMovimentoStockMensalAgg.Paths[Lookup Match Output]"
+              endId="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate.Inputs[Aggregate Input 1]"
+              name="Lookup Match Output"
+              startId="Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Carregar dw FTMovimentoStockMensalAgg.Paths[OLE DB Source Output]"
+              endId="Package\Carregar dw FTMovimentoStockMensalAgg\Criar coluna SKAnoMes.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="280,41.6"
+          Id="Package\Carregar dw FTMovimentoStockMensalAgg"
+          TopLeft="113.333327141073,84.9333327427175" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carregar dw FTMovimentoStockMensalAgg">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar"
+          TopLeft="201.666655648086,75.3999994756778" />
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada"
+          TopLeft="454.999975139897,404.733330518868" />
+        <NodeLayout
+          Size="189.6,41.6"
+          Id="Package\Carregar dw FTMovimentoStockMensalAgg\Criar coluna SKAnoMes"
+          TopLeft="237.499987023573,162.933332200315" />
+        <EdgeLayout
+          Id="Package\Carregar dw FTMovimentoStockMensalAgg.Paths[OLE DB Source Output]"
+          TopLeft="286.866655648086,116.999999475678">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="45.4333313754865,45.9333327246374"
+              Start="0,0"
+              End="45.4333313754865,38.4333327246374">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.9666663623187" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.9666663623187"
+                    Point2="0,22.9666663623187"
+                    Point3="4,22.9666663623187" />
+                  <mssgle:LineSegment
+                    End="41.4333313754865,22.9666663623187" />
+                  <mssgle:CubicBezierSegment
+                    Point1="41.4333313754865,22.9666663623187"
+                    Point2="45.4333313754865,22.9666663623187"
+                    Point3="45.4333313754865,26.9666663623187" />
+                  <mssgle:LineSegment
+                    End="45.4333313754865,38.4333327246374" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\Carregar dw FTMovimentoStockMensalAgg\Aggregate"
+          TopLeft="423.333310203421,318.066664454871" />
+        <NodeLayout
+          Size="186.4,41.6"
+          Id="Package\Carregar dw FTMovimentoStockMensalAgg\Lookup TipoMovimento"
+          TopLeft="339.99998142322,235.733331694073" />
+        <EdgeLayout
+          Id="Package\Carregar dw FTMovimentoStockMensalAgg.Paths[Lookup Match Output]"
+          TopLeft="433.19998142322,277.333331694073">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="53.3333287802009,40.7333327607977"
+              Start="0,0"
+              End="53.3333287802009,33.2333327607977">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.3666663803988" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.3666663803988"
+                    Point2="0,20.3666663803988"
+                    Point3="4,20.3666663803988" />
+                  <mssgle:LineSegment
+                    End="49.3333287802009,20.3666663803988" />
+                  <mssgle:CubicBezierSegment
+                    Point1="49.3333287802009,20.3666663803988"
+                    Point2="53.3333287802009,20.3666663803988"
+                    Point3="53.3333287802009,24.3666663803988" />
+                  <mssgle:LineSegment
+                    End="53.3333287802009,33.2333327607977" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-21.5247223286495,25.3666663803988,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carregar dw FTMovimentoStockMensalAgg.Paths[Derived Column Output]"
+          TopLeft="332.299987023573,204.533332200315">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="100.899994399647,31.1999994937579"
+              Start="0,0"
+              End="100.899994399647,23.6999994937579">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.599999746879" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.599999746879"
+                    Point2="0,15.599999746879"
+                    Point3="4,15.599999746879" />
+                  <mssgle:LineSegment
+                    End="96.8999943996471,15.599999746879" />
+                  <mssgle:CubicBezierSegment
+                    Point1="96.8999943996471,15.599999746879"
+                    Point2="100.899994399647,15.599999746879"
+                    Point3="100.899994399647,19.599999746879" />
+                  <mssgle:LineSegment
+                    End="100.899994399647,23.6999994937579" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carregar dw FTMovimentoStockMensalAgg.Paths[Aggregate Output 1]"
+          TopLeft="486.533310203421,359.666664454871">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="59.6666649364764,45.0666660639974"
+              Start="0,0"
+              End="59.6666649364764,37.5666660639974">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5333330319987" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5333330319987"
+                    Point2="0,22.5333330319987"
+                    Point3="4,22.5333330319987" />
+                  <mssgle:LineSegment
+                    End="55.6666649364764,22.5333330319987" />
+                  <mssgle:CubicBezierSegment
+                    Point1="55.6666649364764,22.5333330319987"
+                    Point2="59.6666649364764,22.5333330319987"
+                    Point3="59.6666649364764,26.5333330319987" />
+                  <mssgle:LineSegment
+                    End="59.6666649364764,37.5666660639974" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carregar dw FTMovimentoStockMensalAgg\Obter FT Elementar">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carregar dw FTMovimentoStockMensalAgg\Carregar FT Agregada">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,967 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/29/2026 6:25:14 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LUIZ"
+  DTS:CreatorName="LUIZ\luiz"
+  DTS:DTSID="{7F7870AE-9874-40B7-AEA7-22CF2A97C872}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="2070"
+  DTS:ObjectName="002_DM_DimHora"
+  DTS:PackageType="5"
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{51C71144-FA43-4D0A-8777-87CACFEA65E7}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{83120F96-64B8-4DDB-A6DC-DA07F60DEC2F}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\luizf\OneDrive - ISCTE-IUL\Faculdade\MSIAD\Ano 1\Semestre 2\SIAII\Trabalho\Entrega Final\DimHora.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{433AEA26-7CBA-4123-B977-0430CA79CA43}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\luizf\OneDrive - ISCTE-IUL\Faculdade\MSIAD\Ano 1\Semestre 2\SIAII\Trabalho\Entrega Final\Grupo_3_DimHora.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Carregar DimHora"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A75D9740-80B9-4EF7-9BE3-1F0E80AC4B4C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carregar DimHora"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carregar DimHora\Carregar dw DimHora"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Carregar dw DimHora"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dw].[DimHora]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carregar DimHora\Carregar dw DimHora.Connections[OleDbConnection]"
+                  connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].Columns[SK_Hora_Converted]"
+                      cachedDataType="i4"
+                      cachedName="SK_Hora_Converted"
+                      externalMetadataColumnId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].ExternalColumns[SK_Hora]"
+                      lineageId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[SK_Hora_Converted]" />
+                    <inputColumn
+                      refId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].Columns[PeriodoLaboral_Converted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="PeriodoLaboral_Converted"
+                      externalMetadataColumnId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].ExternalColumns[PeriodoLaboral]"
+                      lineageId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[PeriodoLaboral_Converted]" />
+                    <inputColumn
+                      refId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].Columns[PeriodoDia_Converted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="PeriodoDia_Converted"
+                      externalMetadataColumnId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].ExternalColumns[PeriodoDia]"
+                      lineageId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[PeriodoDia_Converted]" />
+                    <inputColumn
+                      refId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].Columns[Minuto_Converted]"
+                      cachedDataType="ui1"
+                      cachedName="Minuto_Converted"
+                      externalMetadataColumnId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].ExternalColumns[Minuto]"
+                      lineageId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[Minuto_Converted]" />
+                    <inputColumn
+                      refId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].Columns[IntervaloHorario_Converted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="IntervaloHorario_Converted"
+                      externalMetadataColumnId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].ExternalColumns[IntervaloHorario]"
+                      lineageId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[IntervaloHorario_Converted]" />
+                    <inputColumn
+                      refId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].Columns[HoraFormato24_Converted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="HoraFormato24_Converted"
+                      externalMetadataColumnId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].ExternalColumns[HoraFormato24]"
+                      lineageId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[HoraFormato24_Converted]" />
+                    <inputColumn
+                      refId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].Columns[HoraFormato12_Converted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="HoraFormato12_Converted"
+                      externalMetadataColumnId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].ExternalColumns[HoraFormato12]"
+                      lineageId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[HoraFormato12_Converted]" />
+                    <inputColumn
+                      refId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].Columns[HoraCompleta_Converted]"
+                      cachedDataType="dbTime"
+                      cachedName="HoraCompleta_Converted"
+                      externalMetadataColumnId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].ExternalColumns[HoraCompleta]"
+                      lineageId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[HoraCompleta_Converted]" />
+                    <inputColumn
+                      refId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].Columns[Hora_Converted]"
+                      cachedDataType="ui1"
+                      cachedName="Hora_Converted"
+                      externalMetadataColumnId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].ExternalColumns[Hora]"
+                      lineageId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[Hora_Converted]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].ExternalColumns[SK_Hora]"
+                      dataType="i4"
+                      name="SK_Hora" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].ExternalColumns[HoraCompleta]"
+                      dataType="dbTime2"
+                      name="HoraCompleta" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].ExternalColumns[Hora]"
+                      dataType="i2"
+                      name="Hora" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].ExternalColumns[HoraFormato12]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="HoraFormato12" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].ExternalColumns[HoraFormato24]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="HoraFormato24" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].ExternalColumns[Minuto]"
+                      dataType="i2"
+                      name="Minuto" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].ExternalColumns[PeriodoDia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="PeriodoDia" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].ExternalColumns[PeriodoLaboral]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="PeriodoLaboral" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input].ExternalColumns[IntervaloHorario]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="IntervaloHorario" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar DimHora\Carregar dw DimHora.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Carregar dw DimHora.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimHora\Carregar dw DimHora.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Carregar dw DimHora.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimHora\Carregar dw DimHora.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar DimHora\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carregar DimHora\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carregar DimHora\Data Conversion.Inputs[Data Conversion Input].Columns[SK_Hora]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SK_Hora"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[SK_Hora]" />
+                    <inputColumn
+                      refId="Package\Carregar DimHora\Data Conversion.Inputs[Data Conversion Input].Columns[HoraCompleta]"
+                      cachedDataType="date"
+                      cachedName="HoraCompleta"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[HoraCompleta]" />
+                    <inputColumn
+                      refId="Package\Carregar DimHora\Data Conversion.Inputs[Data Conversion Input].Columns[Hora]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Hora"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[Hora]" />
+                    <inputColumn
+                      refId="Package\Carregar DimHora\Data Conversion.Inputs[Data Conversion Input].Columns[HoraFormato12]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="HoraFormato12"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[HoraFormato12]" />
+                    <inputColumn
+                      refId="Package\Carregar DimHora\Data Conversion.Inputs[Data Conversion Input].Columns[HoraFormato24]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="HoraFormato24"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[HoraFormato24]" />
+                    <inputColumn
+                      refId="Package\Carregar DimHora\Data Conversion.Inputs[Data Conversion Input].Columns[Minuto]"
+                      cachedDataType="r8"
+                      cachedName="Minuto"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[Minuto]" />
+                    <inputColumn
+                      refId="Package\Carregar DimHora\Data Conversion.Inputs[Data Conversion Input].Columns[PeriodoDia]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PeriodoDia"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[PeriodoDia]" />
+                    <inputColumn
+                      refId="Package\Carregar DimHora\Data Conversion.Inputs[Data Conversion Input].Columns[PeriodoLaboral]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PeriodoLaboral"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[PeriodoLaboral]" />
+                    <inputColumn
+                      refId="Package\Carregar DimHora\Data Conversion.Inputs[Data Conversion Input].Columns[IntervaloHorario]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="IntervaloHorario"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[IntervaloHorario]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Carregar DimHora\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[SK_Hora_Converted]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[SK_Hora_Converted]"
+                      name="SK_Hora_Converted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[SK_Hora]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[HoraCompleta_Converted]"
+                      dataType="dbTime"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[HoraCompleta_Converted]"
+                      name="HoraCompleta_Converted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[HoraCompleta]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[Hora_Converted]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[Hora_Converted]"
+                      name="Hora_Converted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[Hora]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[HoraFormato12_Converted]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="8"
+                      lineageId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[HoraFormato12_Converted]"
+                      name="HoraFormato12_Converted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[HoraFormato12]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[HoraFormato24_Converted]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="5"
+                      lineageId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[HoraFormato24_Converted]"
+                      name="HoraFormato24_Converted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[HoraFormato24]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[Minuto_Converted]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[Minuto_Converted]"
+                      name="Minuto_Converted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[Minuto]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[PeriodoDia_Converted]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="15"
+                      lineageId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[PeriodoDia_Converted]"
+                      name="PeriodoDia_Converted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[PeriodoDia]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[PeriodoLaboral_Converted]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="30"
+                      lineageId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[PeriodoLaboral_Converted]"
+                      name="PeriodoLaboral_Converted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[PeriodoLaboral]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[IntervaloHorario_Converted]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="5"
+                      lineageId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output].Columns[IntervaloHorario_Converted]"
+                      name="IntervaloHorario_Converted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[IntervaloHorario]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Carregar DimHora\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar DimHora\Obter dados Hora"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Obter dados Hora"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">DimHora$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carregar DimHora\Obter dados Hora.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[SK_Hora]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].ExternalColumns[SK_Hora]"
+                      length="255"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[SK_Hora]"
+                      name="SK_Hora"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[HoraCompleta]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].ExternalColumns[HoraCompleta]"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[HoraCompleta]"
+                      name="HoraCompleta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[Hora]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].ExternalColumns[Hora]"
+                      length="255"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[Hora]"
+                      name="Hora"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[HoraFormato12]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].ExternalColumns[HoraFormato12]"
+                      length="255"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[HoraFormato12]"
+                      name="HoraFormato12"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[HoraFormato24]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].ExternalColumns[HoraFormato24]"
+                      length="255"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[HoraFormato24]"
+                      name="HoraFormato24"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[Minuto]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].ExternalColumns[Minuto]"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[Minuto]"
+                      name="Minuto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[PeriodoDia]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].ExternalColumns[PeriodoDia]"
+                      length="255"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[PeriodoDia]"
+                      name="PeriodoDia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[PeriodoLaboral]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].ExternalColumns[PeriodoLaboral]"
+                      length="255"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[PeriodoLaboral]"
+                      name="PeriodoLaboral"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[IntervaloHorario]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].ExternalColumns[IntervaloHorario]"
+                      length="255"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].Columns[IntervaloHorario]"
+                      name="IntervaloHorario"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].ExternalColumns[SK_Hora]"
+                      dataType="wstr"
+                      length="255"
+                      name="SK_Hora" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].ExternalColumns[HoraCompleta]"
+                      dataType="date"
+                      name="HoraCompleta" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].ExternalColumns[Hora]"
+                      dataType="wstr"
+                      length="255"
+                      name="Hora" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].ExternalColumns[HoraFormato12]"
+                      dataType="wstr"
+                      length="255"
+                      name="HoraFormato12" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].ExternalColumns[HoraFormato24]"
+                      dataType="wstr"
+                      length="255"
+                      name="HoraFormato24" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].ExternalColumns[Minuto]"
+                      dataType="r8"
+                      name="Minuto" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].ExternalColumns[PeriodoDia]"
+                      dataType="wstr"
+                      length="255"
+                      name="PeriodoDia" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].ExternalColumns[PeriodoLaboral]"
+                      dataType="wstr"
+                      length="255"
+                      name="PeriodoLaboral" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output].ExternalColumns[IntervaloHorario]"
+                      dataType="wstr"
+                      length="255"
+                      name="IntervaloHorario" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[SK_Hora]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[SK_Hora]"
+                      name="SK_Hora" />
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[HoraCompleta]"
+                      dataType="date"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[HoraCompleta]"
+                      name="HoraCompleta" />
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[Hora]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[Hora]"
+                      name="Hora" />
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[HoraFormato12]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[HoraFormato12]"
+                      name="HoraFormato12" />
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[HoraFormato24]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[HoraFormato24]"
+                      name="HoraFormato24" />
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[Minuto]"
+                      dataType="r8"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[Minuto]"
+                      name="Minuto" />
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[PeriodoDia]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[PeriodoDia]"
+                      name="PeriodoDia" />
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[PeriodoLaboral]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[PeriodoLaboral]"
+                      name="PeriodoLaboral" />
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[IntervaloHorario]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[IntervaloHorario]"
+                      name="IntervaloHorario" />
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carregar DimHora.Paths[Data Conversion Output]"
+              endId="Package\Carregar DimHora\Carregar dw DimHora.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Carregar DimHora\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Carregar DimHora.Paths[Excel Source Output]"
+              endId="Package\Carregar DimHora\Data Conversion.Inputs[Data Conversion Input]"
+              name="Excel Source Output"
+              startId="Package\Carregar DimHora\Obter dados Hora.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Carregar DimHora"
+          TopLeft="177.499990301828,52.8666662990385" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carregar DimHora">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\Carregar DimHora\Data Conversion"
+          TopLeft="150.833325092164,175.066665449275" />
+        <NodeLayout
+          Size="160.8,41.6"
+          Id="Package\Carregar DimHora\Obter dados Hora"
+          TopLeft="158.333324682382,88.2666662086381" />
+        <NodeLayout
+          Size="179.2,41.6"
+          Id="Package\Carregar DimHora\Carregar dw DimHora"
+          TopLeft="140.83332563854,264.333331495192" />
+        <EdgeLayout
+          Id="Package\Carregar DimHora.Paths[Excel Source Output]"
+          TopLeft="238.733324682382,129.866666208638">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9.89999959021802,45.1999992406369"
+              Start="0,0"
+              End="-9.89999959021802,37.6999992406369">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5999996203185" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5999996203185"
+                    Point2="0,22.5999996203185"
+                    Point3="-4,22.5999996203185" />
+                  <mssgle:LineSegment
+                    End="-5.89999959021802,22.5999996203185" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.89999959021802,22.5999996203185"
+                    Point2="-9.89999959021802,22.5999996203185"
+                    Point3="-9.89999959021802,26.5999996203185" />
+                  <mssgle:LineSegment
+                    End="-9.89999959021802,37.6999992406369" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carregar DimHora.Paths[Data Conversion Output]"
+          TopLeft="229.633325365352,216.666665449275">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.6666660459175"
+              Start="0,0"
+              End="0,40.1666660459175">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.1666660459175" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carregar DimHora\Obter dados Hora">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carregar DimHora\Carregar dw DimHora">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

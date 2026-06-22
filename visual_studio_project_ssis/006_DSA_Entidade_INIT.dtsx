@@ -1,0 +1,2456 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/5/2026 3:38:59 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LUIZ"
+  DTS:CreatorName="LUIZ\luiz"
+  DTS:DTSID="{99C407E4-4E39-4C12-8180-5A00D6F0D7B1}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="2070"
+  DTS:ObjectName="006_DSA_Entidade_INIT"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{0FA20FDE-52B7-4CFE-A731-00181E04D530}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{75C9F4F3-BF37-4207-9A36-F47A0A517A50}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CDC_State_Concessionario">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{00CB9048-DD8F-4EBE-A293-08BF152C0307}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CDC_State_Fornecedor">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Limpar dsa Concessionario"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{f42052ac-7a21-4638-ac6d-58d1eec712aa}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpar dsa Concessionario"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dsa.Concessionario;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpar dsa Entidade_sk"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{f1ad0fdd-86f9-4ebe-8faf-4cd07664c891}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpar dsa Entidade_sk"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dsa.Entidade_sk;&#xA;&#xA;set identity_insert [dsa].[Entidade_sk] on&#xA;INSERT INTO [dsa].[Entidade_sk] &#xA;           (skEntidade, NIF)&#xA;     VALUES&#xA;           (-1, null);&#xA;set identity_insert [dsa].[Entidade_sk]  off;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpar dsa Fornecedor"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2a1e9aef-4c07-4089-800b-cdad30ba8225}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpar dsa Fornecedor"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dsa.Fornecedor;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{B487650A-CDF9-4878-ACFC-6726C3BDD7A8}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{2F5ABDBD-BEEC-4593-B392-78F3280E9584}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="CDC_State">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{9E662CA0-3186-46CC-BE9F-C808F44121F4}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="CDC_State_DSA_Concessionario_INIT">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{EA85081F-85C3-44BA-9BEA-381C9F78F2C8}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="CDC_State_DSA_Entidade_INIT">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{064A0D42-4944-4A54-9870-82A49EB1C954}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="CDC_State_DSA_Fornecedor_INIT">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Carregar dsa Entidade_sk"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{c9383c95-edef-485d-bb2d-efacad169295}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Carregar dsa Entidade_sk"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Load dsa Concessionario"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dsa].[Concessionario]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Connections[OleDbConnection]"
+                      connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Output].Columns[nif_concessionario]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Output].ExternalColumns[nif]"
+                          length="20"
+                          lineageId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Output].Columns[nif_concessionario]"
+                          name="nif_concessionario"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Output].ExternalColumns[nome]"
+                          dataType="wstr"
+                          length="255"
+                          name="nome" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Output].ExternalColumns[telefone]"
+                          dataType="wstr"
+                          length="20"
+                          name="telefone" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                          dataType="wstr"
+                          length="255"
+                          name="email" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Output].ExternalColumns[morada]"
+                          dataType="wstr"
+                          length="255"
+                          name="morada" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Output].ExternalColumns[codigo_postal]"
+                          dataType="wstr"
+                          length="10"
+                          name="codigo_postal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Output].ExternalColumns[id_freguesia]"
+                          dataType="i4"
+                          name="id_freguesia" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Output].ExternalColumns[area_total]"
+                          dataType="numeric"
+                          name="area_total"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Output].ExternalColumns[id_responsavel]"
+                          dataType="i4"
+                          name="id_responsavel" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Output].ExternalColumns[nif]"
+                          dataType="wstr"
+                          length="20"
+                          name="nif" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Error Output].Columns[nif]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Error Output].Columns[nif]"
+                          name="nif" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Entidade_sk"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Load dsa Entidade_sk"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dsa].[Entidade_sk]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Entidade_sk.Connections[OleDbConnection]"
+                      connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Entidade_sk.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Entidade_sk.Inputs[OLE DB Destination Input].Columns[nif_entidade]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="nif_entidade"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Entidade_sk.Inputs[OLE DB Destination Input].ExternalColumns[NIF]"
+                          lineageId="Package\Sequence Container\Carregar dsa Entidade_sk\Union All.Outputs[Union All Output 1].Columns[nif_entidade]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Entidade_sk.Inputs[OLE DB Destination Input].ExternalColumns[skEntidade]"
+                          dataType="i4"
+                          name="skEntidade" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Entidade_sk.Inputs[OLE DB Destination Input].ExternalColumns[NIF]"
+                          dataType="wstr"
+                          length="20"
+                          name="NIF" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Entidade_sk.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Entidade_sk.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Entidade_sk.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Entidade_sk.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Entidade_sk.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Entidade_sk.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Load dsa Fornecedor"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dsa].[Fornecedor]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Connections[OleDbConnection]"
+                      connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Output].Columns[nif_fornecedor]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Output].ExternalColumns[nif]"
+                          length="20"
+                          lineageId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Output].Columns[nif_fornecedor]"
+                          name="nif_fornecedor"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Output].ExternalColumns[nome]"
+                          dataType="wstr"
+                          length="255"
+                          name="nome" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Output].ExternalColumns[id_subcategoria_fornecedor]"
+                          dataType="i4"
+                          name="id_subcategoria_fornecedor" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Output].ExternalColumns[ativo]"
+                          dataType="bool"
+                          name="ativo" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                          dataType="wstr"
+                          length="255"
+                          name="email" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Output].ExternalColumns[telefone]"
+                          dataType="wstr"
+                          length="20"
+                          name="telefone" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Output].ExternalColumns[morada]"
+                          dataType="wstr"
+                          length="255"
+                          name="morada" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Output].ExternalColumns[codigo_postal]"
+                          dataType="wstr"
+                          length="10"
+                          name="codigo_postal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Output].ExternalColumns[id_freguesia]"
+                          dataType="i4"
+                          name="id_freguesia" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Output].ExternalColumns[id_pais]"
+                          dataType="i4"
+                          name="id_pais" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Output].ExternalColumns[nif]"
+                          dataType="wstr"
+                          length="20"
+                          name="nif" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Error Output].Columns[nif]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Error Output].Columns[nif]"
+                          name="nif" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Carregar dsa Entidade_sk\Union All"
+                  componentClassID="Microsoft.UnionAll"
+                  contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+                  name="Union All"
+                  version="1">
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Carregar dsa Entidade_sk\Union All.Inputs[Union All Input 1]"
+                      name="Union All Input 1">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Union All.Inputs[Union All Input 1].Columns[nif_concessionario]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="nif_concessionario"
+                          lineageId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Output].Columns[nif_concessionario]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa Entidade_sk\Union All.Outputs[Union All Output 1].Columns[nif_entidade]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Sequence Container\Carregar dsa Entidade_sk\Union All.Inputs[Union All Input 2]"
+                      hasSideEffects="true"
+                      name="Union All Input 2">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Union All.Inputs[Union All Input 2].Columns[nif_fornecedor]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="nif_fornecedor"
+                          lineageId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Output].Columns[nif_fornecedor]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa Entidade_sk\Union All.Outputs[Union All Output 1].Columns[nif_entidade]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Sequence Container\Carregar dsa Entidade_sk\Union All.Inputs[Union All Input 3]"
+                      dangling="true"
+                      hasSideEffects="true"
+                      name="Union All Input 3">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa Entidade_sk\Union All.Outputs[Union All Output 1]"
+                      name="Union All Output 1">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Entidade_sk\Union All.Outputs[Union All Output 1].Columns[nif_entidade]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\Carregar dsa Entidade_sk\Union All.Outputs[Union All Output 1].Columns[nif_entidade]"
+                          name="nif_entidade" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\Carregar dsa Entidade_sk.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\Carregar dsa Entidade_sk\Union All.Inputs[Union All Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Sequence Container\Carregar dsa Entidade_sk.Paths[OLE DB Source Output1]"
+                  endId="Package\Sequence Container\Carregar dsa Entidade_sk\Union All.Inputs[Union All Input 2]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Sequence Container\Carregar dsa Entidade_sk.Paths[Union All Output 1]"
+                  endId="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Entidade_sk.Inputs[OLE DB Destination Input]"
+                  name="Union All Output 1"
+                  startId="Package\Sequence Container\Carregar dsa Entidade_sk\Union All.Outputs[Union All Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\CDC Marca ETL inicial concessionario"
+          DTS:CreationName="Attunity.CdcControlTask"
+          DTS:Description="CDC Control Task"
+          DTS:DTSID="{3E5BB90D-5BFF-4F9D-8B11-21CB90E114BD}"
+          DTS:ExecutableType="Attunity.CdcControlTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CDC Marca ETL inicial concessionario"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <CDCControlTask
+              Connection="LocalHost.gestao_stock_ADO"
+              TaskOperation="MarkInitialLoadStart"
+              OperationParameter=""
+              StateConnection="LocalHost.gestao_stock_ADO"
+              StateVariable="User::CDC_State_Concessionario"
+              AutomaticStatePersistence="True"
+              StateName="CDC_State_Concessionario"
+              StateTable="[dsa].[cdc_states]"
+              CommandTimeout="30"
+              ChangeDetectionRetryInterval="10"
+              ChangeDetectionTimeout="60" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\CDC Marca ETL inicial fornecedor"
+          DTS:CreationName="Attunity.CdcControlTask"
+          DTS:Description="CDC Control Task"
+          DTS:DTSID="{F9E412E9-C222-4A75-8D6C-F7C68AA972A4}"
+          DTS:ExecutableType="Attunity.CdcControlTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CDC Marca ETL inicial fornecedor"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <CDCControlTask
+              Connection="LocalHost.gestao_stock_ADO"
+              TaskOperation="MarkInitialLoadStart"
+              OperationParameter=""
+              StateConnection="LocalHost.gestao_stock_ADO"
+              StateVariable="User::CDC_State_Fornecedor"
+              AutomaticStatePersistence="True"
+              StateName="CDC_State_Fornecedor"
+              StateTable="[dsa].[cdc_states]"
+              CommandTimeout="30"
+              ChangeDetectionRetryInterval="10"
+              ChangeDetectionTimeout="60" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\CDC Marca fim ETL inicial concessionario"
+          DTS:CreationName="Attunity.CdcControlTask"
+          DTS:Description="CDC Control Task"
+          DTS:DTSID="{2B259DC7-BF77-4F15-B238-520A55F6E7A6}"
+          DTS:ExecutableType="Attunity.CdcControlTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CDC Marca fim ETL inicial concessionario"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <CDCControlTask
+              Connection="LocalHost.gestao_stock_ADO"
+              TaskOperation="MarkInitialLoadEnd"
+              OperationParameter=""
+              StateConnection="LocalHost.gestao_stock_ADO"
+              StateVariable="User::CDC_State_Concessionario"
+              AutomaticStatePersistence="True"
+              StateName="CDC_State_Concessionario"
+              StateTable="[dsa].[cdc_states]"
+              CommandTimeout="30"
+              ChangeDetectionRetryInterval="10"
+              ChangeDetectionTimeout="60" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\CDC Marca fim ETL inicial fornecedor"
+          DTS:CreationName="Attunity.CdcControlTask"
+          DTS:Description="CDC Control Task"
+          DTS:DTSID="{015BF7CE-9B80-4333-B5B9-B0D21E3A3F37}"
+          DTS:ExecutableType="Attunity.CdcControlTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CDC Marca fim ETL inicial fornecedor"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <CDCControlTask
+              Connection="LocalHost.gestao_stock_ADO"
+              TaskOperation="MarkInitialLoadEnd"
+              OperationParameter=""
+              StateConnection="LocalHost.gestao_stock_ADO"
+              StateVariable="User::CDC_State_Fornecedor"
+              AutomaticStatePersistence="True"
+              StateName="CDC_State_Fornecedor"
+              StateTable="[dsa].[cdc_states]"
+              CommandTimeout="30"
+              ChangeDetectionRetryInterval="10"
+              ChangeDetectionTimeout="60" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Staging dsa Concessionario"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{b767ce09-ebff-4e5c-a011-71572a0a6776}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Staging dsa Concessionario"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Load dbo concessionario"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[concessionario]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Connections[OleDbConnection]"
+                      connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[id]"
+                          name="id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[nome]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].ExternalColumns[nome]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[nome]"
+                          name="nome"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[telefone]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].ExternalColumns[telefone]"
+                          length="20"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[telefone]"
+                          name="telefone"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[email]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[email]"
+                          name="email"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[morada]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].ExternalColumns[morada]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[morada]"
+                          name="morada"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[codigo_postal]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].ExternalColumns[codigo_postal]"
+                          length="10"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[codigo_postal]"
+                          name="codigo_postal"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[id_freguesia]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].ExternalColumns[id_freguesia]"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[id_freguesia]"
+                          name="id_freguesia"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[nif]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].ExternalColumns[nif]"
+                          length="20"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[nif]"
+                          name="nif"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[area_total]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].ExternalColumns[area_total]"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[area_total]"
+                          name="area_total"
+                          precision="10"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[id_responsavel]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].ExternalColumns[id_responsavel]"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[id_responsavel]"
+                          name="id_responsavel"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].ExternalColumns[nome]"
+                          dataType="wstr"
+                          length="255"
+                          name="nome" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].ExternalColumns[telefone]"
+                          dataType="wstr"
+                          length="20"
+                          name="telefone" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                          dataType="wstr"
+                          length="255"
+                          name="email" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].ExternalColumns[morada]"
+                          dataType="wstr"
+                          length="255"
+                          name="morada" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].ExternalColumns[codigo_postal]"
+                          dataType="wstr"
+                          length="10"
+                          name="codigo_postal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].ExternalColumns[id_freguesia]"
+                          dataType="i4"
+                          name="id_freguesia" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].ExternalColumns[area_total]"
+                          dataType="numeric"
+                          name="area_total"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].ExternalColumns[id_responsavel]"
+                          dataType="i4"
+                          name="id_responsavel" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].ExternalColumns[nif]"
+                          dataType="wstr"
+                          length="20"
+                          name="nif" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[id]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[id]"
+                          name="id" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[nome]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[nome]"
+                          name="nome" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[telefone]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[telefone]"
+                          name="telefone" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[email]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[email]"
+                          name="email" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[morada]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[morada]"
+                          name="morada" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[codigo_postal]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[codigo_postal]"
+                          name="codigo_postal" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[id_freguesia]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[id_freguesia]"
+                          name="id_freguesia" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[nif]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[nif]"
+                          name="nif" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[area_total]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[area_total]"
+                          name="area_total"
+                          precision="10"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[id_responsavel]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Error Output].Columns[id_responsavel]"
+                          name="id_responsavel" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Load dsa Concessionario"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dsa].[Concessionario]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Connections[OleDbConnection]"
+                      connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].Columns[id]"
+                          cachedDataType="i4"
+                          cachedName="id"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[id]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].Columns[nome]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="nome"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].ExternalColumns[nome]"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[nome]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].Columns[telefone]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="telefone"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].ExternalColumns[telefone]"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[telefone]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].Columns[email]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="email"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[email]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].Columns[morada]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="morada"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].ExternalColumns[morada]"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[morada]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].Columns[codigo_postal]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="codigo_postal"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].ExternalColumns[codigo_postal]"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[codigo_postal]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].Columns[id_freguesia]"
+                          cachedDataType="i4"
+                          cachedName="id_freguesia"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].ExternalColumns[id_freguesia]"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[id_freguesia]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].Columns[nif]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="nif"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].ExternalColumns[nif]"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[nif]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].Columns[area_total]"
+                          cachedDataType="numeric"
+                          cachedName="area_total"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].ExternalColumns[area_total]"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[area_total]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].Columns[id_responsavel]"
+                          cachedDataType="i4"
+                          cachedName="id_responsavel"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].ExternalColumns[id_responsavel]"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output].Columns[id_responsavel]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].ExternalColumns[nome]"
+                          dataType="wstr"
+                          length="255"
+                          name="nome" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].ExternalColumns[telefone]"
+                          dataType="wstr"
+                          length="20"
+                          name="telefone" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                          dataType="wstr"
+                          length="255"
+                          name="email" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].ExternalColumns[morada]"
+                          dataType="wstr"
+                          length="255"
+                          name="morada" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].ExternalColumns[codigo_postal]"
+                          dataType="wstr"
+                          length="10"
+                          name="codigo_postal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].ExternalColumns[id_freguesia]"
+                          dataType="i4"
+                          name="id_freguesia" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].ExternalColumns[area_total]"
+                          dataType="numeric"
+                          name="area_total"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].ExternalColumns[id_responsavel]"
+                          dataType="i4"
+                          name="id_responsavel" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input].ExternalColumns[nif]"
+                          dataType="wstr"
+                          length="20"
+                          name="nif" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\Staging dsa Concessionario.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Staging dsa Fornecedor"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{6b8890c0-3fc4-410a-8164-6132f7de41df}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Staging dsa Fornecedor"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Load dbo fornecedor"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[fornecedor]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Connections[OleDbConnection]"
+                      connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[id]"
+                          name="id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[nome]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[nome]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[nome]"
+                          name="nome"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[id_subcategoria_fornecedor]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[id_subcategoria_fornecedor]"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[id_subcategoria_fornecedor]"
+                          name="id_subcategoria_fornecedor"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[ativo]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[ativo]"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[ativo]"
+                          name="ativo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[email]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[email]"
+                          name="email"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[telefone]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[telefone]"
+                          length="20"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[telefone]"
+                          name="telefone"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[morada]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[morada]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[morada]"
+                          name="morada"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[codigo_postal]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[codigo_postal]"
+                          length="10"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[codigo_postal]"
+                          name="codigo_postal"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[id_freguesia]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[id_freguesia]"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[id_freguesia]"
+                          name="id_freguesia"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[id_pais]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[id_pais]"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[id_pais]"
+                          name="id_pais"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[nif]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[nif]"
+                          length="20"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[nif]"
+                          name="nif"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[nome]"
+                          dataType="wstr"
+                          length="255"
+                          name="nome" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[id_subcategoria_fornecedor]"
+                          dataType="i4"
+                          name="id_subcategoria_fornecedor" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[ativo]"
+                          dataType="bool"
+                          name="ativo" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                          dataType="wstr"
+                          length="255"
+                          name="email" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[telefone]"
+                          dataType="wstr"
+                          length="20"
+                          name="telefone" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[morada]"
+                          dataType="wstr"
+                          length="255"
+                          name="morada" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[codigo_postal]"
+                          dataType="wstr"
+                          length="10"
+                          name="codigo_postal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[id_freguesia]"
+                          dataType="i4"
+                          name="id_freguesia" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[id_pais]"
+                          dataType="i4"
+                          name="id_pais" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].ExternalColumns[nif]"
+                          dataType="wstr"
+                          length="20"
+                          name="nif" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[id]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[id]"
+                          name="id" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[nome]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[nome]"
+                          name="nome" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[id_subcategoria_fornecedor]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[id_subcategoria_fornecedor]"
+                          name="id_subcategoria_fornecedor" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[ativo]"
+                          dataType="bool"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[ativo]"
+                          name="ativo" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[email]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[email]"
+                          name="email" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[telefone]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[telefone]"
+                          name="telefone" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[morada]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[morada]"
+                          name="morada" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[codigo_postal]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[codigo_postal]"
+                          name="codigo_postal" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[id_freguesia]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[id_freguesia]"
+                          name="id_freguesia" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[id_pais]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[id_pais]"
+                          name="id_pais" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[nif]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[nif]"
+                          name="nif" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Load dsa Fornecedor"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dsa].[Fornecedor]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Connections[OleDbConnection]"
+                      connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].Columns[id]"
+                          cachedDataType="i4"
+                          cachedName="id"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[id]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].Columns[nome]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="nome"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[nome]"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[nome]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].Columns[id_subcategoria_fornecedor]"
+                          cachedDataType="i4"
+                          cachedName="id_subcategoria_fornecedor"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[id_subcategoria_fornecedor]"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[id_subcategoria_fornecedor]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].Columns[ativo]"
+                          cachedDataType="bool"
+                          cachedName="ativo"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[ativo]"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[ativo]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].Columns[email]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="email"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[email]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].Columns[telefone]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="telefone"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[telefone]"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[telefone]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].Columns[morada]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="morada"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[morada]"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[morada]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].Columns[codigo_postal]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="codigo_postal"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[codigo_postal]"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[codigo_postal]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].Columns[id_freguesia]"
+                          cachedDataType="i4"
+                          cachedName="id_freguesia"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[id_freguesia]"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[id_freguesia]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].Columns[id_pais]"
+                          cachedDataType="i4"
+                          cachedName="id_pais"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[id_pais]"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[id_pais]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].Columns[nif]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="nif"
+                          externalMetadataColumnId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[nif]"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output].Columns[nif]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[nome]"
+                          dataType="wstr"
+                          length="255"
+                          name="nome" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[id_subcategoria_fornecedor]"
+                          dataType="i4"
+                          name="id_subcategoria_fornecedor" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[ativo]"
+                          dataType="bool"
+                          name="ativo" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                          dataType="wstr"
+                          length="255"
+                          name="email" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[telefone]"
+                          dataType="wstr"
+                          length="20"
+                          name="telefone" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[morada]"
+                          dataType="wstr"
+                          length="255"
+                          name="morada" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[codigo_postal]"
+                          dataType="wstr"
+                          length="10"
+                          name="codigo_postal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[id_freguesia]"
+                          dataType="i4"
+                          name="id_freguesia" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[id_pais]"
+                          dataType="i4"
+                          name="id_pais" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input].ExternalColumns[nif]"
+                          dataType="wstr"
+                          length="20"
+                          name="nif" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\Staging dsa Fornecedor.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{AD08F556-A19F-4C3E-8F0B-BADA0B8BAC6B}"
+          DTS:From="Package\Sequence Container\CDC Marca ETL inicial concessionario"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence Container\Staging dsa Concessionario" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{C7D755C0-D54C-4ED7-8415-3DE58A2E4EC7}"
+          DTS:From="Package\Sequence Container\CDC Marca ETL inicial fornecedor"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Sequence Container\Staging dsa Fornecedor" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{CFD0CC82-7788-4A56-8BA7-03A0E8653A57}"
+          DTS:From="Package\Sequence Container\Carregar dsa Entidade_sk"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Sequence Container\CDC Marca fim ETL inicial concessionario" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{b666b66f-1ae5-4081-9217-7d02dc9179d7}"
+          DTS:From="Package\Sequence Container\Staging dsa Concessionario"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Sequence Container\Carregar dsa Entidade_sk" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{d6bfdfcc-2971-4474-ae81-773036e2738e}"
+          DTS:From="Package\Sequence Container\Staging dsa Fornecedor"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Sequence Container\Carregar dsa Entidade_sk" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{CC64EF05-9911-468B-82E6-E74EED78B150}"
+          DTS:From="Package\Sequence Container\Carregar dsa Entidade_sk"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\Sequence Container\CDC Marca fim ETL inicial fornecedor" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{1C12563A-31C2-4851-99DC-4D30BEA094B4}"
+      DTS:From="Package\Limpar dsa Concessionario"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sequence Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{9D16F3F9-F69F-4A4D-A2D7-1F50E102751A}"
+      DTS:From="Package\Limpar dsa Fornecedor"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Sequence Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{EA27D422-7F17-474A-8775-3860196DDCE9}"
+      DTS:From="Package\Limpar dsa Entidade_sk"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Sequence Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="204,41.6"
+          Id="Package\Limpar dsa Concessionario"
+          TopLeft="299.166653599177,65.1999999638398" />
+        <NodeLayout
+          Size="189.6,41.6"
+          Id="Package\Limpar dsa Entidade_sk"
+          TopLeft="789.166626826759,63.4666666425599" />
+        <NodeLayout
+          Size="185.6,41.6"
+          Id="Package\Limpar dsa Fornecedor"
+          TopLeft="551.666639803186,63.4666666425599" />
+        <NodeLayout
+          Size="199.2,41.6"
+          Id="Package\Sequence Container\Carregar dsa Entidade_sk"
+          TopLeft="347.999981286625,216.099998535513" />
+        <NodeLayout
+          Size="256,41.6"
+          Id="Package\Sequence Container\CDC Marca ETL inicial concessionario"
+          TopLeft="62.9666495013571,7.99999833663304" />
+        <NodeLayout
+          Size="272,41.6"
+          Id="Package\Sequence Container\CDC Marca fim ETL inicial concessionario"
+          TopLeft="67.1333159403673,304.399996275505" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\Sequence Container\Staging dsa Concessionario"
+          TopLeft="87.166662204597,107.766665955517" />
+        <NodeLayout
+          Size="189.6,41.6"
+          Id="Package\Sequence Container\Staging dsa Fornecedor"
+          TopLeft="623.83329954909,112.099999258717" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="191.066655852977,49.599998336633">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58.166667618884"
+              Start="0,0"
+              End="0,50.666667618884">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.666667618884" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="415.733314619959,257.699998535513">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-212.599998679591,46.6999977399921"
+              Start="0,0"
+              End="-212.599998679591,39.1999977399921">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.9032660174629" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.9032660174629"
+                    Point2="0,18.9032660174629"
+                    Point3="-4,18.9032660174629" />
+                  <mssgle:LineSegment
+                    End="-208.599998679591,18.9032660174629" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-208.599998679591,18.9032660174629"
+                    Point2="-212.599998679591,18.9032660174629"
+                    Point3="-212.599998679591,22.9032660174629" />
+                  <mssgle:LineSegment
+                    End="-212.599998679591,39.1999977399921" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 3]"
+          TopLeft="191.166662204597,149.366665955517">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="224.566652415362,66.7333325799958"
+              Start="0,0"
+              End="224.566652415362,59.2333325799958">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.7209557268979" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.7209557268979"
+                    Point2="0,39.7209557268979"
+                    Point3="4,39.7209557268979" />
+                  <mssgle:LineSegment
+                    End="220.566652415362,39.7209557268979" />
+                  <mssgle:CubicBezierSegment
+                    Point1="220.566652415362,39.7209557268979"
+                    Point2="224.566652415362,39.7209557268979"
+                    Point3="224.566652415362,43.7209557268979" />
+                  <mssgle:LineSegment
+                    End="224.566652415362,59.2333325799958" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 4]"
+          TopLeft="718.63329954909,153.699999258717">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-239.166651595799,62.3999992767959"
+              Start="0,0"
+              End="-239.166651595799,54.8999992767959">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.141672876308" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.141672876308"
+                    Point2="0,37.141672876308"
+                    Point3="-4,37.141672876308" />
+                  <mssgle:LineSegment
+                    End="-235.166651595799,37.141672876308" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-235.166651595799,37.141672876308"
+                    Point2="-239.166651595799,37.141672876308"
+                    Point3="-239.166651595799,41.141672876308" />
+                  <mssgle:LineSegment
+                    End="-239.166651595799,54.8999992767959" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="236,41.6"
+          Id="Package\Sequence Container\CDC Marca ETL inicial fornecedor"
+          TopLeft="601.433292036423,15.2666649972729" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="719.033295792757,56.866664997273">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.2333342614439"
+              Start="0,0"
+              End="0,47.7333342614439">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.7333342614439" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="252.8,41.6"
+          Id="Package\Sequence Container\CDC Marca fim ETL inicial fornecedor"
+          TopLeft="588.933292719393,293.466663062705" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 5]"
+          TopLeft="479.466647953292,257.699998535513">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="235.866644766101,35.7666645271922"
+              Start="0,0"
+              End="235.866644766101,28.2666645271922">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.4776618165846" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.4776618165846"
+                    Point2="0,14.4776618165846"
+                    Point3="4,14.4776618165846" />
+                  <mssgle:LineSegment
+                    End="231.866644766101,14.4776618165846" />
+                  <mssgle:CubicBezierSegment
+                    Point1="231.866644766101,14.4776618165846"
+                    Point2="235.866644766101,14.4776618165846"
+                    Point3="235.866644766101,18.4776618165846" />
+                  <mssgle:LineSegment
+                    End="235.866644766101,28.2666645271922" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="974.4,400"
+          Size="974.4,443.2"
+          Id="Package\Sequence Container"
+          TopLeft="154.166658243372,181.133332073755" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="400.466655921274,106.79999996384">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74.3333321099152"
+              Start="0,0"
+              End="0,66.8333321099152">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.8333321099152" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="642.916649023279,105.06666664256">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76.0666654311951"
+              Start="0,0"
+              End="0,68.5666654311951">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.5666654311951" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="883.466642535065,105.06666664256">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76.0666654311952"
+              Start="0,0"
+              End="0,68.5666654311952">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.5666654311952" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Carregar dsa Entidade_sk">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Sequence Container\Carregar dsa Entidade_sk\Union All"
+          TopLeft="299.999995529652,152.999997720122" />
+        <NodeLayout
+          Size="196,41.6"
+          Id="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Concessionario"
+          TopLeft="143.999997854233,71.9999989271164" />
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Entidade_sk"
+          TopLeft="272.999995931983,247.999996304512" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Sequence Container\Carregar dsa Entidade_sk\Load dsa Fornecedor"
+          TopLeft="396.999994084239,71.9999989271164" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Carregar dsa Entidade_sk.Paths[Union All Output 1]"
+          TopLeft="361.699995730817,194.599997720122">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53.3999985843897"
+              Start="0,0"
+              End="0,45.8999985843897">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.8999985843897" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Carregar dsa Entidade_sk.Paths[OLE DB Source Output1]"
+          TopLeft="485.399994084239,113.599998927116">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-106.733331887921,39.3999987930059"
+              Start="0,0"
+              End="-106.733331887921,31.8999987930059">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.3289466537535" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.3289466537535"
+                    Point2="0,23.3289466537535"
+                    Point3="-4,23.3289466537535" />
+                  <mssgle:LineSegment
+                    End="-102.733331887921,23.3289466537535" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-102.733331887921,23.3289466537535"
+                    Point2="-106.733331887921,23.3289466537535"
+                    Point3="-106.733331887921,27.3289466537535" />
+                  <mssgle:LineSegment
+                    End="-106.733331887921,31.8999987930059" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Carregar dsa Entidade_sk.Paths[OLE DB Source Output]"
+          TopLeft="241.999997854233,113.599998927116">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="99.3333310087522,39.3999987930059"
+              Start="0,0"
+              End="99.3333310087522,31.8999987930059">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.3289466537535" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.3289466537535"
+                    Point2="0,23.3289466537535"
+                    Point3="4,23.3289466537535" />
+                  <mssgle:LineSegment
+                    End="95.3333310087522,23.3289466537535" />
+                  <mssgle:CubicBezierSegment
+                    Point1="95.3333310087522,23.3289466537535"
+                    Point2="99.3333310087522,23.3289466537535"
+                    Point3="99.3333310087522,27.3289466537535" />
+                  <mssgle:LineSegment
+                    End="99.3333310087522,31.8999987930059" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Staging dsa Concessionario">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="196,41.6"
+          Id="Package\Sequence Container\Staging dsa Concessionario\Load dsa Concessionario"
+          TopLeft="216.666654828522,178.533332091835" />
+        <NodeLayout
+          Size="193.6,41.6"
+          Id="Package\Sequence Container\Staging dsa Concessionario\Load dbo concessionario"
+          TopLeft="218.333321404126,40.7333330500788" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Staging dsa Concessionario.Paths[OLE DB Source Output]"
+          TopLeft="314.899988116324,82.3333330500788">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,96.199999041756"
+              Start="0,0"
+              End="0,88.699999041756">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,88.699999041756" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Staging dsa Fornecedor">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\Sequence Container\Staging dsa Fornecedor\Load dbo fornecedor"
+          TopLeft="209.999996870756,67.9999989867211" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Sequence Container\Staging dsa Fornecedor\Load dsa Fornecedor"
+          TopLeft="207.999996900558,191.999997138977" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Staging dsa Fornecedor.Paths[OLE DB Source Output]"
+          TopLeft="296.799996885657,109.599998986721">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,82.399998152256"
+              Start="0,0"
+              End="0,74.899998152256">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.899998152256" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

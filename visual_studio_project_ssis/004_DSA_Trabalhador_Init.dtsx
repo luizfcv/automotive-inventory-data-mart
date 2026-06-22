@@ -1,0 +1,1508 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/2/2026 12:51:12 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LUIZ"
+  DTS:CreatorName="LUIZ\luiz"
+  DTS:DTSID="{6657635C-440B-4A1C-B959-790C0FE20F50}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="2070"
+  DTS:ObjectName="004_DSA_Trabalhador_INIT"
+  DTS:PackageType="5"
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{C3FF6809-AFC4-4B81-A901-58A66ABE6110}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6F551B24-112A-4BBC-821D-C10652654B3A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CDC_State_Trabalhador">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Limpar dsa Trabalhador"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{71d09414-ac08-4f06-bf45-536833a9a161}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpar dsa Trabalhador"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dsa.Trabalhador;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpar dsa Trabalhador_sk init"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{b15343e5-2222-4844-a1f1-a0fae507e810}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpar dsa Trabalhador_sk init"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dsa.Trabalhador_sk;&#xA;&#xA;set identity_insert [dsa].[Trabalhador_sk] on&#xA;INSERT INTO [dsa].[Trabalhador_sk] &#xA;           (skTrabalhador, numero_trabalhador)&#xA;     VALUES&#xA;           (-1, null);&#xA;set identity_insert [dsa].[Trabalhador_sk]  off;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{F91F9395-1019-40AA-B6FB-6D689D214836}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{F5729212-D373-4875-99D5-74DA774BDC19}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="CDC_State">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{CC56704D-023B-493D-9392-D20641673A10}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="CDC_State_DSA_Trabalhador_INIT">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Carregar dsa Trabalhador_sk"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{42670cae-518a-4524-8cf4-91fd30947656}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Carregar dsa Trabalhador_sk"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Carregar dsa Trabalhador_sk"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Carregar dsa Trabalhador_sk"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dsa].[Trabalhador_sk]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Carregar dsa Trabalhador_sk.Connections[OleDbConnection]"
+                      connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Carregar dsa Trabalhador_sk.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Carregar dsa Trabalhador_sk.Inputs[OLE DB Destination Input].Columns[numero_trabalhador]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="numero_trabalhador"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Carregar dsa Trabalhador_sk.Inputs[OLE DB Destination Input].ExternalColumns[numero_trabalhador]"
+                          lineageId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output].Columns[numero_trabalhador]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Carregar dsa Trabalhador_sk.Inputs[OLE DB Destination Input].ExternalColumns[skTrabalhador]"
+                          dataType="i4"
+                          name="skTrabalhador" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Carregar dsa Trabalhador_sk.Inputs[OLE DB Destination Input].ExternalColumns[numero_trabalhador]"
+                          dataType="wstr"
+                          length="255"
+                          name="numero_trabalhador" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Carregar dsa Trabalhador_sk.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Carregar dsa Trabalhador_sk.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Carregar dsa Trabalhador_sk.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Carregar dsa Trabalhador_sk.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Carregar dsa Trabalhador_sk.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Carregar dsa Trabalhador_sk.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Obter dsa Trabalhador"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dsa].[Trabalhador]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Connections[OleDbConnection]"
+                      connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output].Columns[numero_trabalhador]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output].ExternalColumns[numero_trabalhador]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output].Columns[numero_trabalhador]"
+                          name="numero_trabalhador"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output].ExternalColumns[numero_trabalhador]"
+                          dataType="wstr"
+                          length="255"
+                          name="numero_trabalhador" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output].ExternalColumns[genero]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="genero" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output].ExternalColumns[nome_completo]"
+                          dataType="wstr"
+                          length="255"
+                          name="nome_completo" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output].ExternalColumns[cartao_cidadao]"
+                          dataType="wstr"
+                          length="20"
+                          name="cartao_cidadao" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output].ExternalColumns[nif]"
+                          dataType="wstr"
+                          length="20"
+                          name="nif" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output].ExternalColumns[niss]"
+                          dataType="wstr"
+                          length="20"
+                          name="niss" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output].ExternalColumns[autorizacao_de_residencia]"
+                          dataType="wstr"
+                          length="20"
+                          name="autorizacao_de_residencia" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output].ExternalColumns[morada]"
+                          dataType="wstr"
+                          length="255"
+                          name="morada" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output].ExternalColumns[codigo_postal]"
+                          dataType="wstr"
+                          length="10"
+                          name="codigo_postal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output].ExternalColumns[id_freguesia]"
+                          dataType="i4"
+                          name="id_freguesia" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output].ExternalColumns[id_pais_nacionalidade]"
+                          dataType="i4"
+                          name="id_pais_nacionalidade" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output].ExternalColumns[id_pais_naturalidade]"
+                          dataType="i4"
+                          name="id_pais_naturalidade" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output].ExternalColumns[telefone]"
+                          dataType="wstr"
+                          length="20"
+                          name="telefone" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output].ExternalColumns[email_pessoal]"
+                          dataType="wstr"
+                          length="255"
+                          name="email_pessoal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output].ExternalColumns[email_profissional]"
+                          dataType="wstr"
+                          length="255"
+                          name="email_profissional" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Error Output].Columns[numero_trabalhador]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Error Output].Columns[numero_trabalhador]"
+                          name="numero_trabalhador" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\Carregar dsa Trabalhador_sk.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Carregar dsa Trabalhador_sk.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\CDC Marca ETL inicial"
+          DTS:CreationName="Attunity.CdcControlTask"
+          DTS:Description="CDC Control Task"
+          DTS:DTSID="{3602C71B-BCEB-4F6D-B182-122445E84683}"
+          DTS:ExecutableType="Attunity.CdcControlTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CDC Marca ETL inicial"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <CDCControlTask
+              Connection="LocalHost.gestao_stock_ADO"
+              TaskOperation="MarkInitialLoadStart"
+              OperationParameter=""
+              StateConnection="LocalHost.gestao_stock_ADO"
+              StateVariable="User::CDC_State_Trabalhador"
+              AutomaticStatePersistence="True"
+              StateName="CDC_State_Trabalhador"
+              StateTable="[dsa].[cdc_states]"
+              CommandTimeout="30"
+              ChangeDetectionRetryInterval="10"
+              ChangeDetectionTimeout="60" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\CDC Marca fim ETL inicial"
+          DTS:CreationName="Attunity.CdcControlTask"
+          DTS:Description="CDC Control Task"
+          DTS:DTSID="{FEA8A3F9-DD6C-4F3D-820D-4BF1BC45F4C8}"
+          DTS:ExecutableType="Attunity.CdcControlTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CDC Marca fim ETL inicial"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <CDCControlTask
+              Connection="LocalHost.gestao_stock_ADO"
+              TaskOperation="MarkInitialLoadEnd"
+              OperationParameter=""
+              StateConnection="LocalHost.gestao_stock_ADO"
+              StateVariable="User::CDC_State_Trabalhador"
+              AutomaticStatePersistence="True"
+              StateName="CDC_State_Trabalhador"
+              StateTable="[dsa].[cdc_states]"
+              CommandTimeout="30"
+              ChangeDetectionRetryInterval="10"
+              ChangeDetectionTimeout="60" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\staging dsa Trabalhador"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{12346e70-7919-445a-bc13-0de14ad6807a}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="staging dsa Trabalhador"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Carregar dsa Trabalhador"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dsa].[Trabalhador]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Connections[OleDbConnection]"
+                      connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].Columns[id]"
+                          cachedDataType="i4"
+                          cachedName="id"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[id]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].Columns[numero_trabalhador]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="numero_trabalhador"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[numero_trabalhador]"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[numero_trabalhador]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].Columns[genero]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="genero"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[genero]"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[genero]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].Columns[nome_completo]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="nome_completo"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[nome_completo]"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[nome_completo]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].Columns[cartao_cidadao]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="cartao_cidadao"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[cartao_cidadao]"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[cartao_cidadao]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].Columns[nif]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="nif"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[nif]"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[nif]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].Columns[niss]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="niss"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[niss]"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[niss]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].Columns[autorizacao_de_residencia]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="autorizacao_de_residencia"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[autorizacao_de_residencia]"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[autorizacao_de_residencia]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].Columns[morada]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="morada"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[morada]"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[morada]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].Columns[codigo_postal]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="codigo_postal"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[codigo_postal]"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[codigo_postal]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].Columns[id_freguesia]"
+                          cachedDataType="i4"
+                          cachedName="id_freguesia"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[id_freguesia]"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[id_freguesia]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].Columns[id_pais_nacionalidade]"
+                          cachedDataType="i4"
+                          cachedName="id_pais_nacionalidade"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[id_pais_nacionalidade]"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[id_pais_nacionalidade]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].Columns[id_pais_naturalidade]"
+                          cachedDataType="i4"
+                          cachedName="id_pais_naturalidade"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[id_pais_naturalidade]"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[id_pais_naturalidade]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].Columns[telefone]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="telefone"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[telefone]"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[telefone]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].Columns[email_pessoal]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="email_pessoal"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[email_pessoal]"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[email_pessoal]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].Columns[email_profissional]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="email_profissional"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[email_profissional]"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[email_profissional]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[numero_trabalhador]"
+                          dataType="wstr"
+                          length="255"
+                          name="numero_trabalhador" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[genero]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="genero" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[nome_completo]"
+                          dataType="wstr"
+                          length="255"
+                          name="nome_completo" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[cartao_cidadao]"
+                          dataType="wstr"
+                          length="20"
+                          name="cartao_cidadao" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[nif]"
+                          dataType="wstr"
+                          length="20"
+                          name="nif" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[niss]"
+                          dataType="wstr"
+                          length="20"
+                          name="niss" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[autorizacao_de_residencia]"
+                          dataType="wstr"
+                          length="20"
+                          name="autorizacao_de_residencia" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[morada]"
+                          dataType="wstr"
+                          length="255"
+                          name="morada" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[codigo_postal]"
+                          dataType="wstr"
+                          length="10"
+                          name="codigo_postal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[id_freguesia]"
+                          dataType="i4"
+                          name="id_freguesia" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[id_pais_nacionalidade]"
+                          dataType="i4"
+                          name="id_pais_nacionalidade" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[id_pais_naturalidade]"
+                          dataType="i4"
+                          name="id_pais_naturalidade" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[telefone]"
+                          dataType="wstr"
+                          length="20"
+                          name="telefone" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[email_pessoal]"
+                          dataType="wstr"
+                          length="255"
+                          name="email_pessoal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[email_profissional]"
+                          dataType="wstr"
+                          length="255"
+                          name="email_profissional" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Extrair dbo trabalhador"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[trabalhador]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Connections[OleDbConnection]"
+                      connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[id]"
+                          name="id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[numero_trabalhador]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[numero_trabalhador]"
+                          length="255"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[numero_trabalhador]"
+                          name="numero_trabalhador"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[genero]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[genero]"
+                          length="5"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[genero]"
+                          name="genero"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[nome_completo]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[nome_completo]"
+                          length="255"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[nome_completo]"
+                          name="nome_completo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[cartao_cidadao]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[cartao_cidadao]"
+                          length="20"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[cartao_cidadao]"
+                          name="cartao_cidadao"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[nif]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[nif]"
+                          length="20"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[nif]"
+                          name="nif"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[niss]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[niss]"
+                          length="20"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[niss]"
+                          name="niss"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[autorizacao_de_residencia]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[autorizacao_de_residencia]"
+                          length="20"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[autorizacao_de_residencia]"
+                          name="autorizacao_de_residencia"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[morada]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[morada]"
+                          length="255"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[morada]"
+                          name="morada"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[codigo_postal]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[codigo_postal]"
+                          length="10"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[codigo_postal]"
+                          name="codigo_postal"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[id_freguesia]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[id_freguesia]"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[id_freguesia]"
+                          name="id_freguesia"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[id_pais_nacionalidade]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[id_pais_nacionalidade]"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[id_pais_nacionalidade]"
+                          name="id_pais_nacionalidade"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[id_pais_naturalidade]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[id_pais_naturalidade]"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[id_pais_naturalidade]"
+                          name="id_pais_naturalidade"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[telefone]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[telefone]"
+                          length="20"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[telefone]"
+                          name="telefone"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[email_pessoal]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[email_pessoal]"
+                          length="255"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[email_pessoal]"
+                          name="email_pessoal"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[email_profissional]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[email_profissional]"
+                          length="255"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].Columns[email_profissional]"
+                          name="email_profissional"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[numero_trabalhador]"
+                          dataType="wstr"
+                          length="255"
+                          name="numero_trabalhador" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[genero]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="genero" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[nome_completo]"
+                          dataType="wstr"
+                          length="255"
+                          name="nome_completo" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[cartao_cidadao]"
+                          dataType="wstr"
+                          length="20"
+                          name="cartao_cidadao" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[nif]"
+                          dataType="wstr"
+                          length="20"
+                          name="nif" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[niss]"
+                          dataType="wstr"
+                          length="20"
+                          name="niss" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[autorizacao_de_residencia]"
+                          dataType="wstr"
+                          length="20"
+                          name="autorizacao_de_residencia" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[morada]"
+                          dataType="wstr"
+                          length="255"
+                          name="morada" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[codigo_postal]"
+                          dataType="wstr"
+                          length="10"
+                          name="codigo_postal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[id_freguesia]"
+                          dataType="i4"
+                          name="id_freguesia" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[id_pais_nacionalidade]"
+                          dataType="i4"
+                          name="id_pais_nacionalidade" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[id_pais_naturalidade]"
+                          dataType="i4"
+                          name="id_pais_naturalidade" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[telefone]"
+                          dataType="wstr"
+                          length="20"
+                          name="telefone" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[email_pessoal]"
+                          dataType="wstr"
+                          length="255"
+                          name="email_pessoal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output].ExternalColumns[email_profissional]"
+                          dataType="wstr"
+                          length="255"
+                          name="email_profissional" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[id]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[id]"
+                          name="id" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[numero_trabalhador]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[numero_trabalhador]"
+                          name="numero_trabalhador" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[genero]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[genero]"
+                          name="genero" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[nome_completo]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[nome_completo]"
+                          name="nome_completo" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[cartao_cidadao]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[cartao_cidadao]"
+                          name="cartao_cidadao" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[nif]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[nif]"
+                          name="nif" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[niss]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[niss]"
+                          name="niss" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[autorizacao_de_residencia]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[autorizacao_de_residencia]"
+                          name="autorizacao_de_residencia" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[morada]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[morada]"
+                          name="morada" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[codigo_postal]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[codigo_postal]"
+                          name="codigo_postal" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[id_freguesia]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[id_freguesia]"
+                          name="id_freguesia" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[id_pais_nacionalidade]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[id_pais_nacionalidade]"
+                          name="id_pais_nacionalidade" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[id_pais_naturalidade]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[id_pais_naturalidade]"
+                          name="id_pais_naturalidade" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[telefone]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[telefone]"
+                          name="telefone" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[email_pessoal]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[email_pessoal]"
+                          name="email_pessoal" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[email_profissional]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[email_profissional]"
+                          name="email_profissional" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\staging dsa Trabalhador.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{4C97C7A1-ABC5-411B-90E1-F115CDCD4B2A}"
+          DTS:From="Package\Sequence Container\CDC Marca ETL inicial"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence Container\staging dsa Trabalhador" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{42AE55D4-9C24-426D-8BFC-4427B9AD2CD1}"
+          DTS:From="Package\Sequence Container\staging dsa Trabalhador"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Sequence Container\Carregar dsa Trabalhador_sk" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{4B65C9F1-B17C-4799-BAE7-BF4D87ADAEFA}"
+          DTS:From="Package\Sequence Container\Carregar dsa Trabalhador_sk"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Sequence Container\CDC Marca fim ETL inicial" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{6FDC172E-67A3-4780-983F-95673434DA99}"
+      DTS:From="Package\Limpar dsa Trabalhador"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sequence Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{AF056445-F640-4BC0-AFEE-0ED51EF7AFCF}"
+      DTS:From="Package\Limpar dsa Trabalhador_sk init"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Sequence Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="188.8,41.6"
+          Id="Package\Limpar dsa Trabalhador"
+          TopLeft="419.999980330468,55.6666666968001" />
+        <NodeLayout
+          Size="220.8,41.6"
+          Id="Package\Limpar dsa Trabalhador_sk init"
+          TopLeft="684.999965851507,56.53333335744" />
+        <NodeLayout
+          Size="213.6,41.6"
+          Id="Package\Sequence Container\Carregar dsa Trabalhador_sk"
+          TopLeft="86.7999819695957,158.133331260151" />
+        <NodeLayout
+          Size="183.2,41.6"
+          Id="Package\Sequence Container\CDC Marca ETL inicial"
+          TopLeft="106.933321677314,12.666665449275" />
+        <NodeLayout
+          Size="200,41.6"
+          Id="Package\Sequence Container\CDC Marca fim ETL inicial"
+          TopLeft="99.4333220870963,229.333330609269" />
+        <NodeLayout
+          Size="190.4,41.6"
+          Id="Package\Sequence Container\staging dsa Trabalhador"
+          TopLeft="95.4999950826168,87.9333317483139" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="194.616658379966,54.266665449275">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.6666662990389"
+              Start="0,0"
+              End="0,26.1666662990389">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.1666662990389" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="192.149988526106,129.533331748314">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.5999995118372"
+              Start="0,0"
+              End="0,21.0999995118372">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.0999995118372" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="196.516652028346,199.733331260151">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.5999993491179"
+              Start="0,0"
+              End="0,22.0999993491179">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.0999993491179" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="403.2,328"
+          Size="403.2,371.2"
+          Id="Package\Sequence Container"
+          TopLeft="466.666641169125,139.533332363036" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="514.399980330468,97.2666666968001">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="87.9999941719904,42.2666656662359"
+              Start="0,0"
+              End="87.9999941719904,34.7666656662359">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.2597622479639" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.2597622479639"
+                    Point2="0,25.2597622479639"
+                    Point3="4,25.2597622479639" />
+                  <mssgle:LineSegment
+                    End="83.9999941719904,25.2597622479639" />
+                  <mssgle:CubicBezierSegment
+                    Point1="83.9999941719904,25.2597622479639"
+                    Point2="87.9999941719904,25.2597622479639"
+                    Point3="87.9999941719904,29.2597622479639" />
+                  <mssgle:LineSegment
+                    End="87.9999941719904,34.7666656662359" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="795.399965851507,98.13333335744">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-61.2666580157154,41.399999005596"
+              Start="0,0"
+              End="-61.2666580157154,33.899999005596">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.7418175875341" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.7418175875341"
+                    Point2="0,24.7418175875341"
+                    Point3="-4,24.7418175875341" />
+                  <mssgle:LineSegment
+                    End="-57.2666580157154,24.7418175875341" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-57.2666580157154,24.7418175875341"
+                    Point2="-61.2666580157154,24.7418175875341"
+                    Point3="-61.2666580157154,28.7418175875341" />
+                  <mssgle:LineSegment
+                    End="-61.2666580157154,33.899999005596" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Carregar dsa Trabalhador_sk">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="213.6,41.6"
+          Id="Package\Sequence Container\Carregar dsa Trabalhador_sk\Carregar dsa Trabalhador_sk"
+          TopLeft="419.999993741512,247.999996304512" />
+        <NodeLayout
+          Size="183.2,41.6"
+          Id="Package\Sequence Container\Carregar dsa Trabalhador_sk\Obter dsa Trabalhador"
+          TopLeft="434.999993517995,69.9999989569187" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Carregar dsa Trabalhador_sk.Paths[OLE DB Source Output]"
+          TopLeft="526.699993629754,111.599998956919">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,136.399997347593"
+              Start="0,0"
+              End="0,128.899997347593">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,128.899997347593" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Sequence Container\staging dsa Trabalhador">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="184,41.6"
+          Id="Package\Sequence Container\staging dsa Trabalhador\Extrair dbo trabalhador"
+          TopLeft="308.333316486743,40.7333330500788" />
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\Sequence Container\staging dsa Trabalhador\Carregar dsa Trabalhador"
+          TopLeft="304.999983335535,207.999998553594" />
+        <EdgeLayout
+          Id="Package\Sequence Container\staging dsa Trabalhador.Paths[OLE DB Source Output]"
+          TopLeft="402.066649911139,82.3333330500788">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,125.666665503515"
+              Start="0,0"
+              End="0,118.166665503515">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,118.166665503515" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,1191 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/29/2026 5:44:10 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LUIZ"
+  DTS:CreatorName="LUIZ\luiz"
+  DTS:DTSID="{E458B6E7-4DC6-4B2D-8C9E-BE7B2C89C510}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="2070"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="72"
+  DTS:VersionGUID="{864A35DE-80DF-4C80-B336-CAE87DC9DE02}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Carregar Dimensões"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{48D79719-38DD-4CC4-B69A-5019E35DA138}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carregar Dimensões">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Carregar Dimensões\001_DM_DateDimension"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{207A789A-48C0-485A-A230-2A678A96934A}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="001_DM_DateDimension"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>001_DM_DateDimension.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carregar Dimensões\002_DM_DimHora"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{4F10F763-AAFD-43F7-BE3A-8D4F372BF4EB}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="002_DM_DimHora"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>002_DM_DimHora.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carregar Dimensões\003_DM_DimTipoMovimento"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{3FB839E1-23A8-445D-ADB9-7798AA9CA276}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="003_DM_DimTipoMovimento"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>003_DM_DimTipoMovimento.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carregar Dimensões\004_DM_DimTrabalhador"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{E9C4AB53-2ADF-4552-8149-BA1D30CE07A9}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="004_DM_DimTrabalhador"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>004_DM_DimTrabalhador.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carregar Dimensões\004_DSA_Trabalhador_INIT"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{C01768D9-3D1B-495E-9AD4-52714F4EB6AD}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="004_DSA_Trabalhador_INIT"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>004_DSA_Trabalhador_Init.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carregar Dimensões\005_DM_DimProduto"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{E8736934-E24F-4318-81BE-EEB215C947C5}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="005_DM_DimProduto"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>005_DM_DimProduto.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carregar Dimensões\005_DSA_Produto_INIT"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{4DB1C6E0-E568-4705-B72D-E8B922BB799D}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="005_DSA_Produto_INIT"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>005_DSA_Produto_INIT.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carregar Dimensões\006_DM_DimEntidade"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{EED60A0D-E03F-41A0-9A8C-1C40714F0BA9}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="006_DM_DimEntidade"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>006_DM_DimEntidade.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carregar Dimensões\006_DSA_Entidade_INIT"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{2BF4945E-4458-49E8-B97D-26447268EB44}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="006_DSA_Entidade_INIT"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>006_DSA_Entidade_INIT.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carregar Dimensões.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{F8D31C28-E746-40F2-AEA5-2902DFE78185}"
+          DTS:From="Package\Carregar Dimensões\004_DSA_Trabalhador_INIT"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Carregar Dimensões\004_DM_DimTrabalhador" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carregar Dimensões.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{B5001F0D-D16F-4539-9490-D1DECD5937EB}"
+          DTS:From="Package\Carregar Dimensões\005_DSA_Produto_INIT"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Carregar Dimensões\005_DM_DimProduto" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carregar Dimensões.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{65E50AA8-C2DF-4E96-9DE3-A154556F77E6}"
+          DTS:From="Package\Carregar Dimensões\006_DSA_Entidade_INIT"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Carregar Dimensões\006_DM_DimEntidade" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Carregar Tabela de Factos"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{4FC50460-2DC4-4C31-9856-0F857787A5DC}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carregar Tabela de Factos">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Carregar Tabela de Factos\100_DM_TFMovimentoStock"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{73C7DA87-C871-48FB-B023-F88B9C2298A9}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="100_DM_TFMovimentoStock"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>100_DM_TFMovimentoStock.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carregar Tabela de Factos\100_DM_TFMovimentoStockMensalAgg"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{3BE8A3CA-70C9-4418-8390-BFC6EEB22702}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="100_DM_TFMovimentoStockMensalAgg"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>100_DM_TFMovimentoStockMensalAgg.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Carregar Tabela de Factos\100_DSA_TFMovimentoStock"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{49E58C60-5027-4FED-A4D3-99DD9AA1D7B2}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="100_DSA_TFMovimentoStock"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>100_DSA_TFMovimentoStock.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carregar Tabela de Factos.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{40927105-ADD1-4512-B076-29A83D577166}"
+          DTS:From="Package\Carregar Tabela de Factos\100_DSA_TFMovimentoStock"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Carregar Tabela de Factos\100_DM_TFMovimentoStock" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Carregar Tabela de Factos.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{367F28C4-DD2A-4EA1-8C5F-372515E07E51}"
+          DTS:From="Package\Carregar Tabela de Factos\100_DM_TFMovimentoStock"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Carregar Tabela de Factos\100_DM_TFMovimentoStockMensalAgg" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpar Dimensões"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{4B01AC39-AD4E-44F4-B9CB-1B5339BD7531}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpar Dimensões">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Limpar Dimensões\Inserir sr DateDimension"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{B34659C8-78E8-4385-9B4A-2063E74D1B11}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Inserir sr DateDimension"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="5">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+              SQLTask:SqlStatementSource="INSERT INTO [gestao_stock].[dw].[DateDimension] (&#xA;    [Date], &#xA;    [DateKey], &#xA;    [Day Number], &#xA;    [Day], &#xA;    [Day of Year], &#xA;    [Day of Year Number], &#xA;    [Day of Week English], &#xA;    [Day of Week Portuguese], &#xA;    [Day of Week Number], &#xA;    [Week of Year], &#xA;    [Month English], &#xA;    [Month Portuguese], &#xA;    [Short Month], &#xA;    [Quarter], &#xA;    [Half of Year], &#xA;    [Beginning of Month], &#xA;    [Beginning of Quarter], &#xA;    [Beginning of Half Year], &#xA;    [Beginning of Year], &#xA;    [Beginning of Month Label], &#xA;    [Beginning of Month Label Short], &#xA;    [Beginning of Quarter Label], &#xA;    [Beginning of Quarter Label Short], &#xA;    [Beginning of Half Year Label], &#xA;    [Beginning of Half Year Label Short], &#xA;    [Beginning of Year Label], &#xA;    [Beginning of Year Label Short], &#xA;    [Calendar Day Label], &#xA;    [Calendar Day Label Short], &#xA;    [Calendar Week Number], &#xA;    [Calendar Week Label], &#xA;    [Calendar Month Number], &#xA;    [Calendar Month Label], &#xA;    [Calendar Month Year Label], &#xA;    [Calendar Quarter Number], &#xA;    [Calendar Quarter Label], &#xA;    [Calendar Quarter Year Label], &#xA;    [Calendar Half of Year Number], &#xA;    [Calendar Half of Year Label], &#xA;    [Calendar Year Half of Year Label], &#xA;    [Calendar Year], &#xA;    [Calendar Year Label], &#xA;    [Fiscal Month Number], &#xA;    [Fiscal Month Label], &#xA;    [Fiscal Quarter Number], &#xA;    [Fiscal Quarter Label], &#xA;    [Fiscal Half of Year Number], &#xA;    [Fiscal Half of Year Label], &#xA;    [Fiscal Year], &#xA;    [Fiscal Year Label], &#xA;    [Date Key], &#xA;    [Year Week Key], &#xA;    [Year Month Key], &#xA;    [Year Quarter Key], &#xA;    [Year Half of Year Key], &#xA;    [Year Key], &#xA;    [Beginning of Month Key], &#xA;    [Beginning of Quarter Key], &#xA;    [Beginning of Half Year Key], &#xA;    [Beginning of Year Key], &#xA;    [Fiscal Year Month Key], &#xA;    [Fiscal Year Quarter Key], &#xA;    [Fiscal Year Half of Year Key], &#xA;    [ISO Week Number], &#xA;    [Portuguese Holiday Flag], &#xA;    [Portuguese Holiday Name], &#xA;    [Portuguese Holiday Type]&#xA;)&#xA;VALUES (&#xA;    '1900-01-01', -- [Date]&#xA;    19000101,           -- [DateKey]&#xA;    -1,           -- [Day Number]&#xA;    'n/a',        -- [Day]&#xA;    'n/a',        -- [Day of Year]&#xA;    -1,           -- [Day of Year Number]&#xA;    'n/a',        -- [Day of Week English]&#xA;    'n/a',        -- [Day of Week Portuguese]&#xA;    -1,           -- [Day of Week Number]&#xA;    'n/a',        -- [Week of Year]&#xA;    'n/a',        -- [Month English]&#xA;    'n/a',        -- [Month Portuguese]&#xA;    'n/a',        -- [Short Month]&#xA;    'na',        -- [Quarter]&#xA;    'n/a',        -- [Half of Year]&#xA;    '1900-01-01', -- [Beginning of Month]&#xA;    '1900-01-01', -- [Beginning of Quarter]&#xA;    '1900-01-01', -- [Beginning of Half Year]&#xA;    '1900-01-01', -- [Beginning of Year]&#xA;    'n/a',        -- [Beginning of Month Label]&#xA;    'n/a',        -- [Beginning of Month Label Short]&#xA;    'n/a',        -- [Beginning of Quarter Label]&#xA;    'n/a',        -- [Beginning of Quarter Label Short]&#xA;    'n/a',        -- [Beginning of Half Year Label]&#xA;    'n/a',        -- [Beginning of Half Year Label Short]&#xA;    'n/a',        -- [Beginning of Year Label]&#xA;    'n/a',        -- [Beginning of Year Label Short]&#xA;    'n/a',        -- [Calendar Day Label]&#xA;    'n/a',        -- [Calendar Day Label Short]&#xA;    -1,           -- [Calendar Week Number]&#xA;    'n/a',        -- [Calendar Week Label]&#xA;    -1,           -- [Calendar Month Number]&#xA;    'n/a',        -- [Calendar Month Label]&#xA;    'n/a',        -- [Calendar Month Year Label]&#xA;    -1,           -- [Calendar Quarter Number]&#xA;    'n/a',        -- [Calendar Quarter Label]&#xA;    'n/a',        -- [Calendar Quarter Year Label]&#xA;    -1,           -- [Calendar Half of Year Number]&#xA;    'n/a',        -- [Calendar Half of Year Label]&#xA;    'n/a',        -- [Calendar Year Half of Year Label]&#xA;    -1,           -- [Calendar Year]&#xA;    'n/a',        -- [Calendar Year Label]&#xA;    -1,           -- [Fiscal Month Number]&#xA;    'n/a',        -- [Fiscal Month Label]&#xA;    -1,           -- [Fiscal Quarter Number]&#xA;    'n/a',        -- [Fiscal Quarter Label]&#xA;    -1,           -- [Fiscal Half of Year Number]&#xA;    'n/a',        -- [Fiscal Half of Year Label]&#xA;    -1,           -- [Fiscal Year]&#xA;    'n/a',        -- [Fiscal Year Label]&#xA;    -1,           -- [Date Key]&#xA;    -1,           -- [Year Week Key]&#xA;    -1,           -- [Year Month Key]&#xA;    -1,           -- [Year Quarter Key]&#xA;    -1,           -- [Year Half of Year Key]&#xA;    -1,           -- [Year Key]&#xA;    -1,           -- [Beginning of Month Key]&#xA;    -1,           -- [Beginning of Quarter Key]&#xA;    -1,           -- [Beginning of Half Year Key]&#xA;    -1,           -- [Beginning of Year Key]&#xA;    -1,           -- [Fiscal Year Month Key]&#xA;    -1,           -- [Fiscal Year Quarter Key]&#xA;    -1,           -- [Fiscal Year Half of Year Key]&#xA;    -1,           -- [ISO Week Number]&#xA;    0,            -- [Portuguese Holiday Flag]&#xA;    'n/a',        -- [Portuguese Holiday Name]&#xA;    'n/a'         -- [Portuguese Holiday Type]&#xA;);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Limpar Dimensões\Inserir sr DimEntidade"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{12C7F261-EB9A-451F-81EE-71818A22293A}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Inserir sr DimEntidade"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+              SQLTask:SqlStatementSource="INSERT INTO [dw].[DimEntidade]&#xA;VALUES&#xA;(&#xA;    -1,&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    null,&#xA;    null&#xA;);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Limpar Dimensões\Inserir sr DimHora"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{DCED005A-7F72-4F39-A72E-52F46A3F5E53}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Inserir sr DimHora"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+              SQLTask:SqlStatementSource="INSERT INTO [dw].[DimHora]&#xA;VALUES&#xA;(&#xA;    -1,&#xA;    '00:00:00',&#xA;    -1,&#xA;    'n/a',&#xA;    'n/a',&#xA;    -1,&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a'&#xA;);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Limpar Dimensões\Inserir sr DimProduto"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{615C5DE5-AE07-4300-BE76-6117B7E08F0A}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Inserir sr DimProduto"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+              SQLTask:SqlStatementSource="INSERT INTO [dw].[DimProduto]&#xA;VALUES&#xA;(&#xA;    -1,&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    0.00,&#xA;    null,&#xA;    null&#xA;);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Limpar Dimensões\Inserir sr DimTipoMovimento"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{031EA617-D5FA-47F0-8E4F-7186F7E5635C}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Inserir sr DimTipoMovimento"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="4">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+              SQLTask:SqlStatementSource="INSERT INTO [dw].[DimTipoMovimento]&#xA;VALUES&#xA;(&#xA;    -1,&#xA;    'n/a',&#xA;    'n/a'&#xA;);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Limpar Dimensões\Inserir sr DimTrabalhador"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{957A99A9-3CD2-47EE-B899-5D9C68CCB63E}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Inserir sr DimTrabalhador"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+              SQLTask:SqlStatementSource="INSERT INTO [dw].[DimTrabalhador]&#xA;VALUES&#xA;(&#xA;    -1,&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;    'n/a',&#xA;     null,&#xA;     null&#xA;);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Limpar Dimensões\Limpar DateDimension"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{811D3A94-DBEE-44B1-A383-76BB39CAA18F}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Limpar DateDimension"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="5">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+              SQLTask:SqlStatementSource="DELETE FROM dw.DateDimension;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Limpar Dimensões\Limpar DimEntidade"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{9685090E-D009-469C-8704-1A78AE0237E7}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Limpar DimEntidade"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+              SQLTask:SqlStatementSource="DELETE FROM dw.DimEntidade;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Limpar Dimensões\Limpar DimHora"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{B95082E4-8969-4C0D-932B-2882E2C6AA3D}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Limpar DimHora"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+              SQLTask:SqlStatementSource="DELETE FROM dw.DimHora;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Limpar Dimensões\Limpar DimProduto"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{549DB862-CD6E-40AD-8626-14AB7E0C1E33}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Limpar DimProduto"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+              SQLTask:SqlStatementSource="DELETE FROM dw.DimProduto;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Limpar Dimensões\Limpar DimTipoMovimento"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{07D550EF-52F6-43AF-886F-AD6E4EE3754D}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Limpar DimTipoMovimento"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="4">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+              SQLTask:SqlStatementSource="DELETE FROM dw.DimTipoMovimento;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Limpar Dimensões\Limpar DimTrabalhador"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{481FC704-020D-4A99-916E-9C3BB23B89A0}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Limpar DimTrabalhador"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+              SQLTask:SqlStatementSource="DELETE FROM dw.DimTrabalhador;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Limpar Dimensões.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{20925711-54D3-4BEB-8F44-098317CC2043}"
+          DTS:From="Package\Limpar Dimensões\Limpar DateDimension"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Limpar Dimensões\Inserir sr DateDimension" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Limpar Dimensões.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{9CE0DEDD-BE45-4695-BA97-FCC3BE5854D4}"
+          DTS:From="Package\Limpar Dimensões\Limpar DimProduto"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Limpar Dimensões\Inserir sr DimProduto" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Limpar Dimensões.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{9230EBBB-A343-4D3F-B6D0-84610A57BED1}"
+          DTS:From="Package\Limpar Dimensões\Limpar DimEntidade"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Limpar Dimensões\Inserir sr DimEntidade" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Limpar Dimensões.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{55176BA7-4AC1-451F-BBA9-F54477EFF58D}"
+          DTS:From="Package\Limpar Dimensões\Limpar DimTrabalhador"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Limpar Dimensões\Inserir sr DimTrabalhador" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Limpar Dimensões.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{5E6F9F0A-5E2E-479F-A3EE-B881F515CC5D}"
+          DTS:From="Package\Limpar Dimensões\Limpar DimTipoMovimento"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Limpar Dimensões\Inserir sr DimTipoMovimento" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Limpar Dimensões.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{B8D90800-487F-42E6-A1FE-56F271427557}"
+          DTS:From="Package\Limpar Dimensões\Limpar DimHora"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\Limpar Dimensões\Inserir sr DimHora" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpar tabela de controle ETL"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1239408E-AD48-4F14-8FC4-C193D0ACB271}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpar tabela de controle ETL"
+      DTS:ThreadHint="6">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dsa.Control_ETL_Table;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpar TF"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{8A705844-294D-419C-B131-2BFEC8473243}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpar TF">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Limpar TF\Limpar Tabela de Factos"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{003DAC13-56F4-43E2-A2AF-18EA184CD027}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Limpar Tabela de Factos"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+              SQLTask:SqlStatementSource="DELETE FROM dw.FactMovimentoStock;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Limpar TF\Limpar TF Agg"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8FEEEC81-7CEA-4D22-A61B-56645621103C}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Limpar TF Agg"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE dw.FactMovimentoStockMensalAgg;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Limpar TF.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{59305018-D7BA-4DAA-A26E-CA3DB2416B12}"
+          DTS:From="Package\Limpar TF\Limpar TF Agg"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Limpar TF\Limpar Tabela de Factos" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{C35DD462-65F1-4F72-8716-918012C7CC26}"
+      DTS:From="Package\Limpar Dimensões"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Carregar Dimensões" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{E9441E07-8C21-4409-A2A7-F9BBB0C7689B}"
+      DTS:From="Package\Limpar tabela de controle ETL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Carregar Tabela de Factos" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{5CD4ABEF-2FC2-49B5-B483-E28CA117651E}"
+      DTS:From="Package\Carregar Dimensões"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Carregar Tabela de Factos" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{4FED64E2-6000-4D24-B548-7A9FCEFFDF93}"
+      DTS:From="Package\Limpar TF"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Limpar Dimensões" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="194.4,41.6"
+          Id="Package\Carregar Dimensões\001_DM_DateDimension"
+          TopLeft="30.2999935800834,36.9333312963116" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Carregar Dimensões\002_DM_DimHora"
+          TopLeft="266.133314028052,36.716664992753" />
+        <NodeLayout
+          Size="212.8,41.6"
+          Id="Package\Carregar Dimensões\003_DM_DimTipoMovimento"
+          TopLeft="461.341636695673,38.4499984586737" />
+        <NodeLayout
+          Size="198.4,41.6"
+          Id="Package\Carregar Dimensões\004_DM_DimTrabalhador"
+          TopLeft="709.466623138721,137.033331106471" />
+        <NodeLayout
+          Size="210.4,41.6"
+          Id="Package\Carregar Dimensões\004_DSA_Trabalhador_INIT"
+          TopLeft="702.299959704778,38.8333302928675" />
+        <NodeLayout
+          Size="178.4,41.6"
+          Id="Package\Carregar Dimensões\005_DM_DimProduto"
+          TopLeft="966.133275781739,138.366664753192" />
+        <NodeLayout
+          Size="190.4,41.6"
+          Id="Package\Carregar Dimensões\005_DSA_Produto_INIT"
+          TopLeft="958.133279059995,39.0333304194279" />
+        <NodeLayout
+          Size="183.2,41.6"
+          Id="Package\Carregar Dimensões\006_DM_DimEntidade"
+          TopLeft="1213.63326225893,140.833331341511" />
+        <NodeLayout
+          Size="195.2,41.6"
+          Id="Package\Carregar Dimensões\006_DSA_Entidade_INIT"
+          TopLeft="1212.29993183961,40.2999972608687" />
+        <EdgeLayout
+          Id="Package\Carregar Dimensões.PrecedenceConstraints[Constraint]"
+          TopLeft="808.08329142175,80.4333302928675">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.6000008136033"
+              Start="0,0"
+              End="0,49.1000008136033">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.1000008136033" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carregar Dimensões.PrecedenceConstraints[Constraint 1]"
+          TopLeft="1054.33327742087,80.6333304194279">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.733334333764"
+              Start="0,0"
+              End="0,50.233334333764">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.233334333764" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carregar Dimensões.PrecedenceConstraints[Constraint 2]"
+          TopLeft="1307.56659704927,81.8999972608688">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58.9333340806426"
+              Start="0,0"
+              End="0,51.4333340806426">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.4333340806426" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="1466.4,237.6"
+          Size="1466.4,280.8"
+          Id="Package\Carregar Dimensões"
+          TopLeft="106.458327516706,585.151583849226" />
+        <NodeLayout
+          Size="212.8,41.6"
+          Id="Package\Carregar Tabela de Factos\100_DM_TFMovimentoStock"
+          TopLeft="76.2237878313859,126.271422611461" />
+        <NodeLayout
+          Size="218.4,41.6"
+          Id="Package\Carregar Tabela de Factos\100_DSA_TFMovimentoStock"
+          TopLeft="72.0571213923759,40.6880896020623" />
+        <EdgeLayout
+          Id="Package\Carregar Tabela de Factos.PrecedenceConstraints[Constraint]"
+          TopLeft="181.940454611881,82.2880896020622">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.9833330093986"
+              Start="0,0"
+              End="0,36.4833330093986">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.4833330093986" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="264.8,41.6"
+          Id="Package\Carregar Tabela de Factos\100_DM_TFMovimentoStockMensalAgg"
+          TopLeft="53.0095033854728,208.419041093001" />
+        <EdgeLayout
+          Id="Package\Carregar Tabela de Factos.PrecedenceConstraints[Constraint 1]"
+          TopLeft="184.016645608429,167.871422611461">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.5476184815407"
+              Start="0,0"
+              End="0,33.0476184815407">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.0476184815407" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="372.8,301.6"
+          Size="372.8,344.8"
+          Id="Package\Carregar Tabela de Factos"
+          TopLeft="270.833318535653,943.650787840776" />
+        <NodeLayout
+          Size="177.6,41.6"
+          Id="Package\Limpar Dimensões\Inserir sr DateDimension"
+          TopLeft="16.9666609752511,122.999998499354" />
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\Limpar Dimensões\Inserir sr DimEntidade"
+          TopLeft="401.666644720569,122.799998879035" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Limpar Dimensões\Inserir sr DimHora"
+          TopLeft="1015.03329750018,123.199998842875" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\Limpar Dimensões\Inserir sr DimProduto"
+          TopLeft="214.166654965116,122.333332182235" />
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\Limpar Dimensões\Inserir sr DimTipoMovimento"
+          TopLeft="796.499970905484,124.533332200315" />
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\Limpar Dimensões\Inserir sr DimTrabalhador"
+          TopLeft="590.833301051625,123.199998842875" />
+        <NodeLayout
+          Size="184,41.6"
+          Id="Package\Limpar Dimensões\Limpar DateDimension"
+          TopLeft="14.4666611118452,40.2666655577554" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\Limpar Dimensões\Limpar DimEntidade"
+          TopLeft="401.133306651978,41.5999995660783" />
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\Limpar Dimensões\Limpar DimHora"
+          TopLeft="1016.13327304986,40.0666655758355" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\Limpar Dimensões\Limpar DimProduto"
+          TopLeft="215.29998347213,39.8666660278373" />
+        <NodeLayout
+          Size="202.4,41.6"
+          Id="Package\Limpar Dimensões\Limpar DimTipoMovimento"
+          TopLeft="794.833301051625,39.7999990055959" />
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\Limpar Dimensões\Limpar DimTrabalhador"
+          TopLeft="588.366630105013,41.7999994033572" />
+        <EdgeLayout
+          Id="Package\Limpar Dimensões.PrecedenceConstraints[Constraint]"
+          TopLeft="106.116661043548,81.8666655577554">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.1333329415986"
+              Start="0,0"
+              End="0,33.6333329415986">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.6333329415986" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Limpar Dimensões.PrecedenceConstraints[Constraint 1]"
+          TopLeft="298.733319218623,81.4666660278373">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.8666661543979"
+              Start="0,0"
+              End="0,33.3666661543979">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.3666661543979" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Limpar Dimensões.PrecedenceConstraints[Constraint 2]"
+          TopLeft="486.799975686273,83.1999995660783">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.5999993129571"
+              Start="0,0"
+              End="0,32.0999993129571">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.0999993129571" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Limpar Dimensões.PrecedenceConstraints[Constraint 3]"
+          TopLeft="682.199965578319,83.3999994033572">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.799999439518"
+              Start="0,0"
+              End="0,32.299999439518">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.299999439518" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Limpar Dimensões.PrecedenceConstraints[Constraint 4]"
+          TopLeft="895.666635978554,81.3999990055958">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.1333331947194"
+              Start="0,0"
+              End="0,35.6333331947194">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.6333331947194" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Limpar Dimensões.PrecedenceConstraints[Constraint 5]"
+          TopLeft="1094.78328527502,81.6666655758355">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.5333332670398"
+              Start="0,0"
+              End="0,34.0333332670398">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.0333332670398" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="1218.4,182.4"
+          Size="1218.4,225.6"
+          Id="Package\Limpar Dimensões"
+          TopLeft="222.62855769112,314.078574143811" />
+        <NodeLayout
+          Size="217.6,41.6"
+          Id="Package\Limpar tabela de controle ETL"
+          TopLeft="790.972179005406,946.623010216176" />
+        <NodeLayout
+          Size="192.8,41.6"
+          Id="Package\Limpar TF\Limpar Tabela de Factos"
+          TopLeft="30.4630809851649,118.469046055336" />
+        <NodeLayout
+          Size="147.2,41.6"
+          Id="Package\Limpar TF\Limpar TF Agg"
+          TopLeft="50.3523396489655,23.9428566004551" />
+        <EdgeLayout
+          Id="Package\Limpar TF.PrecedenceConstraints[Constraint]"
+          TopLeft="125.407710317065,65.5428566004551">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.9261894548814"
+              Start="0,0"
+              End="0,45.4261894548814">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.4261894548814" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="252.8,216"
+          Size="252.8,259.2"
+          Id="Package\Limpar TF"
+          TopLeft="705.505913833809,20.154761800371" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="835.743442603913,539.678574143811">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.473009705414"
+              Start="0,0"
+              End="0,37.973009705414">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.973009705414" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="790.972179005406,967.423010216175">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-147.338860469753,148.6277776246"
+              Start="0,0"
+              End="-139.838860469753,148.6277776246">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-69.6694302348763,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-69.6694302348763,0"
+                    Point2="-73.6694302348763,0"
+                    Point3="-73.6694302348763,4" />
+                  <mssgle:LineSegment
+                    End="-73.6694302348763,144.6277776246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-73.6694302348763,144.6277776246"
+                    Point2="-73.6694302348763,148.6277776246"
+                    Point3="-77.6694302348763,148.6277776246" />
+                  <mssgle:LineSegment
+                    End="-139.838860469753,148.6277776246" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="839.658327516706,865.951583849225">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-382.425008981053,77.6992039915505"
+              Start="0,0"
+              End="-382.425008981053,70.1992039915505">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.8496019957752" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.8496019957752"
+                    Point2="0,38.8496019957752"
+                    Point3="-4,38.8496019957752" />
+                  <mssgle:LineSegment
+                    End="-378.425008981053,38.8496019957752" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-378.425008981053,38.8496019957752"
+                    Point2="-382.425008981053,38.8496019957752"
+                    Point3="-382.425008981053,42.8496019957752" />
+                  <mssgle:LineSegment
+                    End="-382.425008981053,70.1992039915505" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="831.867235762464,279.354761800371">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.7238123434404"
+              Start="0,0"
+              End="0,27.2238123434404">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.2238123434404" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

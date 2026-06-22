@@ -1,0 +1,1264 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/5/2026 2:56:55 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LUIZ"
+  DTS:CreatorName="LUIZ\luiz"
+  DTS:DTSID="{39760242-6C08-443B-B067-9A888E95752E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="2070"
+  DTS:ObjectName="005_DSA_Produto_INIT"
+  DTS:PackageType="5"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{CF810EC0-3163-41D6-A149-9899EC66B559}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7E9F124C-66E7-459B-B157-8E00DB7A899F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CDC_State_Produto">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Limpar dsa Produto"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{451232ce-751e-4ee0-a85f-193e5c323215}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpar dsa Produto"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dsa.Produto;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpar dsa Produto_sk"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{84b11184-5bae-426b-b48c-8d0b1a1b269d}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpar dsa Produto_sk"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dsa.Produto_sk;&#xA;&#xA;set identity_insert [dsa].[Produto_sk] on&#xA;INSERT INTO [dsa].[Produto_sk] &#xA;           (skProduto, SKU)&#xA;     VALUES&#xA;           (-1, null);&#xA;set identity_insert [dsa].[Produto_sk]  off;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{f8ec99e1-5b16-46bf-9c87-378cf40eddd9}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{9cfd1f44-f3b8-4027-8cc5-873ab7d6e646}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="CDC_State">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{EFD39919-71B8-48E5-B7F0-3E09851EF7C7}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="CDC_State_DSA_Produto_INIT">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Carregar dsa Produto_sk"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{5ebad6a4-d12e-4e65-b3fb-358a527cb01e}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Carregar dsa Produto_sk"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Carregar dsa Produto"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dsa].[Produto]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Connections[OleDbConnection]"
+                      connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].Columns[nome]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[nome]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].Columns[nome]"
+                          name="nome"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].Columns[SKU]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[SKU]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].Columns[SKU]"
+                          name="SKU"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].Columns[UPC]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[UPC]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].Columns[UPC]"
+                          name="UPC"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].Columns[id_marca]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[id_marca]"
+                          lineageId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].Columns[id_marca]"
+                          name="id_marca"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].Columns[id_subcategoria]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[id_subcategoria]"
+                          lineageId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].Columns[id_subcategoria]"
+                          name="id_subcategoria"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].Columns[preco_unitario]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[preco_unitario]"
+                          lineageId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].Columns[preco_unitario]"
+                          name="preco_unitario"
+                          precision="10"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].Columns[id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          lineageId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].Columns[id]"
+                          name="id"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[nome]"
+                          dataType="wstr"
+                          length="255"
+                          name="nome" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[SKU]"
+                          dataType="wstr"
+                          length="255"
+                          name="SKU" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[UPC]"
+                          dataType="wstr"
+                          length="255"
+                          name="UPC" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[id_marca]"
+                          dataType="i4"
+                          name="id_marca" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[id_subcategoria]"
+                          dataType="i4"
+                          name="id_subcategoria" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[preco_unitario]"
+                          dataType="numeric"
+                          name="preco_unitario"
+                          precision="10"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Error Output].Columns[nome]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Error Output].Columns[nome]"
+                          name="nome" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Error Output].Columns[SKU]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Error Output].Columns[SKU]"
+                          name="SKU" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Error Output].Columns[UPC]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Error Output].Columns[UPC]"
+                          name="UPC" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Error Output].Columns[id_marca]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Error Output].Columns[id_marca]"
+                          name="id_marca" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Error Output].Columns[id_subcategoria]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Error Output].Columns[id_subcategoria]"
+                          name="id_subcategoria" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Error Output].Columns[preco_unitario]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Error Output].Columns[preco_unitario]"
+                          name="preco_unitario"
+                          precision="10"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Error Output].Columns[id]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Error Output].Columns[id]"
+                          name="id" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto_sk"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Carregar dsa Produto_sk"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dsa].[Produto_sk]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto_sk.Connections[OleDbConnection]"
+                      connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto_sk.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto_sk.Inputs[OLE DB Destination Input].Columns[SKU]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="SKU"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto_sk.Inputs[OLE DB Destination Input].ExternalColumns[SKU]"
+                          lineageId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output].Columns[SKU]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto_sk.Inputs[OLE DB Destination Input].ExternalColumns[skProduto]"
+                          dataType="i4"
+                          name="skProduto" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto_sk.Inputs[OLE DB Destination Input].ExternalColumns[SKU]"
+                          dataType="wstr"
+                          length="255"
+                          name="SKU" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto_sk.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto_sk.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto_sk.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto_sk.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto_sk.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto_sk.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\Carregar dsa Produto_sk.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto_sk.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\CDC Marca ETL inicial"
+          DTS:CreationName="Attunity.CdcControlTask"
+          DTS:Description="CDC Control Task"
+          DTS:DTSID="{f4802620-5167-4a60-980b-2a487e5c4126}"
+          DTS:ExecutableType="Attunity.CdcControlTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CDC Marca ETL inicial"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <CDCControlTask
+              Connection="LocalHost.gestao_stock_ADO"
+              TaskOperation="MarkInitialLoadStart"
+              OperationParameter=""
+              StateConnection="LocalHost.gestao_stock_ADO"
+              StateVariable="User::CDC_State_Produto"
+              AutomaticStatePersistence="True"
+              StateName="CDC_State_Produto"
+              StateTable="[dsa].[cdc_states]"
+              CommandTimeout="30"
+              ChangeDetectionRetryInterval="10"
+              ChangeDetectionTimeout="60" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\CDC Marca fim ETL inicial"
+          DTS:CreationName="Attunity.CdcControlTask"
+          DTS:Description="CDC Control Task"
+          DTS:DTSID="{263a3188-b6b3-4f02-9e36-8ee7195f9353}"
+          DTS:ExecutableType="Attunity.CdcControlTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CDC Marca fim ETL inicial"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <CDCControlTask
+              Connection="LocalHost.gestao_stock_ADO"
+              TaskOperation="MarkInitialLoadEnd"
+              OperationParameter=""
+              StateConnection="LocalHost.gestao_stock_ADO"
+              StateVariable="User::CDC_State_Produto"
+              AutomaticStatePersistence="True"
+              StateName="CDC_State_Produto"
+              StateTable="[dsa].[cdc_states]"
+              CommandTimeout="30"
+              ChangeDetectionRetryInterval="10"
+              ChangeDetectionTimeout="60" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\staging dsa Produto"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{bcfe54fc-1f87-413c-b5a5-efdbead650e1}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="staging dsa Produto"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Carregar dsa Produto"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dsa].[Produto]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Connections[OleDbConnection]"
+                      connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].Columns[id]"
+                          cachedDataType="i4"
+                          cachedName="id"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[id]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].Columns[nome]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="nome"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].ExternalColumns[nome]"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[nome]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].Columns[SKU]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="SKU"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].ExternalColumns[SKU]"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[SKU]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].Columns[UPC]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="UPC"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].ExternalColumns[UPC]"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[UPC]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].Columns[id_marca]"
+                          cachedDataType="i4"
+                          cachedName="id_marca"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].ExternalColumns[id_marca]"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[id_marca]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].Columns[id_subcategoria]"
+                          cachedDataType="i4"
+                          cachedName="id_subcategoria"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].ExternalColumns[id_subcategoria]"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[id_subcategoria]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].Columns[preco_unitario]"
+                          cachedDataType="numeric"
+                          cachedName="preco_unitario"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].ExternalColumns[preco_unitario]"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[preco_unitario]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].ExternalColumns[nome]"
+                          dataType="wstr"
+                          length="255"
+                          name="nome" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].ExternalColumns[SKU]"
+                          dataType="wstr"
+                          length="255"
+                          name="SKU" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].ExternalColumns[UPC]"
+                          dataType="wstr"
+                          length="255"
+                          name="UPC" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].ExternalColumns[id_marca]"
+                          dataType="i4"
+                          name="id_marca" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].ExternalColumns[id_subcategoria]"
+                          dataType="i4"
+                          name="id_subcategoria" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input].ExternalColumns[preco_unitario]"
+                          dataType="numeric"
+                          name="preco_unitario"
+                          precision="10"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Extrair dbo produto"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[produto]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Connections[OleDbConnection]"
+                      connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[id]"
+                          name="id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[nome]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].ExternalColumns[nome]"
+                          length="255"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[nome]"
+                          name="nome"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[SKU]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].ExternalColumns[SKU]"
+                          length="255"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[SKU]"
+                          name="SKU"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[UPC]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].ExternalColumns[UPC]"
+                          length="255"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[UPC]"
+                          name="UPC"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[id_marca]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].ExternalColumns[id_marca]"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[id_marca]"
+                          name="id_marca"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[id_subcategoria]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].ExternalColumns[id_subcategoria]"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[id_subcategoria]"
+                          name="id_subcategoria"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[preco_unitario]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].ExternalColumns[preco_unitario]"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].Columns[preco_unitario]"
+                          name="preco_unitario"
+                          precision="10"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].ExternalColumns[nome]"
+                          dataType="wstr"
+                          length="255"
+                          name="nome" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].ExternalColumns[SKU]"
+                          dataType="wstr"
+                          length="255"
+                          name="SKU" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].ExternalColumns[UPC]"
+                          dataType="wstr"
+                          length="255"
+                          name="UPC" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].ExternalColumns[id_marca]"
+                          dataType="i4"
+                          name="id_marca" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].ExternalColumns[id_subcategoria]"
+                          dataType="i4"
+                          name="id_subcategoria" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output].ExternalColumns[preco_unitario]"
+                          dataType="numeric"
+                          name="preco_unitario"
+                          precision="10"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Error Output].Columns[id]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Error Output].Columns[id]"
+                          name="id" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Error Output].Columns[nome]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Error Output].Columns[nome]"
+                          name="nome" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Error Output].Columns[SKU]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Error Output].Columns[SKU]"
+                          name="SKU" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Error Output].Columns[UPC]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Error Output].Columns[UPC]"
+                          name="UPC" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Error Output].Columns[id_marca]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Error Output].Columns[id_marca]"
+                          name="id_marca" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Error Output].Columns[id_subcategoria]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Error Output].Columns[id_subcategoria]"
+                          name="id_subcategoria" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Error Output].Columns[preco_unitario]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Error Output].Columns[preco_unitario]"
+                          name="preco_unitario"
+                          precision="10"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\staging dsa Produto.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\staging dsa Produto\Extrair dbo produto.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{16791626-F89B-4F32-A26C-8C342AF4379B}"
+          DTS:From="Package\Sequence Container\CDC Marca ETL inicial"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence Container\staging dsa Produto" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{5ACE64E7-B747-44FD-913E-49324A2AF502}"
+          DTS:From="Package\Sequence Container\Carregar dsa Produto_sk"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Sequence Container\CDC Marca fim ETL inicial" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{3d88d583-2ca1-4c0c-867f-87d1e17ff827}"
+          DTS:From="Package\Sequence Container\staging dsa Produto"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Sequence Container\Carregar dsa Produto_sk" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{2B20C3DA-C8E3-4C93-A70F-0DA0398677AD}"
+      DTS:From="Package\Limpar dsa Produto"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sequence Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{0A41A199-889A-4F53-8DB5-DB82DF24A8EE}"
+      DTS:From="Package\Limpar dsa Produto_sk"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Sequence Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\Limpar dsa Produto"
+          TopLeft="137.499992487331,36.0000027481716" />
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Limpar dsa Produto_sk"
+          TopLeft="399.999978144964,34.2666694268916" />
+        <NodeLayout
+          Size="194.4,41.6"
+          Id="Package\Sequence Container\Carregar dsa Produto_sk"
+          TopLeft="105.666651277078,159.333333972162" />
+        <NodeLayout
+          Size="183.2,41.6"
+          Id="Package\Sequence Container\CDC Marca ETL inicial"
+          TopLeft="106.933321677314,12.666665449275" />
+        <NodeLayout
+          Size="200,41.6"
+          Id="Package\Sequence Container\CDC Marca fim ETL inicial"
+          TopLeft="99.4333220870963,229.333330609269" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Sequence Container\staging dsa Produto"
+          TopLeft="111.499984291693,83.9333344964851" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="197.616652984503,54.266665449275">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.6666690472101"
+              Start="0,0"
+              End="0,22.1666690472101">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.1666690472101" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="201.149986682087,200.933333972162">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.399996637107"
+              Start="0,0"
+              End="0,20.899996637107">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.899996637107" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="199.783317784385,125.533334496485">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.7999994756769"
+              Start="0,0"
+              End="0,26.2999994756769">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.2999994756769" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="403.2,328"
+          Size="403.2,371.2"
+          Id="Package\Sequence Container"
+          TopLeft="175.833323726224,136.933332381116" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="221.899992487331,77.6000027481716">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="89.6666645722263,59.3333296329444"
+              Start="0,0"
+              End="89.6666645722263,51.8333296329444">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.4592863260917" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.4592863260917"
+                    Point2="0,35.4592863260917"
+                    Point3="4,35.4592863260917" />
+                  <mssgle:LineSegment
+                    End="85.6666645722263,35.4592863260917" />
+                  <mssgle:CubicBezierSegment
+                    Point1="85.6666645722263,35.4592863260917"
+                    Point2="89.6666645722263,35.4592863260917"
+                    Point3="89.6666645722263,39.4592863260917" />
+                  <mssgle:LineSegment
+                    End="89.6666645722263,51.8333296329444" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="492.399978144964,75.8666694268916">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-49.0999877520734,61.0666629542244"
+              Start="0,0"
+              End="-49.0999877520734,53.5666629542244">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.4951756469515" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.4951756469515"
+                    Point2="0,36.4951756469515"
+                    Point3="-4,36.4951756469515" />
+                  <mssgle:LineSegment
+                    End="-45.0999877520734,36.4951756469515" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-45.0999877520734,36.4951756469515"
+                    Point2="-49.0999877520734,36.4951756469515"
+                    Point3="-49.0999877520734,40.4951756469515" />
+                  <mssgle:LineSegment
+                    End="-49.0999877520734,53.5666629542244" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Carregar dsa Produto_sk">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="194.4,41.6"
+          Id="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto_sk"
+          TopLeft="419.999993741512,247.999996304512" />
+        <NodeLayout
+          Size="178.4,41.6"
+          Id="Package\Sequence Container\Carregar dsa Produto_sk\Carregar dsa Produto"
+          TopLeft="434.999993517995,69.9999989569187" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Carregar dsa Produto_sk.Paths[OLE DB Source Output]"
+          TopLeft="520.699993629754,111.599998956919">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,136.399997347593"
+              Start="0,0"
+              End="0,128.899997347593">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,128.899997347593" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Sequence Container\staging dsa Produto">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="166.4,41.6"
+          Id="Package\Sequence Container\staging dsa Produto\Extrair dbo produto"
+          TopLeft="308.333316486743,40.7333330500788" />
+        <NodeLayout
+          Size="178.4,41.6"
+          Id="Package\Sequence Container\staging dsa Produto\Carregar dsa Produto"
+          TopLeft="304.999983335535,207.999998553594" />
+        <EdgeLayout
+          Id="Package\Sequence Container\staging dsa Produto.Paths[OLE DB Source Output]"
+          TopLeft="392.866649911139,82.3333330500788">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,125.666665503515"
+              Start="0,0"
+              End="0,118.166665503515">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,118.166665503515" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

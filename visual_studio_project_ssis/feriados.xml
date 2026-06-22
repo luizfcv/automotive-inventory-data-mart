@@ -1,0 +1,88 @@
+<GetNationalHolidaysResponse xmlns="http://services.sapo.pt/Metadata/Holiday">
+  <GetNationalHolidaysResult>
+    <Holiday>
+      <Name>Ano Novo</Name>
+      <Date>2026-01-01T00:00:00</Date>
+      <Description>O Ano-Novo é um evento que acontece quando uma cultura celebra o fim de um ano e o começo do próximo. Todas culturas que têm calendários anuais celebram o "Ano-Novo". A celebração do evento é também chamada réveillon, termo oriundo do verbo réveiller, que em francês significa "despertar".</Description>
+      <Type>National</Type>
+    </Holiday>
+    <Holiday>
+      <Name>Carnaval</Name>
+      <Date>2026-02-17T00:00:00</Date>
+      <Description>Feriado facultativo, sendo rara a sua não utilização na prática. A data tem origem na tradição pagã de celebrar o final do inverno e foi depois adaptada pela Igreja Católica marcando agora o período de 40 dias antes da Semana Santa (Quaresma), ou 47 dias antes da Páscoa, sendo conhecido também por Entrudo</Description>
+      <Type>Optional</Type>
+    </Holiday>
+    <Holiday>
+      <Name>Sexta-Feira Santa</Name>
+      <Date>2026-04-03T00:00:00</Date>
+      <Description>A Sexta-feira Santa é a Sexta-feira antes do Domingo de Páscoa. Em algumas localidades este feriado pode ser celebrado noutra data na época da Páscoa de acordo com a tradição local. É a data em que os cristãos lembram o julgamento, paixão, crucificação, morte e sepultura de Jesus Cristo, através de diversos ritos religiosos</Description>
+      <Type>National</Type>
+    </Holiday>
+    <Holiday>
+      <Name>Páscoa</Name>
+      <Date>2026-04-05T00:00:00</Date>
+      <Description>Primeiro Domingo após a primeira lua cheia que se verificar a partir de 21 de Março. Sendo celebrado a um Domingo não é classificado como feriado oficial. A Páscoa (do hebraico Pessach, significando passagem) é um evento religioso cristão, normalmente considerado pelas igrejas ligadas a esta corrente religiosa como a maior e a mais importante festa da cristandade. Na Páscoa os cristãos celebram a Ressurreição de Jesus Cristo (Vitória sobre a morte) depois da sua morte por crucificação (ver Sexta-Feira Santa) que teria ocorrido nesta altura do ano em 30 ou 33 d.C.</Description>
+      <Type>Religious</Type>
+    </Holiday>
+    <Holiday>
+      <Name>Dia da Liberdade</Name>
+      <Date>2026-04-25T00:00:00</Date>
+      <Description>O golpe de estado militar do dia 25 de Abril de 1974 derrubou, num só dia, o regime político que vigorava em Portugal desde 1926, sem grande resistência das forças leais ao governo, que cederam perante a revolta das forças armadas. Este levantamento é conhecido por Dia D, 25 de Abril ou Revolução dos Cravos</Description>
+      <Type>National</Type>
+    </Holiday>
+    <Holiday>
+      <Name>Dia do Trabalhador</Name>
+      <Date>2026-05-01T00:00:00</Date>
+      <Description>O Dia do Trabalhador é celebrado anualmente no dia 1 de Maio em numerosos países do mundo, sendo feriado nacional em muitos deles. Em Portugal, só a partir de Maio de 1974 (o ano da revolução do 25 de Abril) é que se voltou a comemorar espontaneamente o Primeiro de Maio.</Description>
+      <Type>National</Type>
+    </Holiday>
+    <Holiday>
+      <Name>Corpo de Deus</Name>
+      <Date>2026-06-04T00:00:00</Date>
+      <Description>Corpus Christi (latim para Corpo de Cristo) é uma festa móvel da Igreja Católica que celebra a presença de Cristo na Eucaristia. É realizada na quinta-feira seguinte ao domingo da Santíssima Trindade. É uma festa de 'preceito', isto é, para os católicos é de comparecimento obrigatório assistir à Missa neste dia, na forma estabelecida pela Conferência Episcopal do país respectivo</Description>
+      <Type>National</Type>
+    </Holiday>
+    <Holiday>
+      <Name>Dia de Camões, de Portugal e das Comunidades Portuguesas</Name>
+      <Date>2026-06-10T00:00:00</Date>
+      <Description>O Dia de Portugal; Dia de Camões, de Portugal e das Comunidades Portuguesas, é o dia em que se assinala a morte de Luís Vaz de Camões a 10 de Junho de 1580, e é também o Dia Nacional de Portugal.</Description>
+      <Type>National</Type>
+    </Holiday>
+    <Holiday>
+      <Name>Assunção de Nossa Senhora</Name>
+      <Date>2026-08-15T00:00:00</Date>
+      <Description>É a solenidade da Igreja Católica referente à elevação de Maria em corpo e alma à eternidade, para junto de Deus, de forma definitiva.</Description>
+      <Type>National</Type>
+    </Holiday>
+    <Holiday>
+      <Name>Implantação da República</Name>
+      <Date>2026-10-05T00:00:00</Date>
+      <Description>A Proclamação da República Portuguesa foi o resultado da Revolução de 5 de Outubro de 1910 que naquela data pôs termo à monarquia em Portugal.</Description>
+      <Type>National</Type>
+    </Holiday>
+    <Holiday>
+      <Name>Dia de Todos os Santos</Name>
+      <Date>2026-11-01T00:00:00</Date>
+      <Description>Tradicionalmente utilizado para recordar entes falecidos. O Dia dos Fiéis Defuntos é a 2 de Novembro mas, por questões de ordem prática, passou-se a usar o 1 de Novembro para visitar e recordar os falecidos.</Description>
+      <Type>National</Type>
+    </Holiday>
+    <Holiday>
+      <Name>Restauração da Independência</Name>
+      <Date>2026-12-01T00:00:00</Date>
+      <Description>A Restauração da Independência é a instauração da casa de Bragança face à dinastia filipina em 1 de dezembro de 1640, que durante 60 anos regeu o país. É comemorada anualmente em Portugal por um feriado no dia 1 de Dezembro.</Description>
+      <Type>National</Type>
+    </Holiday>
+    <Holiday>
+      <Name>Imaculada Conceição</Name>
+      <Date>2026-12-08T00:00:00</Date>
+      <Description>Padroeira do Reino de Portugal desde 1646. A Imaculada Conceição é um dogma da Igreja Católica Romana. Definido no século XIX, sua festa litúrgica é celebrada em 8 de Dezembro. Segundo esse dogma, a Virgem Maria foi preservada do pecado original desde o primeiro instante de sua existência. Nascida há dois mil anos atrás, na zona da Palestina.</Description>
+      <Type>National</Type>
+    </Holiday>
+    <Holiday>
+      <Name>Natal</Name>
+      <Date>2026-12-25T00:00:00</Date>
+      <Description>A noite de 24 para 25, conhecida como Consoada, é marcada com uma reunião familiar, com um jantar que varia de região para região, embora o bacalhau com batatas se tenha tornado cada vez mais popular. No final da refeição, é servido o Bolo Rei, incluído entre muitos doces e sobremesas típicas destas festas. No final do jantar ou após a meia-noite do dia 25, trocam-se presentes.</Description>
+      <Type>National</Type>
+    </Holiday>
+  </GetNationalHolidaysResult>
+</GetNationalHolidaysResponse>

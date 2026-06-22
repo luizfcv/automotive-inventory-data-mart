@@ -1,0 +1,3200 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/31/2026 11:03:27 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LUIZ"
+  DTS:CreatorName="LUIZ\luiz"
+  DTS:DTSID="{1F5138F0-44DE-4A14-BA20-B1AF728B4B7B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="2070"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{EB60E65D-C8E8-45EB-8596-34AE6CD56AE8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Carregar DimProduto"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{a15debcc-cf55-46c6-a22c-516a077bdc75}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carregar DimProduto"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carregar DimProduto\Apagar sk antiga"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Apagar sk antiga"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">DELETE FROM dsa.Produto_sk WHERE SKU = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carregar DimProduto\Apagar sk antiga.Connections[OleDbConnection]"
+                  connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carregar DimProduto\Apagar sk antiga.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Apagar sk antiga.Inputs[OLE DB Command Input].Columns[SKU]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SKU"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Apagar sk antiga.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[SKU]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Apagar sk antiga.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar DimProduto\Apagar sk antiga.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Carregar DimProduto\Apagar sk antiga.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\Apagar sk antiga.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Carregar DimProduto\Apagar sk antiga.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Apagar sk antiga.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Apagar sk antiga.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Apagar sk antiga.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Apagar sk antiga.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar DimProduto\Carregar dw DimProduto"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Carregar dw DimProduto"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dw].[DimProduto]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carregar DimProduto\Carregar dw DimProduto.Connections[OleDbConnection]"
+                  connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].Columns[SK_Produto]"
+                      cachedDataType="i4"
+                      cachedName="SK_Produto"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].ExternalColumns[SK_Produto]"
+                      lineageId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[SK_Produto]" />
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].Columns[nome]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="nome"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].ExternalColumns[Nome]"
+                      lineageId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[nome]" />
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].Columns[SKU]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SKU"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].ExternalColumns[NK_SKU]"
+                      lineageId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[SKU]" />
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].Columns[UPC]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="UPC"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].ExternalColumns[UPC]"
+                      lineageId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[UPC]" />
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].Columns[Categoria]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Categoria"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].ExternalColumns[Categoria]"
+                      lineageId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[Categoria]" />
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].Columns[Subcategoria]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Subcategoria"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].ExternalColumns[Subcategoria]"
+                      lineageId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[Subcategoria]" />
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].Columns[Marca]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Marca"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].ExternalColumns[Marca]"
+                      lineageId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[Marca]" />
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].Columns[preco_unitario]"
+                      cachedDataType="numeric"
+                      cachedName="preco_unitario"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].ExternalColumns[PrecoUnitario]"
+                      lineageId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[preco_unitario]" />
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].Columns[start_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="start_date"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].ExternalColumns[start_date]"
+                      lineageId="Package\Carregar DimProduto\Derived Column 1.Outputs[Derived Column Output].Columns[start_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].ExternalColumns[SK_Produto]"
+                      dataType="i4"
+                      name="SK_Produto" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].ExternalColumns[Nome]"
+                      dataType="wstr"
+                      length="255"
+                      name="Nome" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].ExternalColumns[NK_SKU]"
+                      dataType="wstr"
+                      length="255"
+                      name="NK_SKU" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].ExternalColumns[UPC]"
+                      dataType="wstr"
+                      length="255"
+                      name="UPC" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].ExternalColumns[Categoria]"
+                      dataType="wstr"
+                      length="255"
+                      name="Categoria" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].ExternalColumns[Subcategoria]"
+                      dataType="wstr"
+                      length="255"
+                      name="Subcategoria" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].ExternalColumns[Marca]"
+                      dataType="wstr"
+                      length="255"
+                      name="Marca" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].ExternalColumns[PrecoUnitario]"
+                      dataType="numeric"
+                      name="PrecoUnitario"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].ExternalColumns[start_date]"
+                      dataType="dbTimeStamp"
+                      name="start_date" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input].ExternalColumns[end_date]"
+                      dataType="dbTimeStamp"
+                      name="end_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar DimProduto\Carregar dw DimProduto.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Carregar dw DimProduto.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Carregar dw DimProduto.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Carregar dw DimProduto.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar DimProduto\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carregar DimProduto\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar DimProduto\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Carregar DimProduto\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Derived Column.Outputs[Derived Column Output].Columns[end_date]"
+                      dataType="dbTimeStamp"
+                      description="end_date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carregar DimProduto\Derived Column.Outputs[Derived Column Output].Columns[end_date]"
+                      name="end_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Carregar DimProduto\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar DimProduto\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carregar DimProduto\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar DimProduto\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Carregar DimProduto\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Derived Column 1.Outputs[Derived Column Output].Columns[start_date]"
+                      dataType="dbTimeStamp"
+                      description="start_date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carregar DimProduto\Derived Column 1.Outputs[Derived Column Output].Columns[start_date]"
+                      name="start_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Carregar DimProduto\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar DimProduto\Gerar nova sk"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Gerar nova sk"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">INSERT INTO dsa.Produto_sk (SKU) values(?)</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carregar DimProduto\Gerar nova sk.Connections[OleDbConnection]"
+                  connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carregar DimProduto\Gerar nova sk.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Gerar nova sk.Inputs[OLE DB Command Input].Columns[SKU]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SKU"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Gerar nova sk.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[SKU]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Gerar nova sk.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar DimProduto\Gerar nova sk.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Carregar DimProduto\Gerar nova sk.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\Gerar nova sk.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Carregar DimProduto\Gerar nova sk.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Gerar nova sk.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Gerar nova sk.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Gerar nova sk.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Gerar nova sk.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar DimProduto\Lookup Categoria"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Categoria"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[categoria]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[categoria]) [refTable]
+where [refTable].[id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nome" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Carregar DimProduto\Lookup Subcategoria.Outputs[Lookup Match Output].Columns[id_categoria]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carregar DimProduto\Lookup Categoria.Connections[OleDbConnection]"
+                  connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carregar DimProduto\Lookup Categoria.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Lookup Categoria.Inputs[Lookup Input].Columns[id_categoria]"
+                      cachedDataType="i4"
+                      cachedName="id_categoria"
+                      lineageId="Package\Carregar DimProduto\Lookup Subcategoria.Outputs[Lookup Match Output].Columns[id_categoria]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar DimProduto\Lookup Categoria.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Carregar DimProduto\Lookup Categoria.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Lookup Categoria.Outputs[Lookup Match Output].Columns[Categoria]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="255"
+                      lineageId="Package\Carregar DimProduto\Lookup Categoria.Outputs[Lookup Match Output].Columns[Categoria]"
+                      name="Categoria"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">nome</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\Lookup Categoria.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Carregar DimProduto\Lookup Categoria.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\Lookup Categoria.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Carregar DimProduto\Lookup Categoria.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Lookup Categoria.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Lookup Categoria.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Lookup Categoria.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Lookup Categoria.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar DimProduto\Lookup Marca"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Marca"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[marca]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[marca]) [refTable]
+where [refTable].[id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nome" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[id_marca]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carregar DimProduto\Lookup Marca.Connections[OleDbConnection]"
+                  connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carregar DimProduto\Lookup Marca.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Lookup Marca.Inputs[Lookup Input].Columns[id_marca]"
+                      cachedDataType="i4"
+                      cachedName="id_marca"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[id_marca]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar DimProduto\Lookup Marca.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Carregar DimProduto\Lookup Marca.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Lookup Marca.Outputs[Lookup Match Output].Columns[Marca]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="255"
+                      lineageId="Package\Carregar DimProduto\Lookup Marca.Outputs[Lookup Match Output].Columns[Marca]"
+                      name="Marca"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">nome</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\Lookup Marca.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Carregar DimProduto\Lookup Marca.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\Lookup Marca.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Carregar DimProduto\Lookup Marca.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Lookup Marca.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Lookup Marca.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Lookup Marca.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Lookup Marca.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar DimProduto\Lookup sk"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup sk"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dsa].[Produto_sk]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dsa].[Produto_sk]) [refTable]
+where [refTable].[SKU] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="skProduto" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SKU" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[SKU]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carregar DimProduto\Lookup sk.Connections[OleDbConnection]"
+                  connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carregar DimProduto\Lookup sk.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Lookup sk.Inputs[Lookup Input].Columns[SKU]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SKU"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[SKU]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">SKU</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar DimProduto\Lookup sk.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Carregar DimProduto\Lookup sk.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Lookup sk.Outputs[Lookup Match Output].Columns[SK_Produto]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Carregar DimProduto\Lookup sk.Outputs[Lookup Match Output].Columns[SK_Produto]"
+                      name="SK_Produto"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">skProduto</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\Lookup sk.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Carregar DimProduto\Lookup sk.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\Lookup sk.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Carregar DimProduto\Lookup sk.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Lookup sk.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Lookup sk.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Lookup sk.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Lookup sk.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar DimProduto\Lookup Subcategoria"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Subcategoria"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[subcategoria]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[subcategoria]) [refTable]
+where [refTable].[id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nome" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="id_categoria" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[id_subcategoria]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carregar DimProduto\Lookup Subcategoria.Connections[OleDbConnection]"
+                  connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carregar DimProduto\Lookup Subcategoria.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Lookup Subcategoria.Inputs[Lookup Input].Columns[id_subcategoria]"
+                      cachedDataType="i4"
+                      cachedName="id_subcategoria"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[id_subcategoria]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar DimProduto\Lookup Subcategoria.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Carregar DimProduto\Lookup Subcategoria.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Lookup Subcategoria.Outputs[Lookup Match Output].Columns[Subcategoria]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="255"
+                      lineageId="Package\Carregar DimProduto\Lookup Subcategoria.Outputs[Lookup Match Output].Columns[Subcategoria]"
+                      name="Subcategoria"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">nome</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Lookup Subcategoria.Outputs[Lookup Match Output].Columns[id_categoria]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Carregar DimProduto\Lookup Subcategoria.Outputs[Lookup Match Output].Columns[id_categoria]"
+                      name="id_categoria"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">id_categoria</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\Lookup Subcategoria.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Carregar DimProduto\Lookup Subcategoria.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\Lookup Subcategoria.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Carregar DimProduto\Lookup Subcategoria.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Lookup Subcategoria.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Lookup Subcategoria.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Lookup Subcategoria.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Lookup Subcategoria.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar DimProduto\Obter dsa Produto"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Obter dsa Produto"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dsa].[Produto]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carregar DimProduto\Obter dsa Produto.Connections[OleDbConnection]"
+                  connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[nome]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[nome]"
+                      length="255"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[nome]"
+                      name="nome"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[SKU]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[SKU]"
+                      length="255"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[SKU]"
+                      name="SKU"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[UPC]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[UPC]"
+                      length="255"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[UPC]"
+                      name="UPC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[id_marca]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[id_marca]"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[id_marca]"
+                      name="id_marca"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[id_subcategoria]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[id_subcategoria]"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[id_subcategoria]"
+                      name="id_subcategoria"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[preco_unitario]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[preco_unitario]"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[preco_unitario]"
+                      name="preco_unitario"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[nome]"
+                      dataType="wstr"
+                      length="255"
+                      name="nome" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[SKU]"
+                      dataType="wstr"
+                      length="255"
+                      name="SKU" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[UPC]"
+                      dataType="wstr"
+                      length="255"
+                      name="UPC" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[id_marca]"
+                      dataType="i4"
+                      name="id_marca" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[id_subcategoria]"
+                      dataType="i4"
+                      name="id_subcategoria" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].ExternalColumns[preco_unitario]"
+                      dataType="numeric"
+                      name="preco_unitario"
+                      precision="10"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Error Output].Columns[nome]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Error Output].Columns[nome]"
+                      name="nome" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Error Output].Columns[SKU]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Error Output].Columns[SKU]"
+                      name="SKU" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Error Output].Columns[UPC]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Error Output].Columns[UPC]"
+                      name="UPC" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Error Output].Columns[id_marca]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Error Output].Columns[id_marca]"
+                      name="id_marca" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Error Output].Columns[id_subcategoria]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Error Output].Columns[id_subcategoria]"
+                      name="id_subcategoria" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Error Output].Columns[preco_unitario]"
+                      dataType="numeric"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Error Output].Columns[preco_unitario]"
+                      name="preco_unitario"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar DimProduto\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dw].[DimProduto] SET [end_date] = ? WHERE [NK_SKU] = ? AND [end_date] IS NULL</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carregar DimProduto\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carregar DimProduto\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\OLE DB Command.Inputs[OLE DB Command Input].Columns[SKU]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SKU"
+                      externalMetadataColumnId="Package\Carregar DimProduto\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[SKU]" />
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\OLE DB Command.Inputs[OLE DB Command Input].Columns[end_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="end_date"
+                      externalMetadataColumnId="Package\Carregar DimProduto\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Carregar DimProduto\Derived Column.Outputs[Derived Column Output].Columns[end_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="dbTimeStamp"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar DimProduto\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Carregar DimProduto\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Carregar DimProduto\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar DimProduto\Slowly Changing Dimension"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="Slowly Changing Dimension"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SELECT statement used to create a schema rowset."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [Categoria], [Marca], [NK_SKU], [Nome], [PrecoUnitario], [SK_Produto], [Subcategoria], [UPC],[start_date],[end_date] FROM [dw].[DimProduto]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere">[start_date] IS NOT NULL AND [end_date] IS NULL</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carregar DimProduto\Slowly Changing Dimension.Connections[LookupConnection]"
+                  connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Categoria]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Categoria"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Categoria]"
+                      lineageId="Package\Carregar DimProduto\Lookup Categoria.Outputs[Lookup Match Output].Columns[Categoria]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Marca]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Marca"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Marca]"
+                      lineageId="Package\Carregar DimProduto\Lookup Marca.Outputs[Lookup Match Output].Columns[Marca]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[SKU]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SKU"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[NK_SKU]"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[SKU]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[nome]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="nome"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Nome]"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[nome]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[preco_unitario]"
+                      cachedDataType="numeric"
+                      cachedName="preco_unitario"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[PrecoUnitario]"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[preco_unitario]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[SK_Produto]"
+                      cachedDataType="i4"
+                      cachedName="SK_Produto"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[SK_Produto]"
+                      lineageId="Package\Carregar DimProduto\Lookup sk.Outputs[Lookup Match Output].Columns[SK_Produto]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Subcategoria]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Subcategoria"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Subcategoria]"
+                      lineageId="Package\Carregar DimProduto\Lookup Subcategoria.Outputs[Lookup Match Output].Columns[Subcategoria]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[UPC]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="UPC"
+                      externalMetadataColumnId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[UPC]"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[UPC]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Categoria]"
+                      dataType="wstr"
+                      length="255"
+                      name="Categoria" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Marca]"
+                      dataType="wstr"
+                      length="255"
+                      name="Marca" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[NK_SKU]"
+                      dataType="wstr"
+                      length="255"
+                      name="NK_SKU" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Nome]"
+                      dataType="wstr"
+                      length="255"
+                      name="Nome" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[PrecoUnitario]"
+                      dataType="numeric"
+                      name="PrecoUnitario"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[SK_Produto]"
+                      dataType="i4"
+                      name="SK_Produto" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Subcategoria]"
+                      dataType="wstr"
+                      length="255"
+                      name="Subcategoria" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[UPC]"
+                      dataType="wstr"
+                      length="255"
+                      name="UPC" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[start_date]"
+                      dataType="dbTimeStamp"
+                      name="start_date" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[end_date]"
+                      dataType="dbTimeStamp"
+                      name="end_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar DimProduto\Slowly Changing Dimension.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
+                  exclusionGroup="1"
+                  name="Unchanged Output"
+                  synchronousInputId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\Slowly Changing Dimension.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\Slowly Changing Dimension.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar DimProduto\Substituir sk"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Substituir sk"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dsa].[Produto_sk]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dsa].[Produto_sk]) [refTable]
+where [refTable].[SKU] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="skProduto" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SKU" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[SKU]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carregar DimProduto\Substituir sk.Connections[OleDbConnection]"
+                  connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carregar DimProduto\Substituir sk.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Substituir sk.Inputs[Lookup Input].Columns[SKU]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SKU"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[SKU]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">SKU</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Substituir sk.Inputs[Lookup Input].Columns[skProduto]"
+                      cachedDataType="i4"
+                      cachedName="SK_Produto"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Carregar DimProduto\Lookup sk.Outputs[Lookup Match Output].Columns[SK_Produto]"
+                      name="skProduto"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn" />
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">skProduto</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar DimProduto\Substituir sk.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Carregar DimProduto\Substituir sk.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\Substituir sk.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Carregar DimProduto\Substituir sk.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carregar DimProduto\Substituir sk.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Carregar DimProduto\Substituir sk.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Substituir sk.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Substituir sk.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Substituir sk.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Substituir sk.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar DimProduto\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 1].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 1].Columns[nome]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="nome"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[nome]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[nome]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 1].Columns[SKU]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SKU"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[SKU]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[SKU]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 1].Columns[UPC]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="UPC"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[UPC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[UPC]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 1].Columns[id_marca]"
+                      cachedDataType="i4"
+                      cachedName="id_marca"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[id_marca]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[id_marca]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 1].Columns[id_subcategoria]"
+                      cachedDataType="i4"
+                      cachedName="id_subcategoria"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[id_subcategoria]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[id_subcategoria]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 1].Columns[preco_unitario]"
+                      cachedDataType="numeric"
+                      cachedName="preco_unitario"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[preco_unitario]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[preco_unitario]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 1].Columns[SK_Produto]"
+                      cachedDataType="i4"
+                      cachedName="SK_Produto"
+                      lineageId="Package\Carregar DimProduto\Lookup sk.Outputs[Lookup Match Output].Columns[SK_Produto]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[SK_Produto]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 1].Columns[Marca]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Marca"
+                      lineageId="Package\Carregar DimProduto\Lookup Marca.Outputs[Lookup Match Output].Columns[Marca]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[Marca]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 1].Columns[Subcategoria]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Subcategoria"
+                      lineageId="Package\Carregar DimProduto\Lookup Subcategoria.Outputs[Lookup Match Output].Columns[Subcategoria]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[Subcategoria]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 1].Columns[id_categoria]"
+                      cachedDataType="i4"
+                      cachedName="id_categoria"
+                      lineageId="Package\Carregar DimProduto\Lookup Subcategoria.Outputs[Lookup Match Output].Columns[id_categoria]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[id_categoria]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 1].Columns[Categoria]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Categoria"
+                      lineageId="Package\Carregar DimProduto\Lookup Categoria.Outputs[Lookup Match Output].Columns[Categoria]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[Categoria]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 3]"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 3].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 3].Columns[nome]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="nome"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[nome]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[nome]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 3].Columns[SKU]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SKU"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[SKU]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[SKU]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 3].Columns[UPC]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="UPC"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[UPC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[UPC]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 3].Columns[id_marca]"
+                      cachedDataType="i4"
+                      cachedName="id_marca"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[id_marca]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[id_marca]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 3].Columns[id_subcategoria]"
+                      cachedDataType="i4"
+                      cachedName="id_subcategoria"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[id_subcategoria]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[id_subcategoria]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 3].Columns[preco_unitario]"
+                      cachedDataType="numeric"
+                      cachedName="preco_unitario"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output].Columns[preco_unitario]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[preco_unitario]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 3].Columns[Marca]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Marca"
+                      lineageId="Package\Carregar DimProduto\Lookup Marca.Outputs[Lookup Match Output].Columns[Marca]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[Marca]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 3].Columns[Subcategoria]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Subcategoria"
+                      lineageId="Package\Carregar DimProduto\Lookup Subcategoria.Outputs[Lookup Match Output].Columns[Subcategoria]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[Subcategoria]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 3].Columns[id_categoria]"
+                      cachedDataType="i4"
+                      cachedName="id_categoria"
+                      lineageId="Package\Carregar DimProduto\Lookup Subcategoria.Outputs[Lookup Match Output].Columns[id_categoria]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[id_categoria]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 3].Columns[Categoria]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Categoria"
+                      lineageId="Package\Carregar DimProduto\Lookup Categoria.Outputs[Lookup Match Output].Columns[Categoria]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[Categoria]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[nome]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[nome]"
+                      name="nome" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[SKU]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[SKU]"
+                      name="SKU" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[UPC]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[UPC]"
+                      name="UPC" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[id_marca]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[id_marca]"
+                      name="id_marca" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[id_subcategoria]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[id_subcategoria]"
+                      name="id_subcategoria" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[preco_unitario]"
+                      dataType="numeric"
+                      lineageId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[preco_unitario]"
+                      name="preco_unitario"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[SK_Produto]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[SK_Produto]"
+                      name="SK_Produto" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[Marca]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[Marca]"
+                      name="Marca" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[Subcategoria]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[Subcategoria]"
+                      name="Subcategoria" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[id_categoria]"
+                      dataType="i4"
+                      lineageId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[id_categoria]"
+                      name="id_categoria" />
+                    <outputColumn
+                      refId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[Categoria]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1].Columns[Categoria]"
+                      name="Categoria" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carregar DimProduto.Paths[Derived Column Output]"
+              endId="Package\Carregar DimProduto\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Carregar DimProduto\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Carregar DimProduto.Paths[Derived Column Output1]"
+              endId="Package\Carregar DimProduto\Carregar dw DimProduto.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Carregar DimProduto\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Carregar DimProduto.Paths[Historical Attribute Inserts Output]"
+              endId="Package\Carregar DimProduto\Derived Column.Inputs[Derived Column Input]"
+              name="Historical Attribute Inserts Output"
+              startId="Package\Carregar DimProduto\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]" />
+            <path
+              refId="Package\Carregar DimProduto.Paths[Lookup Match Output]"
+              endId="Package\Carregar DimProduto\Lookup Subcategoria.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Carregar DimProduto\Lookup Marca.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Carregar DimProduto.Paths[Lookup Match Output1]"
+              endId="Package\Carregar DimProduto\Lookup Categoria.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Carregar DimProduto\Lookup Subcategoria.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Carregar DimProduto.Paths[Lookup Match Output2]"
+              endId="Package\Carregar DimProduto\Lookup Marca.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Carregar DimProduto\Lookup sk.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Carregar DimProduto.Paths[Lookup Match Output3]"
+              endId="Package\Carregar DimProduto\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+              name="Lookup Match Output"
+              startId="Package\Carregar DimProduto\Lookup Categoria.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Carregar DimProduto.Paths[Lookup Match Output4]"
+              endId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 3]"
+              name="Lookup Match Output"
+              startId="Package\Carregar DimProduto\Substituir sk.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Carregar DimProduto.Paths[New Output]"
+              endId="Package\Carregar DimProduto\Union All.Inputs[Union All Input 1]"
+              name="New Output"
+              startId="Package\Carregar DimProduto\Slowly Changing Dimension.Outputs[New Output]" />
+            <path
+              refId="Package\Carregar DimProduto.Paths[OLE DB Command Output]"
+              endId="Package\Carregar DimProduto\Apagar sk antiga.Inputs[OLE DB Command Input]"
+              name="OLE DB Command Output"
+              startId="Package\Carregar DimProduto\OLE DB Command.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\Carregar DimProduto.Paths[OLE DB Command Output1]"
+              endId="Package\Carregar DimProduto\Gerar nova sk.Inputs[OLE DB Command Input]"
+              name="OLE DB Command Output"
+              startId="Package\Carregar DimProduto\Apagar sk antiga.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\Carregar DimProduto.Paths[OLE DB Command Output2]"
+              endId="Package\Carregar DimProduto\Substituir sk.Inputs[Lookup Input]"
+              name="OLE DB Command Output"
+              startId="Package\Carregar DimProduto\Gerar nova sk.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\Carregar DimProduto.Paths[OLE DB Source Output]"
+              endId="Package\Carregar DimProduto\Lookup sk.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Carregar DimProduto\Obter dsa Produto.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Carregar DimProduto.Paths[Union All Output 1]"
+              endId="Package\Carregar DimProduto\Derived Column 1.Inputs[Derived Column Input]"
+              name="Union All Output 1"
+              startId="Package\Carregar DimProduto\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Carregar DimProduto"
+          TopLeft="122.49999658515,68.6666666064002" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carregar DimProduto">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="167.2,41.6"
+          Id="Package\Carregar DimProduto\OLE DB Command"
+          TopLeft="76.5000000000001,716.699999999999" />
+        <NodeLayout
+          Size="143.2,41.6"
+          Id="Package\Carregar DimProduto\Gerar nova sk"
+          TopLeft="83.3333287802009,876.599997052948" />
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\Carregar DimProduto\Lookup Marca"
+          TopLeft="233.1,208.7" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Carregar DimProduto\Derived Column 1"
+          TopLeft="345.966660019093,1106.43333368288" />
+        <NodeLayout
+          Size="135.2,41.6"
+          Id="Package\Carregar DimProduto\Substituir sk"
+          TopLeft="94.9999948094291,951.133329867985" />
+        <NodeLayout
+          Size="125.6,41.6"
+          Id="Package\Carregar DimProduto\Lookup sk"
+          TopLeft="242.3,107.1" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Carregar DimProduto\Derived Column"
+          TopLeft="91.7000000000001,615.099999999999" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\Carregar DimProduto\Slowly Changing Dimension"
+          TopLeft="201.1,513.5" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Carregar DimProduto\Obter dsa Produto"
+          TopLeft="225.1,5.49999999999995" />
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Carregar DimProduto\Union All"
+          TopLeft="366.766660019093,1004.83333368288" />
+        <NodeLayout
+          Size="193.6,41.6"
+          Id="Package\Carregar DimProduto\Carregar dw DimProduto"
+          TopLeft="330.499994263053,1207.16666702224" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Carregar DimProduto\Lookup Subcategoria"
+          TopLeft="216.7,310.3" />
+        <NodeLayout
+          Size="160.8,41.6"
+          Id="Package\Carregar DimProduto\Lookup Categoria"
+          TopLeft="224.7,411.9" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\Carregar DimProduto\Apagar sk antiga"
+          TopLeft="74.9999959021808,799.46666425599" />
+        <EdgeLayout
+          Id="Package\Carregar DimProduto.Paths[Derived Column Output]"
+          TopLeft="168.1,656.699999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8,59.9999999999999"
+              Start="0,0"
+              End="-8,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.9999999999999" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.9999999999999"
+                    Point2="0,29.9999999999999"
+                    Point3="-4,29.9999999999999" />
+                  <mssgle:LineSegment
+                    End="-4,29.9999999999999" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4,29.9999999999999"
+                    Point2="-8,29.9999999999999"
+                    Point3="-8,33.9999999999999" />
+                  <mssgle:LineSegment
+                    End="-8,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carregar DimProduto.Paths[Union All Output 1]"
+          TopLeft="426.766660019093,1046.43333368288">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999998"
+              Start="0,0"
+              End="0,52.4999999999998">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999998" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carregar DimProduto.Paths[OLE DB Source Output]"
+          TopLeft="305.9,47.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carregar DimProduto.Paths[OLE DB Command Output2]"
+          TopLeft="158.766661794815,918.199997052948">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.9333328150376"
+              Start="0,0"
+              End="0,25.4333328150376">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.4333328150376" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carregar DimProduto.Paths[OLE DB Command Output1]"
+          TopLeft="153.966662341191,841.06666425599">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.5333327969579"
+              Start="0,0"
+              End="0,28.0333327969579">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.0333327969579" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carregar DimProduto.Paths[OLE DB Command Output]"
+          TopLeft="156.54999795109,758.299999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.1666642559904"
+              Start="0,0"
+              End="0,33.6666642559904">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.6666642559904" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carregar DimProduto.Paths[New Output]"
+          TopLeft="338.433333333333,555.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="88.33332668576,449.733333682881"
+              Start="0,0"
+              End="88.33332668576,442.233333682881">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,177.953180802998" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,177.953180802998"
+                    Point2="0,181.953180802998"
+                    Point3="4,181.953180802998" />
+                  <mssgle:LineSegment
+                    End="84.33332668576,181.953180802998" />
+                  <mssgle:CubicBezierSegment
+                    Point1="84.33332668576,181.953180802998"
+                    Point2="88.33332668576,181.953180802998"
+                    Point3="88.33332668576,185.953180802998" />
+                  <mssgle:LineSegment
+                    End="88.33332668576,442.233333682881" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="17.07527662413,186.953180802998,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carregar DimProduto.Paths[Lookup Match Output4]"
+          TopLeft="230.199994809429,971.933329867985">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="136.566665209664,53.7000038148951"
+              Start="0,0"
+              End="129.066665209664,53.7000038148951">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="64.2833326048322,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="64.2833326048322,0"
+                    Point2="68.2833326048322,0"
+                    Point3="68.2833326048322,4" />
+                  <mssgle:LineSegment
+                    End="68.2833326048322,49.7000038148951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="68.2833326048322,49.7000038148951"
+                    Point2="68.2833326048322,53.7000038148951"
+                    Point3="72.2833326048322,53.7000038148951" />
+                  <mssgle:LineSegment
+                    End="129.066665209664,53.7000038148951" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="20.0919458860822,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carregar DimProduto.Paths[Lookup Match Output3]"
+          TopLeft="305.1,453.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carregar DimProduto.Paths[Lookup Match Output2]"
+          TopLeft="305.1,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453124999999,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carregar DimProduto.Paths[Lookup Match Output1]"
+          TopLeft="305.1,351.9">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453124999999,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carregar DimProduto.Paths[Lookup Match Output]"
+          TopLeft="305.1,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carregar DimProduto.Paths[Historical Attribute Inserts Output]"
+          TopLeft="271.766666666667,555.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-103.666666666667,59.9999999999999"
+              Start="0,0"
+              End="-103.666666666667,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2748091603053" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2748091603053"
+                    Point2="0,24.2748091603053"
+                    Point3="-4,24.2748091603053" />
+                  <mssgle:LineSegment
+                    End="-99.6666666666667,24.2748091603053" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-99.6666666666667,24.2748091603053"
+                    Point2="-103.666666666667,24.2748091603053"
+                    Point3="-103.666666666667,28.2748091603053" />
+                  <mssgle:LineSegment
+                    End="-103.666666666667,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-126.889720052083,29.2748091603053,150.1127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carregar DimProduto.Paths[Derived Column Output1]"
+          TopLeft="427.033327141073,1148.03333368288">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.1333333393602"
+              Start="0,0"
+              End="0,51.6333333393602">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.6333333393602" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carregar DimProduto\Lookup Marca">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[marca]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carregar DimProduto\Substituir sk">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dsa].[Produto_sk]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carregar DimProduto\Lookup sk">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dsa].[Produto_sk]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carregar DimProduto\Slowly Changing Dimension">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionID&gt;{B88EE889-E9E3-47B7-80C4-A016D9ABA572}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dw].[DimProduto]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Lookup Categoria.Outputs[Lookup Match Output].Columns[Categoria]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Categoria&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Lookup Marca.Outputs[Lookup Match Output].Columns[Marca]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Marca&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Load dsa Produto.Outputs[OLE DB Source Output].Columns[SKU]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;NK_SKU&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Load dsa Produto.Outputs[OLE DB Source Output].Columns[nome]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Nome&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Load dsa Produto.Outputs[OLE DB Source Output].Columns[preco_unitario]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;PrecoUnitario&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Lookup sk.Outputs[Lookup Match Output].Columns[SK_Produto]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;SK_Produto&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Lookup Subcategoria.Outputs[Lookup Match Output].Columns[Subcategoria]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Subcategoria&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Load dsa Produto.Outputs[OLE DB Source Output].Columns[UPC]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;UPC&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Union All&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;true&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;true&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn&gt;start_date&lt;/StartDateColumn&gt;
+  &lt;EndDateColumn&gt;end_date&lt;/EndDateColumn&gt;
+  &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carregar DimProduto\Obter dsa Produto">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carregar DimProduto\Carregar dw DimProduto">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carregar DimProduto\Lookup Subcategoria">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[subcategoria]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carregar DimProduto\Lookup Categoria">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[categoria]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

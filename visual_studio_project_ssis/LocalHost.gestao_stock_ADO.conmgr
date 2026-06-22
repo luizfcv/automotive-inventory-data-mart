@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LocalHost.gestao_stock_ADO"
+  DTS:DTSID="{5E0C9558-AF25-45E4-8476-BB810860EE6C}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=.;Initial Catalog=gestao_stock;Integrated Security=True;TrustServerCertificate=True;Application Name=SSIS-004_DSA_Trabalhador_Init-{5E0C9558-AF25-45E4-8476-BB810860EE6C}LocalHost.gestao_stock1;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

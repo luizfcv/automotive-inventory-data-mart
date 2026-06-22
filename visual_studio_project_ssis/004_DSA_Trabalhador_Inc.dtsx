@@ -1,0 +1,2760 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/5/2026 1:42:49 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LUIZ"
+  DTS:CreatorName="LUIZ\luiz"
+  DTS:DTSID="{8887DA1E-D7DC-4A53-8DF9-5B8AA6F50FBA}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="2070"
+  DTS:ObjectName="004_DSA_Trabalhador_INC"
+  DTS:PackageType="5"
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{0B11664F-CF67-4A54-8B60-37E5D61B7201}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{802313F8-D078-445E-885F-6313B4001DD0}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CDC_State_DSA_Trabalhador_INIT">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B0D4AF30-17DE-4884-BF52-8678732B7575}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CDC_State_Trabalhador">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Limpar dsa Trabalhador"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{fb11fa59-392a-4618-b470-416866565817}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpar dsa Trabalhador"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dsa.Trabalhador;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{BC410829-5656-4390-B8AC-8180195367B7}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Carregar dsa trabalhador incremental"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{B3CBEA18-A0C6-4DF4-A5FA-901A3D81332F}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Carregar dsa trabalhador incremental"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Carregar dsa trabalhador"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dsa].[Trabalhador]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Connections[OleDbConnection]"
+                      connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].Columns[id]"
+                          cachedDataType="i4"
+                          cachedName="id"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[id]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].Columns[numero_trabalhador]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="numero_trabalhador"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[numero_trabalhador]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[numero_trabalhador]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].Columns[nome_completo]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="nome_completo"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[nome_completo]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[nome_completo]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].Columns[cartao_cidadao]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="cartao_cidadao"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[cartao_cidadao]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[cartao_cidadao]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].Columns[nif]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="nif"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[nif]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[nif]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].Columns[niss]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="niss"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[niss]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[niss]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].Columns[autorizacao_de_residencia]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="autorizacao_de_residencia"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[autorizacao_de_residencia]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[autorizacao_de_residencia]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].Columns[morada]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="morada"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[morada]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[morada]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].Columns[codigo_postal]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="codigo_postal"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[codigo_postal]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[codigo_postal]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].Columns[id_freguesia]"
+                          cachedDataType="i4"
+                          cachedName="id_freguesia"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[id_freguesia]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[id_freguesia]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].Columns[id_pais_nacionalidade]"
+                          cachedDataType="i4"
+                          cachedName="id_pais_nacionalidade"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[id_pais_nacionalidade]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[id_pais_nacionalidade]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].Columns[id_pais_naturalidade]"
+                          cachedDataType="i4"
+                          cachedName="id_pais_naturalidade"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[id_pais_naturalidade]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[id_pais_naturalidade]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].Columns[telefone]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="telefone"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[telefone]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[telefone]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].Columns[email_pessoal]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="email_pessoal"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[email_pessoal]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[email_pessoal]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].Columns[email_profissional]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="email_profissional"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[email_profissional]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[email_profissional]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].Columns[genero_]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="genero_"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[genero]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Data Conversion genero.Outputs[Data Conversion Output].Columns[genero_]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[numero_trabalhador]"
+                          dataType="wstr"
+                          length="255"
+                          name="numero_trabalhador" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[genero]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="genero" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[nome_completo]"
+                          dataType="wstr"
+                          length="255"
+                          name="nome_completo" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[cartao_cidadao]"
+                          dataType="wstr"
+                          length="20"
+                          name="cartao_cidadao" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[nif]"
+                          dataType="wstr"
+                          length="20"
+                          name="nif" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[niss]"
+                          dataType="wstr"
+                          length="20"
+                          name="niss" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[autorizacao_de_residencia]"
+                          dataType="wstr"
+                          length="20"
+                          name="autorizacao_de_residencia" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[morada]"
+                          dataType="wstr"
+                          length="255"
+                          name="morada" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[codigo_postal]"
+                          dataType="wstr"
+                          length="10"
+                          name="codigo_postal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[id_freguesia]"
+                          dataType="i4"
+                          name="id_freguesia" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[id_pais_nacionalidade]"
+                          dataType="i4"
+                          name="id_pais_nacionalidade" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[id_pais_naturalidade]"
+                          dataType="i4"
+                          name="id_pais_naturalidade" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[telefone]"
+                          dataType="wstr"
+                          length="20"
+                          name="telefone" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[email_pessoal]"
+                          dataType="wstr"
+                          length="255"
+                          name="email_pessoal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input].ExternalColumns[email_profissional]"
+                          dataType="wstr"
+                          length="255"
+                          name="email_profissional" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Attunity Ltd.; All Rights Reserved; http://www.attunity.com;"
+                  description="Reads change data from a SQL Server change table making it available for processing by downstream data-flow components. Only changes within the current processing range determined by the CDC Control task are read"
+                  name="CDC Source - dbo trabalhador"
+                  usesDispositions="true"
+                  version="9">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="An SSIS string package variable to store the CDC state of the current CDC state."
+                      expressionType="Notify"
+                      name="StateVariable"
+                      typeConverter="Attunity.SqlServer.CDCSrc.PackageVariablesTypeConverter">User::CDC_State_Trabalhador</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the content of the metadata columns and the rows returned. Modes starting with ‘All’ return all changes and modes starting with ‘Net’ return net changes."
+                      expressionType="Notify"
+                      name="CDCProcessingMode"
+                      typeConverter="Attunity.SqlServer.CDCSrc.CdcProcessingMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The name of the CDC capture instance. By default the capture instance name is in the form of &quot;&lt;owner&gt;_&lt;table&gt;&quot;. The actual table that stores the changes is the CDC table named &quot;cdc&quot;.&quot;&lt;capture-instance&gt;_CT&quot;"
+                      expressionType="Notify"
+                      name="CaptureInstance">dbo_trabalhador</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time out."
+                      expressionType="Notify"
+                      name="CommandTimeout">30</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="If true, a special output column called ‘__$reprocessing ’ is added. This output column is true for each data row during the initial processing range, or when the previous CDC run&#xA;was stopped without finishing. The default value is false (the __$reprocessing output column is not generated). This special output column allows the SSIS developer to handle consistency errors differently when working on the Initial Processing Range or the previous CDC run was stopped."
+                      expressionType="Notify"
+                      name="ReprocessingIndication">false</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Attunity.CdcSourceComponent</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Connections[Connection]"
+                      connectionManagerID="{5E0C9558-AF25-45E4-8476-BB810860EE6C}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock_ADO]"
+                      name="Connection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output]"
+                      name="Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[__$start_lsn]"
+                          dataType="bytes"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[__$start_lsn]"
+                          length="10"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[__$start_lsn]"
+                          name="__$start_lsn"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[__$operation]"
+                          dataType="i4"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[__$operation]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[__$operation]"
+                          name="__$operation"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[__$update_mask]"
+                          dataType="bytes"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[__$update_mask]"
+                          length="128"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[__$update_mask]"
+                          name="__$update_mask"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[id]"
+                          dataType="i4"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[id]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[id]"
+                          name="id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[numero_trabalhador]"
+                          dataType="wstr"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[numero_trabalhador]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[numero_trabalhador]"
+                          name="numero_trabalhador"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[genero]"
+                          dataType="wstr"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[genero]"
+                          length="5"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[genero]"
+                          name="genero"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[nome_completo]"
+                          dataType="wstr"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[nome_completo]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[nome_completo]"
+                          name="nome_completo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[cartao_cidadao]"
+                          dataType="wstr"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[cartao_cidadao]"
+                          length="20"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[cartao_cidadao]"
+                          name="cartao_cidadao"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[nif]"
+                          dataType="wstr"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[nif]"
+                          length="20"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[nif]"
+                          name="nif"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[niss]"
+                          dataType="wstr"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[niss]"
+                          length="20"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[niss]"
+                          name="niss"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[autorizacao_de_residencia]"
+                          dataType="wstr"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[autorizacao_de_residencia]"
+                          length="20"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[autorizacao_de_residencia]"
+                          name="autorizacao_de_residencia"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[morada]"
+                          dataType="wstr"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[morada]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[morada]"
+                          name="morada"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[codigo_postal]"
+                          dataType="wstr"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[codigo_postal]"
+                          length="10"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[codigo_postal]"
+                          name="codigo_postal"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[id_freguesia]"
+                          dataType="i4"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[id_freguesia]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[id_freguesia]"
+                          name="id_freguesia"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[id_pais_nacionalidade]"
+                          dataType="i4"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[id_pais_nacionalidade]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[id_pais_nacionalidade]"
+                          name="id_pais_nacionalidade"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[id_pais_naturalidade]"
+                          dataType="i4"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[id_pais_naturalidade]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[id_pais_naturalidade]"
+                          name="id_pais_naturalidade"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[telefone]"
+                          dataType="wstr"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[telefone]"
+                          length="20"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[telefone]"
+                          name="telefone"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[email_pessoal]"
+                          dataType="wstr"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[email_pessoal]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[email_pessoal]"
+                          name="email_pessoal"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[email_profissional]"
+                          dataType="wstr"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[email_profissional]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[email_profissional]"
+                          name="email_profissional"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[__$command_id]"
+                          dataType="i4"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[__$command_id]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[__$command_id]"
+                          name="__$command_id"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[__$start_lsn]"
+                          dataType="bytes"
+                          length="10"
+                          name="__$start_lsn" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[__$operation]"
+                          dataType="i4"
+                          name="__$operation" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[__$update_mask]"
+                          dataType="bytes"
+                          length="128"
+                          name="__$update_mask" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[numero_trabalhador]"
+                          dataType="wstr"
+                          length="255"
+                          name="numero_trabalhador" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[genero]"
+                          dataType="wstr"
+                          length="5"
+                          name="genero" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[nome_completo]"
+                          dataType="wstr"
+                          length="255"
+                          name="nome_completo" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[cartao_cidadao]"
+                          dataType="wstr"
+                          length="20"
+                          name="cartao_cidadao" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[nif]"
+                          dataType="wstr"
+                          length="20"
+                          name="nif" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[niss]"
+                          dataType="wstr"
+                          length="20"
+                          name="niss" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[autorizacao_de_residencia]"
+                          dataType="wstr"
+                          length="20"
+                          name="autorizacao_de_residencia" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[morada]"
+                          dataType="wstr"
+                          length="255"
+                          name="morada" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[codigo_postal]"
+                          dataType="wstr"
+                          length="10"
+                          name="codigo_postal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[id_freguesia]"
+                          dataType="i4"
+                          name="id_freguesia" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[id_pais_nacionalidade]"
+                          dataType="i4"
+                          name="id_pais_nacionalidade" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[id_pais_naturalidade]"
+                          dataType="i4"
+                          name="id_pais_naturalidade" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[telefone]"
+                          dataType="wstr"
+                          length="20"
+                          name="telefone" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[email_pessoal]"
+                          dataType="wstr"
+                          length="255"
+                          name="email_pessoal" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[email_profissional]"
+                          dataType="wstr"
+                          length="255"
+                          name="email_profissional" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].ExternalColumns[__$command_id]"
+                          dataType="i4"
+                          name="__$command_id" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput]"
+                      isErrorOut="true"
+                      name="ErrorOutput">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[__$start_lsn]"
+                          dataType="bytes"
+                          length="10"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[__$start_lsn]"
+                          name="__$start_lsn" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[__$operation]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[__$operation]"
+                          name="__$operation" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[__$update_mask]"
+                          dataType="bytes"
+                          length="128"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[__$update_mask]"
+                          name="__$update_mask" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[id]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[id]"
+                          name="id" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[numero_trabalhador]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[numero_trabalhador]"
+                          name="numero_trabalhador" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[genero]"
+                          dataType="wstr"
+                          length="5"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[genero]"
+                          name="genero" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[nome_completo]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[nome_completo]"
+                          name="nome_completo" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[cartao_cidadao]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[cartao_cidadao]"
+                          name="cartao_cidadao" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[nif]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[nif]"
+                          name="nif" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[niss]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[niss]"
+                          name="niss" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[autorizacao_de_residencia]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[autorizacao_de_residencia]"
+                          name="autorizacao_de_residencia" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[morada]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[morada]"
+                          name="morada" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[codigo_postal]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[codigo_postal]"
+                          name="codigo_postal" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[id_freguesia]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[id_freguesia]"
+                          name="id_freguesia" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[id_pais_nacionalidade]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[id_pais_nacionalidade]"
+                          name="id_pais_nacionalidade" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[id_pais_naturalidade]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[id_pais_naturalidade]"
+                          name="id_pais_naturalidade" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[telefone]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[telefone]"
+                          name="telefone" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[email_pessoal]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[email_pessoal]"
+                          name="email_pessoal" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[email_profissional]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[email_profissional]"
+                          name="email_profissional" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[__$command_id]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[ErrorOutput].Columns[__$command_id]"
+                          name="__$command_id" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Attunity Ltd.; All Rights Reserved; http://www.attunity.com;"
+                  description="Directs a stream of net change records into different outputs based on the type of the change (Insert, Delete and Update). This allows specific handling for different types of change records."
+                  name="CDC Splitter"
+                  usesDispositions="true"
+                  version="9">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Attunity.CdcSplitterComponent</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input]"
+                      errorOrTruncationOperation="Operation of the changed row is not a valid one"
+                      errorRowDisposition="FailComponent"
+                      name="Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input].Columns[__$start_lsn]"
+                          cachedDataType="bytes"
+                          cachedLength="10"
+                          cachedName="__$start_lsn"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[__$start_lsn]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input].Columns[__$operation]"
+                          cachedDataType="i4"
+                          cachedName="__$operation"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[__$operation]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input].Columns[__$update_mask]"
+                          cachedDataType="bytes"
+                          cachedLength="128"
+                          cachedName="__$update_mask"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[__$update_mask]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input].Columns[id]"
+                          cachedDataType="i4"
+                          cachedName="id"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[id]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input].Columns[numero_trabalhador]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="numero_trabalhador"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[numero_trabalhador]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input].Columns[genero]"
+                          cachedDataType="wstr"
+                          cachedLength="5"
+                          cachedName="genero"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[genero]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input].Columns[nome_completo]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="nome_completo"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[nome_completo]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input].Columns[cartao_cidadao]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="cartao_cidadao"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[cartao_cidadao]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input].Columns[nif]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="nif"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[nif]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input].Columns[niss]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="niss"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[niss]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input].Columns[autorizacao_de_residencia]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="autorizacao_de_residencia"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[autorizacao_de_residencia]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input].Columns[morada]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="morada"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[morada]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input].Columns[codigo_postal]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="codigo_postal"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[codigo_postal]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input].Columns[id_freguesia]"
+                          cachedDataType="i4"
+                          cachedName="id_freguesia"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[id_freguesia]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input].Columns[id_pais_nacionalidade]"
+                          cachedDataType="i4"
+                          cachedName="id_pais_nacionalidade"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[id_pais_nacionalidade]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input].Columns[id_pais_naturalidade]"
+                          cachedDataType="i4"
+                          cachedName="id_pais_naturalidade"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[id_pais_naturalidade]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input].Columns[telefone]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="telefone"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[telefone]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input].Columns[email_pessoal]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="email_pessoal"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[email_pessoal]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input].Columns[email_profissional]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="email_profissional"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[email_profissional]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input].Columns[__$command_id]"
+                          cachedDataType="i4"
+                          cachedName="__$command_id"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[__$command_id]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Outputs[InsertOutput]"
+                      exclusionGroup="1"
+                      name="InsertOutput"
+                      synchronousInputId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Output type - Insert."
+                          name="OutputType"
+                          typeConverter="Attunity.SqlServer.CDCSplit.OutputType">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Outputs[DeleteOutput]"
+                      exclusionGroup="1"
+                      name="DeleteOutput"
+                      synchronousInputId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Output type - Delete."
+                          name="OutputType"
+                          typeConverter="Attunity.SqlServer.CDCSplit.OutputType">2</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Outputs[UpdateOutput]"
+                      exclusionGroup="1"
+                      name="UpdateOutput"
+                      synchronousInputId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Output type - Update."
+                          name="OutputType"
+                          typeConverter="Attunity.SqlServer.CDCSplit.OutputType">1</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Outputs[ErrorOutput]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="ErrorOutput"
+                      synchronousInputId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Output type - Error."
+                          name="OutputType"
+                          typeConverter="Attunity.SqlServer.CDCSplit.OutputType">3</property>
+                      </properties>
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Data Conversion genero"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion genero"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Data Conversion genero.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Data Conversion genero.Inputs[Data Conversion Input].Columns[genero]"
+                          cachedDataType="wstr"
+                          cachedLength="5"
+                          cachedName="genero"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[genero]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Data Conversion genero.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Sequence Container\Carregar dsa trabalhador incremental\Data Conversion genero.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Data Conversion genero.Outputs[Data Conversion Output].Columns[genero_]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="5"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Data Conversion genero.Outputs[Data Conversion Output].Columns[genero_]"
+                          name="genero_"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[genero]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Data Conversion genero.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Sequence Container\Carregar dsa trabalhador incremental\Data Conversion genero.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Data Conversion genero.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Data Conversion genero.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Data Conversion genero.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Data Conversion genero.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Sequence Container\Carregar dsa trabalhador incremental\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Derived Column.Outputs[Derived Column Output].Columns[end_date]"
+                          dataType="date"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Derived Column.Outputs[Derived Column Output].Columns[end_date]"
+                          name="end_date"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[System::StartTime]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[System::StartTime]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Sequence Container\Carregar dsa trabalhador incremental\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Gerar sk"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Gerar sk"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dsa].[Trabalhador_sk]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Gerar sk.Connections[OleDbConnection]"
+                      connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Gerar sk.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Gerar sk.Inputs[OLE DB Destination Input].Columns[numero_trabalhador]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="numero_trabalhador"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\Gerar sk.Inputs[OLE DB Destination Input].ExternalColumns[numero_trabalhador]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[numero_trabalhador]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Gerar sk.Inputs[OLE DB Destination Input].ExternalColumns[skTrabalhador]"
+                          dataType="i4"
+                          name="skTrabalhador" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Gerar sk.Inputs[OLE DB Destination Input].ExternalColumns[numero_trabalhador]"
+                          dataType="wstr"
+                          length="255"
+                          name="numero_trabalhador" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Gerar sk.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\Carregar dsa trabalhador incremental\Gerar sk.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Gerar sk.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Gerar sk.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Gerar sk.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Gerar sk.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Multicast"
+                  componentClassID="Microsoft.Multicast"
+                  contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+                  name="Multicast">
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Multicast.Inputs[Multicast Input 1]"
+                      name="Multicast Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Multicast.Outputs[Multicast Output 1]"
+                      deleteOutputOnPathDetached="true"
+                      name="Multicast Output 1"
+                      synchronousInputId="Package\Sequence Container\Carregar dsa trabalhador incremental\Multicast.Inputs[Multicast Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Multicast.Outputs[Multicast Output 2]"
+                      deleteOutputOnPathDetached="true"
+                      name="Multicast Output 2"
+                      synchronousInputId="Package\Sequence Container\Carregar dsa trabalhador incremental\Multicast.Inputs[Multicast Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Multicast.Outputs[Multicast Output 3]"
+                      dangling="true"
+                      deleteOutputOnPathDetached="true"
+                      name="Multicast Output 3"
+                      synchronousInputId="Package\Sequence Container\Carregar dsa trabalhador incremental\Multicast.Inputs[Multicast Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Carregar dsa trabalhador incremental\OLE DB Command"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="OLE DB Command"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">update dw.DimTrabalhador set end_date = ? where [NK_NumeroTrabalhador] = ? and end_date is null</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\OLE DB Command.Connections[OleDbConnection]"
+                      connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\OLE DB Command.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\OLE DB Command.Inputs[OLE DB Command Input].Columns[numero_trabalhador]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="numero_trabalhador"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[numero_trabalhador]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\OLE DB Command.Inputs[OLE DB Command Input].Columns[end_date]"
+                          cachedDataType="date"
+                          cachedName="end_date"
+                          externalMetadataColumnId="Package\Sequence Container\Carregar dsa trabalhador incremental\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Derived Column.Outputs[Derived Column Output].Columns[end_date]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          dataType="dbTimeStamp"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          dataType="wstr"
+                          length="255"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\OLE DB Command.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\Sequence Container\Carregar dsa trabalhador incremental\OLE DB Command.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\Sequence Container\Carregar dsa trabalhador incremental\OLE DB Command.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All"
+                  componentClassID="Microsoft.UnionAll"
+                  contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+                  name="Union All"
+                  version="1">
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1]"
+                      name="Union All Input 1">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1].Columns[__$start_lsn]"
+                          cachedDataType="bytes"
+                          cachedLength="10"
+                          cachedName="__$start_lsn"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[__$start_lsn]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[__$start_lsn]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1].Columns[__$operation]"
+                          cachedDataType="i4"
+                          cachedName="__$operation"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[__$operation]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[__$operation]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1].Columns[__$update_mask]"
+                          cachedDataType="bytes"
+                          cachedLength="128"
+                          cachedName="__$update_mask"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[__$update_mask]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[__$update_mask]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1].Columns[id]"
+                          cachedDataType="i4"
+                          cachedName="id"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[id]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[id]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1].Columns[numero_trabalhador]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="numero_trabalhador"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[numero_trabalhador]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[numero_trabalhador]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1].Columns[genero]"
+                          cachedDataType="wstr"
+                          cachedLength="5"
+                          cachedName="genero"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[genero]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[genero]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1].Columns[nome_completo]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="nome_completo"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[nome_completo]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[nome_completo]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1].Columns[cartao_cidadao]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="cartao_cidadao"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[cartao_cidadao]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[cartao_cidadao]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1].Columns[nif]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="nif"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[nif]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[nif]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1].Columns[niss]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="niss"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[niss]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[niss]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1].Columns[autorizacao_de_residencia]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="autorizacao_de_residencia"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[autorizacao_de_residencia]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[autorizacao_de_residencia]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1].Columns[morada]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="morada"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[morada]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[morada]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1].Columns[codigo_postal]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="codigo_postal"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[codigo_postal]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[codigo_postal]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1].Columns[id_freguesia]"
+                          cachedDataType="i4"
+                          cachedName="id_freguesia"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[id_freguesia]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[id_freguesia]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1].Columns[id_pais_nacionalidade]"
+                          cachedDataType="i4"
+                          cachedName="id_pais_nacionalidade"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[id_pais_nacionalidade]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[id_pais_nacionalidade]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1].Columns[id_pais_naturalidade]"
+                          cachedDataType="i4"
+                          cachedName="id_pais_naturalidade"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[id_pais_naturalidade]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[id_pais_naturalidade]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1].Columns[telefone]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="telefone"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[telefone]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[telefone]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1].Columns[email_pessoal]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="email_pessoal"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[email_pessoal]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[email_pessoal]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1].Columns[email_profissional]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="email_profissional"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[email_profissional]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[email_profissional]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1].Columns[__$command_id]"
+                          cachedDataType="i4"
+                          cachedName="__$command_id"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[__$command_id]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[__$command_id]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2]"
+                      hasSideEffects="true"
+                      name="Union All Input 2">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2].Columns[__$start_lsn]"
+                          cachedDataType="bytes"
+                          cachedLength="10"
+                          cachedName="__$start_lsn"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[__$start_lsn]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[__$start_lsn]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2].Columns[__$operation]"
+                          cachedDataType="i4"
+                          cachedName="__$operation"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[__$operation]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[__$operation]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2].Columns[__$update_mask]"
+                          cachedDataType="bytes"
+                          cachedLength="128"
+                          cachedName="__$update_mask"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[__$update_mask]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[__$update_mask]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2].Columns[id]"
+                          cachedDataType="i4"
+                          cachedName="id"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[id]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[id]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2].Columns[numero_trabalhador]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="numero_trabalhador"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[numero_trabalhador]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[numero_trabalhador]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2].Columns[genero]"
+                          cachedDataType="wstr"
+                          cachedLength="5"
+                          cachedName="genero"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[genero]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[genero]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2].Columns[nome_completo]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="nome_completo"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[nome_completo]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[nome_completo]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2].Columns[cartao_cidadao]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="cartao_cidadao"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[cartao_cidadao]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[cartao_cidadao]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2].Columns[nif]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="nif"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[nif]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[nif]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2].Columns[niss]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="niss"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[niss]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[niss]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2].Columns[autorizacao_de_residencia]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="autorizacao_de_residencia"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[autorizacao_de_residencia]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[autorizacao_de_residencia]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2].Columns[morada]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="morada"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[morada]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[morada]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2].Columns[codigo_postal]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="codigo_postal"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[codigo_postal]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[codigo_postal]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2].Columns[id_freguesia]"
+                          cachedDataType="i4"
+                          cachedName="id_freguesia"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[id_freguesia]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[id_freguesia]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2].Columns[id_pais_nacionalidade]"
+                          cachedDataType="i4"
+                          cachedName="id_pais_nacionalidade"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[id_pais_nacionalidade]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[id_pais_nacionalidade]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2].Columns[id_pais_naturalidade]"
+                          cachedDataType="i4"
+                          cachedName="id_pais_naturalidade"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[id_pais_naturalidade]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[id_pais_naturalidade]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2].Columns[telefone]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="telefone"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[telefone]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[telefone]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2].Columns[email_pessoal]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="email_pessoal"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[email_pessoal]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[email_pessoal]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2].Columns[email_profissional]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="email_profissional"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[email_profissional]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[email_profissional]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2].Columns[__$command_id]"
+                          cachedDataType="i4"
+                          cachedName="__$command_id"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output].Columns[__$command_id]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[__$command_id]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 3]"
+                      dangling="true"
+                      hasSideEffects="true"
+                      name="Union All Input 3">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1]"
+                      name="Union All Output 1">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[__$start_lsn]"
+                          dataType="bytes"
+                          length="10"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[__$start_lsn]"
+                          name="__$start_lsn" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[__$operation]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[__$operation]"
+                          name="__$operation" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[__$update_mask]"
+                          dataType="bytes"
+                          length="128"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[__$update_mask]"
+                          name="__$update_mask" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[id]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[id]"
+                          name="id" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[numero_trabalhador]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[numero_trabalhador]"
+                          name="numero_trabalhador" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[genero]"
+                          dataType="wstr"
+                          length="5"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[genero]"
+                          name="genero" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[nome_completo]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[nome_completo]"
+                          name="nome_completo" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[cartao_cidadao]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[cartao_cidadao]"
+                          name="cartao_cidadao" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[nif]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[nif]"
+                          name="nif" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[niss]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[niss]"
+                          name="niss" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[autorizacao_de_residencia]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[autorizacao_de_residencia]"
+                          name="autorizacao_de_residencia" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[morada]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[morada]"
+                          name="morada" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[codigo_postal]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[codigo_postal]"
+                          name="codigo_postal" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[id_freguesia]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[id_freguesia]"
+                          name="id_freguesia" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[id_pais_nacionalidade]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[id_pais_nacionalidade]"
+                          name="id_pais_nacionalidade" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[id_pais_naturalidade]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[id_pais_naturalidade]"
+                          name="id_pais_naturalidade" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[telefone]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[telefone]"
+                          name="telefone" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[email_pessoal]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[email_pessoal]"
+                          name="email_pessoal" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[email_profissional]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[email_profissional]"
+                          name="email_profissional" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[__$command_id]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1].Columns[__$command_id]"
+                          name="__$command_id" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\Carregar dsa trabalhador incremental.Paths[Data Conversion Output]"
+                  endId="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador.Inputs[OLE DB Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\Sequence Container\Carregar dsa trabalhador incremental\Data Conversion genero.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Sequence Container\Carregar dsa trabalhador incremental.Paths[DeleteOutput]"
+                  endId="Package\Sequence Container\Carregar dsa trabalhador incremental\Derived Column.Inputs[Derived Column Input]"
+                  name="DeleteOutput"
+                  startId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Outputs[DeleteOutput]" />
+                <path
+                  refId="Package\Sequence Container\Carregar dsa trabalhador incremental.Paths[Derived Column Output]"
+                  endId="Package\Sequence Container\Carregar dsa trabalhador incremental\OLE DB Command.Inputs[OLE DB Command Input]"
+                  name="Derived Column Output"
+                  startId="Package\Sequence Container\Carregar dsa trabalhador incremental\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Sequence Container\Carregar dsa trabalhador incremental.Paths[InsertOutput]"
+                  endId="Package\Sequence Container\Carregar dsa trabalhador incremental\Multicast.Inputs[Multicast Input 1]"
+                  name="InsertOutput"
+                  startId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Outputs[InsertOutput]" />
+                <path
+                  refId="Package\Sequence Container\Carregar dsa trabalhador incremental.Paths[Multicast Output 1]"
+                  endId="Package\Sequence Container\Carregar dsa trabalhador incremental\Gerar sk.Inputs[OLE DB Destination Input]"
+                  name="Multicast Output 1"
+                  startId="Package\Sequence Container\Carregar dsa trabalhador incremental\Multicast.Outputs[Multicast Output 1]" />
+                <path
+                  refId="Package\Sequence Container\Carregar dsa trabalhador incremental.Paths[Multicast Output 2]"
+                  endId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 1]"
+                  name="Multicast Output 2"
+                  startId="Package\Sequence Container\Carregar dsa trabalhador incremental\Multicast.Outputs[Multicast Output 2]" />
+                <path
+                  refId="Package\Sequence Container\Carregar dsa trabalhador incremental.Paths[Output]"
+                  endId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Inputs[Input]"
+                  name="Output"
+                  startId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador.Outputs[Output]" />
+                <path
+                  refId="Package\Sequence Container\Carregar dsa trabalhador incremental.Paths[Union All Output 1]"
+                  endId="Package\Sequence Container\Carregar dsa trabalhador incremental\Data Conversion genero.Inputs[Data Conversion Input]"
+                  name="Union All Output 1"
+                  startId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Outputs[Union All Output 1]" />
+                <path
+                  refId="Package\Sequence Container\Carregar dsa trabalhador incremental.Paths[UpdateOutput]"
+                  endId="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All.Inputs[Union All Input 2]"
+                  name="UpdateOutput"
+                  startId="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter.Outputs[UpdateOutput]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\CDC Marca ETL incremental"
+          DTS:CreationName="Attunity.CdcControlTask"
+          DTS:Description="CDC Control Task"
+          DTS:DTSID="{976DC061-A4FF-44AA-9825-CF265E7F17E5}"
+          DTS:ExecutableType="Attunity.CdcControlTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CDC Marca ETL incremental"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <CDCControlTask
+              Connection="LocalHost.gestao_stock_ADO"
+              TaskOperation="GetProcessingRange"
+              OperationParameter=""
+              StateConnection="LocalHost.gestao_stock_ADO"
+              StateVariable="User::CDC_State_Trabalhador"
+              AutomaticStatePersistence="True"
+              StateName="CDC_State_Trabalhador"
+              StateTable="[dsa].[cdc_states]"
+              CommandTimeout="30"
+              ChangeDetectionRetryInterval="10"
+              ChangeDetectionTimeout="60" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\CDC Marca fim ETL incremental"
+          DTS:CreationName="Attunity.CdcControlTask"
+          DTS:Description="CDC Control Task"
+          DTS:DTSID="{B00EF80A-4D6F-4246-BF6C-623367B4CBDF}"
+          DTS:ExecutableType="Attunity.CdcControlTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CDC Marca fim ETL incremental"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <CDCControlTask
+              Connection="LocalHost.gestao_stock_ADO"
+              TaskOperation="MarkProcessedRange"
+              OperationParameter=""
+              StateConnection="LocalHost.gestao_stock_ADO"
+              StateVariable="User::CDC_State_Trabalhador"
+              AutomaticStatePersistence="True"
+              StateName="CDC_State_Trabalhador"
+              StateTable="[dsa].[cdc_states]"
+              CommandTimeout="30"
+              ChangeDetectionRetryInterval="10"
+              ChangeDetectionTimeout="60" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{2FE2E8EF-3A11-4357-A9A9-F81EE782D829}"
+          DTS:From="Package\Sequence Container\CDC Marca ETL incremental"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Sequence Container\Carregar dsa trabalhador incremental" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{EB719E7E-A472-474E-AC5C-F9875194F2AC}"
+          DTS:From="Package\Sequence Container\Carregar dsa trabalhador incremental"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Sequence Container\CDC Marca fim ETL incremental" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{0E650E3A-97BF-4340-B362-7AADC1F67A24}"
+      DTS:From="Package\Limpar dsa Trabalhador"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sequence Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="188.8,41.6"
+          Id="Package\Limpar dsa Trabalhador"
+          TopLeft="393.333315120804,45.2666667691204" />
+        <NodeLayout
+          Size="251.2,41.6"
+          Id="Package\Sequence Container\Carregar dsa trabalhador incremental"
+          TopLeft="54.6666639803185,124.19999745071" />
+        <NodeLayout
+          Size="211.2,41.6"
+          Id="Package\Sequence Container\CDC Marca ETL incremental"
+          TopLeft="68.8333298729526,25.3999981377516" />
+        <NodeLayout
+          Size="228,41.6"
+          Id="Package\Sequence Container\CDC Marca fim ETL incremental"
+          TopLeft="67.9999965851505,228.199996727507" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="177.349996926636,66.9999981377517">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.199999312958"
+              Start="0,0"
+              End="0,49.699999312958">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.699999312958" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="181.133330282735,165.79999745071">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62.399999276797"
+              Start="0,0"
+              End="0,54.899999276797">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.899999276797" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="351.2,324.8"
+          Size="351.2,368"
+          Id="Package\Sequence Container"
+          TopLeft="308.333316486743,140.399999023676" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="485.833315803774,86.8666667691204">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53.5333322545557"
+              Start="0,0"
+              End="0,46.0333322545557">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.0333322545557" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Carregar dsa trabalhador incremental">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="167.2,41.6"
+          Id="Package\Sequence Container\Carregar dsa trabalhador incremental\OLE DB Command"
+          TopLeft="548.333303373722,337.13333098895" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Sequence Container\Carregar dsa trabalhador incremental\Derived Column"
+          TopLeft="485.833306788572,251.333331585593" />
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Sequence Container\Carregar dsa trabalhador incremental\Union All"
+          TopLeft="297.499983745317,372.666664075189" />
+        <NodeLayout
+          Size="119.2,41.6"
+          Id="Package\Sequence Container\Carregar dsa trabalhador incremental\Multicast"
+          TopLeft="190.83332290666,266.933331477112" />
+        <NodeLayout
+          Size="118.4,41.6"
+          Id="Package\Sequence Container\Carregar dsa trabalhador incremental\Gerar sk"
+          TopLeft="119.999993443489,369.199997432629" />
+        <NodeLayout
+          Size="136,41.6"
+          Id="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Splitter"
+          TopLeft="282.499984564881,160.333332218395" />
+        <NodeLayout
+          Size="191.2,41.6"
+          Id="Package\Sequence Container\Carregar dsa trabalhador incremental\Data Conversion genero"
+          TopLeft="321.666649091576,454.999996835987" />
+        <NodeLayout
+          Size="194.4,41.6"
+          Id="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador"
+          TopLeft="321.666649091576,546.866662863824" />
+        <NodeLayout
+          Size="218.4,41.6"
+          Id="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador"
+          TopLeft="234.166653872365,54.5999996203184" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Carregar dsa trabalhador incremental.Paths[DeleteOutput]"
+          TopLeft="382.499984564881,201.933332218395">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="179.73332222369,49.3999993671974"
+              Start="0,0"
+              End="179.73332222369,41.8999993671974">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.099999780953" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.099999780953"
+                    Point2="0,17.099999780953"
+                    Point3="4,17.099999780953" />
+                  <mssgle:LineSegment
+                    End="175.73332222369,17.099999780953" />
+                  <mssgle:CubicBezierSegment
+                    Point1="175.73332222369,17.099999780953"
+                    Point2="179.73332222369,17.099999780953"
+                    Point3="179.73332222369,21.099999780953" />
+                  <mssgle:LineSegment
+                    End="179.73332222369,41.8999993671974" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="59.9202743930951,22.099999780953,59.8927734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Carregar dsa trabalhador incremental.Paths[Data Conversion Output]"
+          TopLeft="418.066649091576,496.599996835987">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.2666660278367"
+              Start="0,0"
+              End="0,42.7666660278367">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.7666660278367" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Carregar dsa trabalhador incremental.Paths[UpdateOutput]"
+          TopLeft="373.999984155099,201.933332218395">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,170.733331856794"
+              Start="0,0"
+              End="0,163.233331856794">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,163.233331856794" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-31.63033203125,75.8119784283969,63.2606640625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Carregar dsa trabalhador incremental.Paths[Union All Output 1]"
+          TopLeft="357.499983745317,414.266664075189">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="59.7666653462582,40.7333327607977"
+              Start="0,0"
+              End="59.7666653462582,33.2333327607977">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.3666663803988" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.3666663803988"
+                    Point2="0,20.3666663803988"
+                    Point3="4,20.3666663803988" />
+                  <mssgle:LineSegment
+                    End="55.7666653462582,20.3666663803988" />
+                  <mssgle:CubicBezierSegment
+                    Point1="55.7666653462582,20.3666663803988"
+                    Point2="59.7666653462582,20.3666663803988"
+                    Point3="59.7666653462582,24.3666663803988" />
+                  <mssgle:LineSegment
+                    End="59.7666653462582,33.2333327607977" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Carregar dsa trabalhador incremental.Paths[Output]"
+          TopLeft="346.933319218623,96.1999996203184">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64.1333325980769"
+              Start="0,0"
+              End="0,56.6333325980769">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.6333325980769" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Carregar dsa trabalhador incremental.Paths[Multicast Output 2]"
+          TopLeft="268.966656239994,308.533331477112">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="88.5333275053238,64.1333325980768"
+              Start="0,0"
+              End="88.5333275053238,56.6333325980768">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.1630019075598" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.1630019075598"
+                    Point2="0,26.1630019075598"
+                    Point3="4,26.1630019075598" />
+                  <mssgle:LineSegment
+                    End="84.5333275053238,26.1630019075598" />
+                  <mssgle:CubicBezierSegment
+                    Point1="84.5333275053238,26.1630019075598"
+                    Point2="88.5333275053238,26.1630019075598"
+                    Point3="88.5333275053238,30.1630019075598" />
+                  <mssgle:LineSegment
+                    End="88.5333275053238,56.6333325980768" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Carregar dsa trabalhador incremental.Paths[Multicast Output 1]"
+          TopLeft="231.899989573327,308.533331477112">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-52.6999961298375,60.6666659555171"
+              Start="0,0"
+              End="-52.6999961298375,53.1666659555171">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.7487855818534" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.7487855818534"
+                    Point2="0,24.7487855818534"
+                    Point3="-4,24.7487855818534" />
+                  <mssgle:LineSegment
+                    End="-48.6999961298375,24.7487855818534" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-48.6999961298375,24.7487855818534"
+                    Point2="-52.6999961298375,24.7487855818534"
+                    Point3="-52.6999961298375,28.7487855818534" />
+                  <mssgle:LineSegment
+                    End="-52.6999961298375,53.1666659555171" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Carregar dsa trabalhador incremental.Paths[InsertOutput]"
+          TopLeft="350.499984564881,201.933332218395">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-100.066661658221,64.999999258717"
+              Start="0,0"
+              End="-100.066661658221,57.499999258717">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.4999996293585" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.4999996293585"
+                    Point2="0,32.4999996293585"
+                    Point3="-4,32.4999996293585" />
+                  <mssgle:LineSegment
+                    End="-96.0666616582211,32.4999996293585" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-96.0666616582211,32.4999996293585"
+                    Point2="-100.066661658221,32.4999996293585"
+                    Point3="-100.066661658221,36.4999996293585" />
+                  <mssgle:LineSegment
+                    End="-100.066661658221,57.499999258717" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-79.0113191103606,37.4999996293585,57.9559765625,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Carregar dsa trabalhador incremental.Paths[Derived Column Output]"
+          TopLeft="562.233306788572,292.933331585593">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="69.6999965851506,44.1999994033576"
+              Start="0,0"
+              End="69.6999965851506,36.6999994033576">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.0999997016788" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.0999997016788"
+                    Point2="0,22.0999997016788"
+                    Point3="4,22.0999997016788" />
+                  <mssgle:LineSegment
+                    End="65.6999965851506,22.0999997016788" />
+                  <mssgle:CubicBezierSegment
+                    Point1="65.6999965851506,22.0999997016788"
+                    Point2="69.6999965851506,22.0999997016788"
+                    Point3="69.6999965851506,26.0999997016788" />
+                  <mssgle:LineSegment
+                    End="69.6999965851506,36.6999994033576" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Carregar dsa trabalhador incremental\Gerar sk">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Carregar dsa trabalhador incremental\Carregar dsa trabalhador">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Carregar dsa trabalhador incremental\CDC Source - dbo trabalhador">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

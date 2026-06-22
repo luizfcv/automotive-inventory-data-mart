@@ -1,0 +1,529 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/30/2026 11:31:06 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LUIZ"
+  DTS:CreatorName="LUIZ\luiz"
+  DTS:DTSID="{F9CD3512-C2C9-4DDF-9649-D654F0B2872A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="2070"
+  DTS:ObjectName="003_DM_DimTipoMovimento"
+  DTS:PackageType="5"
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{738CEAEE-95C1-41C2-BDC4-F639D4361857}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{89F49FB9-2C1B-492A-B36B-8E92B64957A2}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\luizf\OneDrive - ISCTE-IUL\Faculdade\MSIAD\Ano 1\Semestre 2\SIAII\Trabalho\Entrega Final\Grupo_3_DimTipoMovimento.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load DimTipoMovimento"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D5EC51C8-D137-4D45-AD7C-FE98FA73F168}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load DimTipoMovimento"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Carregar dw DimTipoMovimento"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dw].[DimTipoMovimento]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento.Connections[OleDbConnection]"
+                  connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento.Inputs[OLE DB Destination Input].Columns[TipoSaida]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TipoSaida"
+                      externalMetadataColumnId="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento.Inputs[OLE DB Destination Input].ExternalColumns[TipoSaida]"
+                      lineageId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Output].Columns[TipoSaida]" />
+                    <inputColumn
+                      refId="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento.Inputs[OLE DB Destination Input].Columns[sk_TipoMovimento]"
+                      cachedDataType="r8"
+                      cachedName="sk_TipoMovimento"
+                      externalMetadataColumnId="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento.Inputs[OLE DB Destination Input].ExternalColumns[sk_TipoMovimento]"
+                      lineageId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Output].Columns[sk_TipoMovimento]" />
+                    <inputColumn
+                      refId="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento.Inputs[OLE DB Destination Input].Columns[TipoConverted]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="TipoConverted"
+                      externalMetadataColumnId="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento.Inputs[OLE DB Destination Input].ExternalColumns[Tipo]"
+                      lineageId="Package\Load DimTipoMovimento\Data Conversion.Outputs[Data Conversion Output].Columns[TipoConverted]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento.Inputs[OLE DB Destination Input].ExternalColumns[sk_TipoMovimento]"
+                      dataType="i4"
+                      name="sk_TipoMovimento" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento.Inputs[OLE DB Destination Input].ExternalColumns[Tipo]"
+                      dataType="wstr"
+                      length="50"
+                      name="Tipo" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento.Inputs[OLE DB Destination Input].ExternalColumns[TipoSaida]"
+                      dataType="wstr"
+                      length="255"
+                      name="TipoSaida" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DimTipoMovimento\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load DimTipoMovimento\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load DimTipoMovimento\Data Conversion.Inputs[Data Conversion Input].Columns[Tipo]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Tipo"
+                      lineageId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Output].Columns[Tipo]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DimTipoMovimento\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Load DimTipoMovimento\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DimTipoMovimento\Data Conversion.Outputs[Data Conversion Output].Columns[TipoConverted]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load DimTipoMovimento\Data Conversion.Outputs[Data Conversion Output].Columns[TipoConverted]"
+                      name="TipoConverted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Output].Columns[Tipo]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DimTipoMovimento\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Load DimTipoMovimento\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DimTipoMovimento\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DimTipoMovimento\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DimTipoMovimento\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DimTipoMovimento\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DimTipoMovimento\Obter dados TipoMovimento"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Obter dados TipoMovimento"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">TipoMovimento$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Output].Columns[sk_TipoMovimento]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Output].ExternalColumns[sk_TipoMovimento]"
+                      lineageId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Output].Columns[sk_TipoMovimento]"
+                      name="sk_TipoMovimento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Output].Columns[Tipo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Output].ExternalColumns[Tipo]"
+                      length="255"
+                      lineageId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Output].Columns[Tipo]"
+                      name="Tipo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Output].Columns[TipoSaida]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Output].ExternalColumns[TipoSaida]"
+                      length="255"
+                      lineageId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Output].Columns[TipoSaida]"
+                      name="TipoSaida"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Output].ExternalColumns[sk_TipoMovimento]"
+                      dataType="r8"
+                      name="sk_TipoMovimento" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Output].ExternalColumns[Tipo]"
+                      dataType="wstr"
+                      length="255"
+                      name="Tipo" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Output].ExternalColumns[TipoSaida]"
+                      dataType="wstr"
+                      length="255"
+                      name="TipoSaida" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Error Output].Columns[sk_TipoMovimento]"
+                      dataType="r8"
+                      lineageId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Error Output].Columns[sk_TipoMovimento]"
+                      name="sk_TipoMovimento" />
+                    <outputColumn
+                      refId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Error Output].Columns[Tipo]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Error Output].Columns[Tipo]"
+                      name="Tipo" />
+                    <outputColumn
+                      refId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Error Output].Columns[TipoSaida]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Error Output].Columns[TipoSaida]"
+                      name="TipoSaida" />
+                    <outputColumn
+                      refId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load DimTipoMovimento.Paths[Data Conversion Output]"
+              endId="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Load DimTipoMovimento\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Load DimTipoMovimento.Paths[Excel Source Output]"
+              endId="Package\Load DimTipoMovimento\Data Conversion.Inputs[Data Conversion Input]"
+              name="Excel Source Output"
+              startId="Package\Load DimTipoMovimento\Obter dados TipoMovimento.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="194.4,41.6"
+          Id="Package\Load DimTipoMovimento"
+          TopLeft="257.29165260887,299.216664585952" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load DimTipoMovimento">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="209.6,41.6"
+          Id="Package\Load DimTipoMovimento\Obter dados TipoMovimento"
+          TopLeft="408.333311022984,91.8666660278373" />
+        <NodeLayout
+          Size="228,41.6"
+          Id="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento"
+          TopLeft="394.499994022152,260.533329630162" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\Load DimTipoMovimento\Data Conversion"
+          TopLeft="435.833309520451,168.133332164155" />
+        <EdgeLayout
+          Id="Package\Load DimTipoMovimento.Paths[Excel Source Output]"
+          TopLeft="513.483310271717,133.466666027837">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.6666661363178"
+              Start="0,0"
+              End="0,27.1666661363178">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.1666661363178" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load DimTipoMovimento.Paths[Data Conversion Output]"
+          TopLeft="511.166651771301,209.733332164155">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.7999974660073"
+              Start="0,0"
+              End="0,43.2999974660073">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.2999974660073" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load DimTipoMovimento\Carregar dw DimTipoMovimento">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load DimTipoMovimento\Obter dados TipoMovimento">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

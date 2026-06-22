@@ -1,0 +1,1524 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/5/2026 9:28:39 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LUIZ"
+  DTS:CreatorName="LUIZ\luiz"
+  DTS:DTSID="{4CB53764-6042-40D6-B4E3-A2FE7A99FAF8}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="2070"
+  DTS:ObjectName="100_DSA_TFMovimentoStock"
+  DTS:PackageType="5"
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{590B0A19-3ED9-48E8-9C5C-6DA8B2CEC113}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CF55FCE0-34E4-404E-BD1A-CB3881E3037F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="DataInicio_Entrada">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/2024</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9B9AAB1D-2A5D-4F6B-889C-15C7E54FBFA4}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="DataInicio_Saida">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/2024</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E3D979A3-DF88-4357-8DA5-2F0D5FE35AC7}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TabelaEntrada">
+      <DTS:VariableValue
+        DTS:DataType="8">entrada</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D671D7ED-6C3B-406A-8B0D-8A9F421B1B80}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TabelaSaida">
+      <DTS:VariableValue
+        DTS:DataType="8">saida</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Atualizar ETL cutoff entrada"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{B135E697-352C-4723-BB27-E49F670FA0AD}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Atualizar ETL cutoff entrada"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+          SQLTask:SqlStatementSource="INSERT INTO dsa.Control_ETL_Table (TableName, ETL_execution_date)&#xA;VALUES (?, ?);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::TabelaEntrada"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Atualizar ETL cutoff saída"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{923dda7a-97ad-45f2-9fca-61576b05b7fc}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Atualizar ETL cutoff saída"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+          SQLTask:SqlStatementSource="INSERT INTO dsa.Control_ETL_Table (TableName, ETL_execution_date)&#xA;VALUES (?, ?);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::TabelaSaida"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Carregar dsa entrada"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{002D20C2-9718-4B73-9B3D-2D7233E9D037}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carregar dsa entrada"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carregar dsa entrada\Carregar dsa entrada"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Carregar dsa entrada"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dsa].[Entrada]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carregar dsa entrada\Carregar dsa entrada.Connections[OleDbConnection]"
+                  connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].Columns[id_produto]"
+                      cachedDataType="i4"
+                      cachedName="id_produto"
+                      externalMetadataColumnId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].ExternalColumns[id_produto]"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[id_produto]" />
+                    <inputColumn
+                      refId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].Columns[id_trabalhador]"
+                      cachedDataType="i4"
+                      cachedName="id_trabalhador"
+                      externalMetadataColumnId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].ExternalColumns[id_trabalhador]"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[id_trabalhador]" />
+                    <inputColumn
+                      refId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].Columns[id_fornecedor]"
+                      cachedDataType="i4"
+                      cachedName="id_fornecedor"
+                      externalMetadataColumnId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].ExternalColumns[id_fornecedor]"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[id_fornecedor]" />
+                    <inputColumn
+                      refId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].Columns[id_armazem]"
+                      cachedDataType="i4"
+                      cachedName="id_armazem"
+                      externalMetadataColumnId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].ExternalColumns[id_armazem]"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[id_armazem]" />
+                    <inputColumn
+                      refId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].Columns[data_hora]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="data_hora"
+                      externalMetadataColumnId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].ExternalColumns[data_hora]"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[data_hora]" />
+                    <inputColumn
+                      refId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].Columns[quantidade]"
+                      cachedDataType="i4"
+                      cachedName="quantidade"
+                      externalMetadataColumnId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].ExternalColumns[quantidade]"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[quantidade]" />
+                    <inputColumn
+                      refId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].Columns[identificador_documento]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="identificador_documento"
+                      externalMetadataColumnId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].ExternalColumns[identificador_documento]"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[identificador_documento]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].ExternalColumns[id_produto]"
+                      dataType="i4"
+                      name="id_produto" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].ExternalColumns[id_trabalhador]"
+                      dataType="i4"
+                      name="id_trabalhador" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].ExternalColumns[id_fornecedor]"
+                      dataType="i4"
+                      name="id_fornecedor" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].ExternalColumns[id_armazem]"
+                      dataType="i4"
+                      name="id_armazem" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].ExternalColumns[data_hora]"
+                      dataType="dbTimeStamp2"
+                      name="data_hora" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].ExternalColumns[quantidade]"
+                      dataType="i4"
+                      name="quantidade" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input].ExternalColumns[identificador_documento]"
+                      dataType="wstr"
+                      length="255"
+                      name="identificador_documento" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar dsa entrada\Carregar dsa entrada.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar dsa entrada\Carregar dsa entrada.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dsa entrada\Carregar dsa entrada.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar dsa entrada\Carregar dsa entrada.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dsa entrada\Carregar dsa entrada.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar dsa entrada\Obter dbo entrada"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Obter dbo entrada"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[entrada]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 
+    id,
+    id_produto,
+    id_trabalhador,
+    id_fornecedor,
+    id_armazem,
+    data_hora,
+    quantidade,
+    identificador_documento
+FROM dbo.entrada
+WHERE data_hora &gt; ? AND data_hora &lt;= ?;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0:Input",{CF55FCE0-34E4-404E-BD1A-CB3881E3037F};"Parameter1:Input",System::StartTime;</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carregar dsa entrada\Obter dbo entrada.Connections[OleDbConnection]"
+                  connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[id_produto]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].ExternalColumns[id_produto]"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[id_produto]"
+                      name="id_produto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[id_trabalhador]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].ExternalColumns[id_trabalhador]"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[id_trabalhador]"
+                      name="id_trabalhador"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[id_fornecedor]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].ExternalColumns[id_fornecedor]"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[id_fornecedor]"
+                      name="id_fornecedor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[id_armazem]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].ExternalColumns[id_armazem]"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[id_armazem]"
+                      name="id_armazem"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[data_hora]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].ExternalColumns[data_hora]"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[data_hora]"
+                      name="data_hora"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[quantidade]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].ExternalColumns[quantidade]"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[quantidade]"
+                      name="quantidade"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[identificador_documento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].ExternalColumns[identificador_documento]"
+                      length="255"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].Columns[identificador_documento]"
+                      name="identificador_documento"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].ExternalColumns[id_produto]"
+                      dataType="i4"
+                      name="id_produto" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].ExternalColumns[id_trabalhador]"
+                      dataType="i4"
+                      name="id_trabalhador" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].ExternalColumns[id_fornecedor]"
+                      dataType="i4"
+                      name="id_fornecedor" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].ExternalColumns[id_armazem]"
+                      dataType="i4"
+                      name="id_armazem" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].ExternalColumns[data_hora]"
+                      dataType="dbTimeStamp2"
+                      name="data_hora" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].ExternalColumns[quantidade]"
+                      dataType="i4"
+                      name="quantidade" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output].ExternalColumns[identificador_documento]"
+                      dataType="wstr"
+                      length="255"
+                      name="identificador_documento" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output].Columns[id_produto]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output].Columns[id_produto]"
+                      name="id_produto" />
+                    <outputColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output].Columns[id_trabalhador]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output].Columns[id_trabalhador]"
+                      name="id_trabalhador" />
+                    <outputColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output].Columns[id_fornecedor]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output].Columns[id_fornecedor]"
+                      name="id_fornecedor" />
+                    <outputColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output].Columns[id_armazem]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output].Columns[id_armazem]"
+                      name="id_armazem" />
+                    <outputColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output].Columns[data_hora]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output].Columns[data_hora]"
+                      name="data_hora" />
+                    <outputColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output].Columns[quantidade]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output].Columns[quantidade]"
+                      name="quantidade" />
+                    <outputColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output].Columns[identificador_documento]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output].Columns[identificador_documento]"
+                      name="identificador_documento" />
+                    <outputColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carregar dsa entrada.Paths[OLE DB Source Output]"
+              endId="Package\Carregar dsa entrada\Carregar dsa entrada.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Carregar dsa entrada\Obter dbo entrada.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Carregar dsa saida"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D0C8BCA7-8E7F-45A6-BF96-9A210F6413D4}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carregar dsa saida"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carregar dsa saida\Carregar dsa saida"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Carregar dsa saida"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dsa].[Saida]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carregar dsa saida\Carregar dsa saida.Connections[OleDbConnection]"
+                  connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].Columns[id_produto]"
+                      cachedDataType="i4"
+                      cachedName="id_produto"
+                      externalMetadataColumnId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].ExternalColumns[id_produto]"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[id_produto]" />
+                    <inputColumn
+                      refId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].Columns[id_trabalhador]"
+                      cachedDataType="i4"
+                      cachedName="id_trabalhador"
+                      externalMetadataColumnId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].ExternalColumns[id_trabalhador]"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[id_trabalhador]" />
+                    <inputColumn
+                      refId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].Columns[id_armazem]"
+                      cachedDataType="i4"
+                      cachedName="id_armazem"
+                      externalMetadataColumnId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].ExternalColumns[id_armazem]"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[id_armazem]" />
+                    <inputColumn
+                      refId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].Columns[data_hora]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="data_hora"
+                      externalMetadataColumnId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].ExternalColumns[data_hora]"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[data_hora]" />
+                    <inputColumn
+                      refId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].Columns[tipo_saida]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="tipo_saida"
+                      externalMetadataColumnId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].ExternalColumns[tipo_saida]"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[tipo_saida]" />
+                    <inputColumn
+                      refId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].Columns[quantidade]"
+                      cachedDataType="i4"
+                      cachedName="quantidade"
+                      externalMetadataColumnId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].ExternalColumns[quantidade]"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[quantidade]" />
+                    <inputColumn
+                      refId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].Columns[identificador_documento]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="identificador_documento"
+                      externalMetadataColumnId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].ExternalColumns[identificador_documento]"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[identificador_documento]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].ExternalColumns[id_produto]"
+                      dataType="i4"
+                      name="id_produto" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].ExternalColumns[id_trabalhador]"
+                      dataType="i4"
+                      name="id_trabalhador" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].ExternalColumns[id_armazem]"
+                      dataType="i4"
+                      name="id_armazem" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].ExternalColumns[data_hora]"
+                      dataType="dbTimeStamp2"
+                      name="data_hora" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].ExternalColumns[tipo_saida]"
+                      dataType="wstr"
+                      length="255"
+                      name="tipo_saida" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].ExternalColumns[quantidade]"
+                      dataType="i4"
+                      name="quantidade" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input].ExternalColumns[identificador_documento]"
+                      dataType="wstr"
+                      length="255"
+                      name="identificador_documento" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carregar dsa saida\Carregar dsa saida.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar dsa saida\Carregar dsa saida.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dsa saida\Carregar dsa saida.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar dsa saida\Carregar dsa saida.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dsa saida\Carregar dsa saida.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carregar dsa saida\Obter dbo saida"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Obter dbo saida"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 
+    id,
+    id_produto,
+    id_trabalhador,
+    id_armazem,
+    data_hora,
+    tipo_saida,
+    quantidade,
+    identificador_documento
+FROM dbo.saida
+WHERE data_hora &gt; ? AND data_hora &lt;= ?;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0:Input",{9B9AAB1D-2A5D-4F6B-889C-15C7E54FBFA4};"Parameter1:Input",System::StartTime;</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carregar dsa saida\Obter dbo saida.Connections[OleDbConnection]"
+                  connectionManagerID="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gestao_stock]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[id_produto]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].ExternalColumns[id_produto]"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[id_produto]"
+                      name="id_produto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[id_trabalhador]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].ExternalColumns[id_trabalhador]"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[id_trabalhador]"
+                      name="id_trabalhador"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[id_armazem]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].ExternalColumns[id_armazem]"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[id_armazem]"
+                      name="id_armazem"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[data_hora]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].ExternalColumns[data_hora]"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[data_hora]"
+                      name="data_hora"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[tipo_saida]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].ExternalColumns[tipo_saida]"
+                      length="255"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[tipo_saida]"
+                      name="tipo_saida"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[quantidade]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].ExternalColumns[quantidade]"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[quantidade]"
+                      name="quantidade"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[identificador_documento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].ExternalColumns[identificador_documento]"
+                      length="255"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].Columns[identificador_documento]"
+                      name="identificador_documento"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].ExternalColumns[id_produto]"
+                      dataType="i4"
+                      name="id_produto" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].ExternalColumns[id_trabalhador]"
+                      dataType="i4"
+                      name="id_trabalhador" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].ExternalColumns[id_armazem]"
+                      dataType="i4"
+                      name="id_armazem" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].ExternalColumns[data_hora]"
+                      dataType="dbTimeStamp2"
+                      name="data_hora" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].ExternalColumns[tipo_saida]"
+                      dataType="wstr"
+                      length="255"
+                      name="tipo_saida" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].ExternalColumns[quantidade]"
+                      dataType="i4"
+                      name="quantidade" />
+                    <externalMetadataColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output].ExternalColumns[identificador_documento]"
+                      dataType="wstr"
+                      length="255"
+                      name="identificador_documento" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output].Columns[id_produto]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output].Columns[id_produto]"
+                      name="id_produto" />
+                    <outputColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output].Columns[id_trabalhador]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output].Columns[id_trabalhador]"
+                      name="id_trabalhador" />
+                    <outputColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output].Columns[id_armazem]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output].Columns[id_armazem]"
+                      name="id_armazem" />
+                    <outputColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output].Columns[data_hora]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output].Columns[data_hora]"
+                      name="data_hora" />
+                    <outputColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output].Columns[tipo_saida]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output].Columns[tipo_saida]"
+                      name="tipo_saida" />
+                    <outputColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output].Columns[quantidade]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output].Columns[quantidade]"
+                      name="quantidade" />
+                    <outputColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output].Columns[identificador_documento]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output].Columns[identificador_documento]"
+                      name="identificador_documento" />
+                    <outputColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carregar dsa saida.Paths[OLE DB Source Output]"
+              endId="Package\Carregar dsa saida\Carregar dsa saida.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Carregar dsa saida\Obter dbo saida.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\get ETL cutoff entrada"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{003761D8-0E1E-42F9-8AC0-C00C7F60EB39}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="get ETL cutoff entrada"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[GetControlKey] ?, ? OUTPUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::TabelaEntrada"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::DataInicio_Entrada"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="135"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\get ETL cutoff saída"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1fca5a6c-4a5b-49a7-970f-a49c853b43a6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="get ETL cutoff saída"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[GetControlKey] ?, ? OUTPUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::TabelaSaida"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::DataInicio_Saida"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="135"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpar dsa entrada"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{ABE51097-910C-42E6-BB34-5C9ED936126A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpar dsa entrada"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dsa.Entrada;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpar dsa saída"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{BE0CE8E6-B2DC-4252-B630-1FD2E1CC57B7}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpar dsa saída"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B88EE889-E9E3-47B7-80C4-A016D9ABA572}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dsa.Saida;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{734F2AEA-32D8-4BE2-955E-CD7A7327F4C7}"
+      DTS:From="Package\Limpar dsa entrada"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Carregar dsa entrada" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{EDD52187-4036-471B-96D2-D6832FEAE50D}"
+      DTS:From="Package\get ETL cutoff entrada"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Carregar dsa entrada" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{ABC03C6C-D900-48F0-82BF-617D69A41768}"
+      DTS:From="Package\get ETL cutoff saída"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Carregar dsa saida" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{0A0EA8E8-3C36-4985-A577-01FBC703AF5A}"
+      DTS:From="Package\Limpar dsa saída"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Carregar dsa saida" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{26B50C6B-C880-42B5-B38E-C5A8258AC389}"
+      DTS:From="Package\Carregar dsa saida"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Atualizar ETL cutoff saída" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{A7AA02BA-7E77-46BF-987B-4D927A25FAF3}"
+      DTS:From="Package\Carregar dsa entrada"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Atualizar ETL cutoff entrada" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="207.2,41.6"
+          Id="Package\Atualizar ETL cutoff entrada"
+          TopLeft="274.166651686861,247.866664943033" />
+        <NodeLayout
+          Size="196.8,41.6"
+          Id="Package\Atualizar ETL cutoff saída"
+          TopLeft="779.166624094878,251.333331585593" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Carregar dsa entrada"
+          TopLeft="287.499984291693,159.466665557755" />
+        <NodeLayout
+          Size="166.4,41.6"
+          Id="Package\Carregar dsa saida"
+          TopLeft="797.499956426523,162.066665539675" />
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\get ETL cutoff entrada"
+          TopLeft="409.166644310787,56.3333329415984" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\get ETL cutoff saída"
+          TopLeft="908.33328370419,55.4666662809584" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\Limpar dsa entrada"
+          TopLeft="174.16665715062,56.3333329415983" />
+        <NodeLayout
+          Size="157.6,41.6"
+          Id="Package\Limpar dsa saída"
+          TopLeft="686.666629148856,55.4666662809584" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="258.16665715062,97.9333329415983">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="89.5999938077397,61.5333326161571"
+              Start="0,0"
+              End="89.5999938077397,54.0333326161571">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5888784973203" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.5888784973203"
+                    Point2="0,36.5888784973203"
+                    Point3="4,36.5888784973203" />
+                  <mssgle:LineSegment
+                    End="85.5999938077397,36.5888784973203" />
+                  <mssgle:CubicBezierSegment
+                    Point1="85.5999938077397,36.5888784973203"
+                    Point2="89.5999938077397,36.5888784973203"
+                    Point3="89.5999938077397,40.5888784973203" />
+                  <mssgle:LineSegment
+                    End="89.5999938077397,54.0333326161571" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="499.566644310787,97.9333329415984">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-95.5333266857601,61.5333326161571"
+              Start="0,0"
+              End="-95.5333266857601,54.0333326161571">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5888784973203" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.5888784973203"
+                    Point2="0,36.5888784973203"
+                    Point3="-4,36.5888784973203" />
+                  <mssgle:LineSegment
+                    End="-91.5333266857601,36.5888784973203" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-91.5333266857601,36.5888784973203"
+                    Point2="-95.5333266857601,36.5888784973203"
+                    Point3="-95.5333266857601,40.5888784973203" />
+                  <mssgle:LineSegment
+                    End="-95.5333266857601,54.0333326161571" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="993.53328370419,97.0666662809584">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-86.4333272776672,64.9999992587168"
+              Start="0,0"
+              End="-86.4333272776672,57.4999992587168">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.6285709880374" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.6285709880374"
+                    Point2="0,38.6285709880374"
+                    Point3="-4,38.6285709880374" />
+                  <mssgle:LineSegment
+                    End="-82.4333272776672,38.6285709880374" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-82.4333272776672,38.6285709880374"
+                    Point2="-86.4333272776672,38.6285709880374"
+                    Point3="-86.4333272776672,42.6285709880374" />
+                  <mssgle:LineSegment
+                    End="-86.4333272776672,57.4999992587168" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="765.466629148856,97.0666662809584">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="88.8333272776672,64.9999992587169"
+              Start="0,0"
+              End="88.8333272776672,57.4999992587169">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.6285709880375" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.6285709880375"
+                    Point2="0,38.6285709880375"
+                    Point3="4,38.6285709880375" />
+                  <mssgle:LineSegment
+                    End="84.8333272776672,38.6285709880375" />
+                  <mssgle:CubicBezierSegment
+                    Point1="84.8333272776672,38.6285709880375"
+                    Point2="88.8333272776672,38.6285709880375"
+                    Point3="88.8333272776672,42.6285709880375" />
+                  <mssgle:LineSegment
+                    End="88.8333272776672,57.4999992587169" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="879.133290260701,203.666665539675">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.6666660459174"
+              Start="0,0"
+              End="0,40.1666660459174">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.1666660459174" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="376.833317989277,201.066665557755">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.7999993852774"
+              Start="0,0"
+              End="0,39.2999993852774">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.2999993852774" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carregar dsa entrada">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Carregar dsa entrada\Carregar dsa entrada"
+          TopLeft="246.666653189395,200.199998607834" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Carregar dsa entrada\Obter dbo entrada"
+          TopLeft="254.166652779613,82.3333327607976" />
+        <EdgeLayout
+          Id="Package\Carregar dsa entrada.Paths[OLE DB Source Output]"
+          TopLeft="335.216652984504,123.933332760798">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76.2666658470366"
+              Start="0,0"
+              End="0,68.7666658470366">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.7666658470366" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carregar dsa entrada\Carregar dsa entrada">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carregar dsa entrada\Obter dbo entrada">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Carregar dsa saida">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="166.4,41.6"
+          Id="Package\Carregar dsa saida\Carregar dsa saida"
+          TopLeft="295.499995596707,173.166664086282" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Carregar dsa saida\Obter dbo saida"
+          TopLeft="303.999995470047,74.9999988824129" />
+        <EdgeLayout
+          Id="Package\Carregar dsa saida.Paths[OLE DB Source Output]"
+          TopLeft="379.349995533377,116.599998882413">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.5666652038693"
+              Start="0,0"
+              End="0,49.0666652038693">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.0666652038693" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carregar dsa saida\Carregar dsa saida">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carregar dsa saida\Obter dbo saida">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
